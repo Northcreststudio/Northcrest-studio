@@ -40,7 +40,7 @@ The only facts the website may use. First collected 2026-09-30, updated the same
 - $149 Google Profile Tune-Up, credited toward setup if you start a plan within 30 days.
 
 ## Work and proof
-- Real client: Hermes Framing (hermesframing.ca), Founding Client #1. Owners Kaleb Manrique and David. Structural framing across Alberta and BC, 20+ years of experience (their own site), a 10-person crew. They had no website before Northcrest. We built their website with estimate requests and a project gallery, a black and gold brand, and matching business cards.
+- Real client: Hermes Framing (hermesframing.ca), Founding Client #1. Owners Kaleb Manrique and David. Structural framing across Alberta and BC, 20+ years of combined experience across the crew (not 20 years as a company; corrected by Thomas 2026-09-30), a 10-person crew. They had no website before Northcrest. We built their website with estimate requests and a project gallery, a black and gold brand, and matching business cards.
 - Testimonial (verbatim, name corrected in brackets): "[Northcrest Studio] completely transformed our online presence at Hermes Framing. They built us an amazing website that made our company look more professional and credible, and we've already seen more clients coming through it. Highly recommend them to any business looking to grow online." Kaleb Manrique, Owner of Hermes Framing.
 - Sample designs (made-up businesses, always labelled): Tallpine Roofing, Foothill Yard Co., Maison Rose, Emberline.
 
