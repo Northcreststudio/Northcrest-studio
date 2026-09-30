@@ -1,54 +1,57 @@
 # Northcrest Studio: site answers
 
-The only facts the website may use. Collected 2026-09-30.
+The only facts the website may use. First collected 2026-09-30, updated the same day for v4 (v3 content in the live-site design).
 
 ## Voice
-- "We", a studio. Plain, specific, about the client's outcome. No em dashes, no hype.
+- "We", a studio, founder-led. Thomas speaks in the first person only in the About section. Plain, specific, about the client's outcome. No em dashes, no hype.
 
 ## Main action
-- Call or text (587) 583-8450. Two buttons: "Call us" and "Text us", on the first phone screen and in a bar that stays on screen.
+- Call or text (587) 583-8450. "Call us" and "Text us" on the first phone screen and in a bar that stays on screen.
 
-## Prices ("starting at", ending in 9)
-One-time:
-- Brand Identity: from $399. Custom logo, brand colours and fonts, business card design, social media graphics.
-- Starter Site: from $999. Up to 5 pages, mobile-first, contact form, Google Business Profile setup, live in about 2 weeks.
-- Growth Site: from $1,999. 6 to 15 pages, local SEO setup, booking or quote forms, reviews and gallery.
-- Acquisition Site: from $3,999. A page for every service and area, built to rank across Calgary, lead-qualifying quote forms, AI search visibility.
+## Offers (all real, all to be honoured)
+- Free homepage first: we design your homepage before you pay anything. If you don't love it, you walk away and owe nothing.
+- 7-day launch promise: live within 7 business days (10 for Premium) once we have your photos and details, or your first month is free.
+- Founding Client: the first 10 Calgary businesses pay $0 setup, and their monthly price is locked for as long as they stay. Hermes Framing is Founding Client #1, so 9 spots are left. Only lower the counter when a real client signs. Applies to the Starter, Growth and Premium setup fees.
 
-Monthly:
-- Rent-a-Site: from $129/mo. $0 down, hosting and updates included, 12-month minimum.
-- Care: from $79/mo. Hosting, security, backups and small edits.
-- Visibility: from $299/mo. Local SEO, Google profile posts, review requests and a monthly report.
-- Lead Engine: from $699/mo. Google and Meta ads managed for you, plus your ad budget. One business per trade per area.
-- Full System: from $999/mo. Everything above, plus missed-call text-back, instant replies and quote follow-ups.
+## Monthly plans (12-month minimum, then month to month, cancel with 30 days' notice; CAD, plus GST)
+- Starter: $129/mo, $0 setup. Up to 5 pages, mobile-first; hosting, domain and SSL; contact form to your phone; security updates and backups; 30 minutes of edits a month.
+- Growth: $199/mo, $399 setup. Everything in Starter, plus up to 10 pages; Google Business Profile + 2 posts a month; local SEO for your service area; quote or booking form; reviews section and gallery; 1 hour of edits a month.
+- Premium: $349/mo, $799 setup. Everything in Growth, plus up to 15 pages + service-area pages; custom logo; automatic Google review requests; weekly Google profile posts; monthly results report; unlimited small edits, same day.
+- Full System: $999/mo. Everything in Premium, plus managed Google and Meta ads. Ad spend billed separately.
+- Trades Launch Pack: $199/mo + $995 setup. Logo, website, Google profile, business cards and QR review cards (the kit built for Hermes).
+- Pay yearly: 2 months free on the plan.
+- Add-ons: Review Booster $79/mo (included in Premium); Social posting $249/mo (8 to 12 branded posts a month); Lead Engine $699/mo (managed Google and Meta ads, ad spend separate); Brand identity $399 one-time (logo, colours, fonts and business cards; included in Premium); Extra page $199 one-time.
+- Retired: Rent-a-Site and Visibility.
 
-No "most popular" badge, no discounts, no urgency.
+## Pay once instead (shown tucked away)
+- Starter Site from $999 (up to 5 pages), Growth Site from $1,999 (6 to 15 pages, local SEO), Acquisition Site from $3,999 (service and area pages). 50% to start, 50% at launch. Care plan $79/mo for hosting, backups and edits. Brand Identity from $399.
 
-## Work
-- Real: Hermes Framing (hermesframing.ca), live site. Structural framing across Alberta and BC.
-- Sample hero designs for made-up businesses are allowed, each clearly labelled "Sample design".
+## Timeline
+- Live in 1 to 7 business days once we have photos and details. Premium with a custom logo: up to 10.
+- Day 1: free 20-minute call, written quote the same day. Days 1 to 3: design (homepage shown on a real phone and laptop). Days 3 to 6: build, copy, Google Business Profile, forms. By day 7: founder review and launch.
 
-## Proof
-- No testimonial yet (Hermes Framing testimonial pending). Show none until the real quote arrives.
-- No ratings, client counts, years or results.
+## Ownership and cancelling
+- Pay once: the site, logo files, Google Business Profile, text and photos are yours. Leave our hosting any time and we hand over a full copy free.
+- Monthly: buy your site any time after 12 months for the cost of three months of your plan. If you cancel without buying it, the site comes down, and you keep your domain, logo and Google profile.
+- Domain is always registered in the client's name. We set it up; the yearly fee is included while on a monthly plan.
+
+## Extras
+- Free 5-minute audit: a screen-recorded video of your current website and Google listing, showing what's costing you calls and how to fix it. Yours to keep, no obligation.
+- $149 Google Profile Tune-Up, credited toward setup if you start a plan within 30 days.
+
+## Work and proof
+- Real client: Hermes Framing (hermesframing.ca), Founding Client #1. Owners Kaleb Manrique and David. Structural framing across Alberta and BC, 20+ years of experience (their own site), a 10-person crew. They had no website before Northcrest. We built their website with estimate requests and a project gallery, a black and gold brand, and matching business cards.
+- Testimonial (verbatim, name corrected in brackets): "[Northcrest Studio] completely transformed our online presence at Hermes Framing. They built us an amazing website that made our company look more professional and credible, and we've already seen more clients coming through it. Highly recommend them to any business looking to grow online." Kaleb Manrique, Owner of Hermes Framing.
+- Sample designs (made-up businesses, always labelled): Tallpine Roofing, Foothill Yard Co., Maison Rose, Emberline.
 
 ## About
-- Thomas Martinez, founder. No photo.
+- Thomas Martinez, founder. No photo. Calgary local; background in design and photo editing; personally reviews every site before launch; works with Calgary trades and local businesses. Brings in trusted specialists for copy, photos and ads when a project needs them.
 
-## Contact form
-- Leads go to hello@northcreststudio.ca (Netlify form "contact", email notification turned on in Netlify).
-- Fields: name, phone, email (optional), type of business (trades / salon or wellness / restaurant or retail / other), has a site already (yes with link / no), what they need (website / logo or brand / both / improve my site / Google or ads / not sure), package (list with starting prices, plus "Not sure"), message.
+## Calculator
+- Example customer values, clearly marked as examples: trades $2,500 per job, salon $600 a year, restaurant or retail $400 a year, other $1,000.
 
-## FAQ
-- How long does it take? A Starter Site is live in about 2 weeks. Bigger sites get a timeline on the call.
-- Do I own my site? Bought outright: yes. The site, logo files, Google Business Profile, text and photos are yours. Leave our hosting any time and we hand over a full copy of your site free.
-- Domains: we set it up, registered in the client's name. The yearly fee is included while on Care or Rent-a-Site.
-- Rent-a-Site after 12 months: continues month to month. If cancelled, the site comes down; the client keeps their domain, logo and Google profile.
-- What do I need to provide? Photos of your work, basic business info (services, area, hours, contact), logins for your domain and Google profile if you have them. We write the website text for you.
-- Can you fix my current site? Yes. We improve it or rebuild it, whichever is faster and better value, and tell you which on the free call.
+## Comparison
+- Only sourced figures (Calgary pricing guides, 2026): small-business sites usually $1,500 to $5,000, most told to budget $2,500 to $5,000; DIY $500 to $1,500; upkeep $300 to $1,200 a year.
 
-## Inspiration
-- apple.com
-
-## Contact details
-- hello@northcreststudio.ca, (587) 583-8450, Calgary, Alberta.
+## Contact
+- hello@northcreststudio.ca, (587) 583-8450, Calgary, Alberta. Leads go to Netlify form "contact" with email notification to hello@.

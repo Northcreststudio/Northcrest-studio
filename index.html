@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Northcrest Studio | Calgary Web Design &amp; Branding</title>
-<meta name="description" content="Northcrest Studio designs and builds websites and logos for Calgary businesses. Websites from $999, logos from $399. Call or text (587) 583-8450.">
+<meta name="description" content="Northcrest Studio is a founder-led web studio in Calgary. Websites from $129 a month, live in 1 to 7 business days. Free homepage design before you pay. Call or text (587) 583-8450.">
 <meta property="og:title" content="Northcrest Studio | Calgary Web Design &amp; Branding">
-<meta property="og:description" content="Websites and logos for Calgary businesses. Websites from $999, logos from $399.">
+<meta property="og:description" content="Websites for Calgary businesses from $129 a month, live in 1 to 7 business days. We design your homepage free before you pay.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://northcreststudio.ca/">
 <meta name="theme-color" content="#f4f3ee">
@@ -20,8 +20,9 @@
 <style>
 /* Layout: "Showroom". A light, quiet page where the work is the product. One signature motion: the work reel,
    where the card in the middle steps forward as you swipe. Everything else stays still.
-   Each section has its own shape: centred hero and reel, a plain list, a large client feature,
-   a price table, an inline sequence, an accordion, a text column, a form. */
+   Each section has its own shape: centred hero and reel, promise rows, a dark client feature with a
+   before/after, a text column, plan columns, a working price builder, a small sourced table,
+   a day-by-day sequence, an accordion, a form. */
 @font-face{font-family:"Bricolage Grotesque";src:url(assets/fonts/bricolage-grotesque-latin-800-normal.woff2) format("woff2");font-weight:800;font-display:swap}
 @font-face{font-family:"Bricolage Grotesque";src:url(assets/fonts/bricolage-grotesque-latin-600-normal.woff2) format("woff2");font-weight:600;font-display:swap}
 @font-face{font-family:"Public Sans";src:url(assets/fonts/public-sans-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
@@ -29,11 +30,13 @@
 :root{
   --paper:#f4f3ee;
   --paper-2:#eae8df;
+  --white:#fbfaf7;
   --ink:#121517;
   --ink-2:#4a5257;
   --line:#d6d4ca;
   --teal:#0e6b63;
   --teal-hi:#5eead4;
+  --on-dark:#c9ced1;
   --display:"Bricolage Grotesque",system-ui,sans-serif;
   --body:"Public Sans",system-ui,sans-serif;
 }
@@ -52,14 +55,21 @@ p{margin:0}
 section{padding:72px 0}
 @media (min-width:900px){section{padding:112px 0}}
 .lead{color:var(--ink-2);font-size:clamp(17px,1.8vw,19px);max-width:34em}
+.sec-head{display:grid;gap:16px;margin-bottom:36px}
+.note{font-size:14px;color:var(--ink-2)}
 
 /* buttons */
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 24px;border-radius:12px;font-weight:600;font-size:16px;text-decoration:none;white-space:nowrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 24px;border-radius:12px;font:600 16px/1.2 var(--body);text-decoration:none;white-space:nowrap;cursor:pointer;border:0}
 .btn-main{background:var(--ink);color:var(--paper)}
 .btn-main:hover{background:#2a2f33}
-.btn-alt{border:1.5px solid var(--ink);color:var(--ink)}
+.btn-alt{border:1.5px solid var(--ink);color:var(--ink);background:transparent}
 .btn-alt:hover{background:var(--paper-2)}
 .text-link{color:var(--teal);font-weight:600;text-underline-offset:4px}
+
+/* founding bar */
+.founding{background:var(--ink);color:var(--paper);font-size:14px;line-height:1.45;text-align:center;padding:10px 16px}
+.founding b{font-weight:600}
+.founding a{color:var(--teal-hi);font-weight:600;white-space:nowrap;margin-left:6px}
 
 /* nav */
 .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 20px;max-width:1160px;margin:0 auto}
@@ -73,9 +83,9 @@ section{padding:72px 0}
 /* hero */
 .hero{text-align:center;padding:40px 0 0}
 .hero h1{font-weight:800;font-size:clamp(40px,8.6vw,96px);line-height:.98;letter-spacing:-.035em;margin:0 auto;max-width:12ch}
-.hero .lead{margin:18px auto 0;max-width:30em;font-size:clamp(17px,2vw,21px)}
+.hero .lead{margin:18px auto 0;max-width:31em;font-size:clamp(17px,2vw,21px)}
 .price-line{margin-top:14px;font-weight:600;font-size:16px}
-.actions{display:flex;gap:10px;justify-content:center;margin-top:24px}
+.actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:24px}
 .hero .text-link{display:inline-block;margin-top:16px}
 @media (min-width:900px){.hero{padding-top:72px}}
 
@@ -97,69 +107,174 @@ section{padding:72px 0}
 .step-btn{display:none;width:44px;height:44px;border-radius:50%;border:1.5px solid var(--ink);background:transparent;color:var(--ink);font-size:18px;line-height:1;cursor:pointer}
 .step-btn:hover{background:var(--paper-2)}
 .step-btn:disabled{opacity:.3;cursor:default;background:transparent}
-.reel-note{text-align:center;margin-top:14px;font-size:14px;color:var(--ink-2)}
+.reel-note{text-align:center;margin-top:14px}
 @media (min-width:900px){.step-btn{display:inline-block}.reel{padding-inline:calc((100vw - 300px)/2)}.item{flex-basis:300px}}
-@media (prefers-reduced-motion:reduce){.item img,.dots i{transition:none}.reel.ready .item:not(.on) img{transform:none;opacity:1}.reel{scroll-behavior:auto}}
+@media (prefers-reduced-motion:reduce){.item img,.dots i{transition:none}.reel.ready .item:not(.on) img{transform:none;opacity:1}}
 
-/* why: a plain list */
-.why{border-top:1px solid var(--line)}
-.why-grid{display:grid;gap:28px}
-.points{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
-.points li{padding:20px 0;border-bottom:1px solid var(--line);display:grid;gap:4px}
-.points b{font-family:var(--display);font-weight:600;font-size:20px;letter-spacing:-.015em}
-.points span{color:var(--ink-2)}
-@media (min-width:900px){.why-grid{grid-template-columns:1fr 1.1fr;gap:64px;align-items:start}.points li{grid-template-columns:230px 1fr;gap:24px;align-items:baseline}}
+/* promises: three rows */
+.promises{border-top:1px solid var(--line)}
+.promise-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
+.promise-list li{display:grid;gap:6px;padding:24px 0;border-bottom:1px solid var(--line)}
+.promise-list h3{font-size:clamp(22px,2.6vw,28px)}
+.promise-list p{color:var(--ink-2);max-width:40em}
+.spots{display:inline-block;margin-top:4px;font-weight:600;color:var(--teal)}
+@media (min-width:900px){.promise-list li{grid-template-columns:380px 1fr;gap:32px;align-items:baseline}}
 
-/* client feature: real work, big */
+/* client feature: real work, dark */
 .feature{background:var(--ink);color:var(--paper)}
 .feature .tag.real{color:var(--teal-hi)}
-.feature-head{display:grid;gap:14px;margin-bottom:36px}
-.feature-head p{color:#c9ced1;max-width:34em}
-.shots{display:grid;gap:16px;align-items:end}
-.shots img{border-radius:14px;border:1px solid #2c3337}
-.shot-phone{display:none}
-.feature-foot{display:flex;flex-wrap:wrap;gap:14px 28px;align-items:center;margin-top:28px;color:#c9ced1;font-size:15px}
+.feature-grid{display:grid;gap:28px}
+.feature-head{display:grid;gap:14px}
+.feature-head p{color:var(--on-dark);max-width:34em}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:8px 0 0;border-top:1px solid #33393d;border-bottom:1px solid #33393d}
+.facts div{padding:14px 12px 14px 0}
+.facts div+div{padding-left:12px;border-left:1px solid #33393d}
+.facts dt{font-size:13px;color:var(--on-dark)}
+.facts dd{margin:2px 0 0;font-family:var(--display);font-weight:600;font-size:clamp(20px,2.4vw,26px);letter-spacing:-.02em}
+blockquote{margin:0;display:grid;gap:12px}
+blockquote p{font-family:var(--display);font-weight:600;font-size:clamp(19px,2.2vw,24px);line-height:1.35;letter-spacing:-.015em}
+blockquote footer{font-size:15px;color:var(--on-dark)}
 .feature .text-link{color:var(--teal-hi)}
-@media (min-width:760px){.shots{grid-template-columns:1fr 240px}.shot-phone{display:block}}
+@media (min-width:900px){.feature-grid{grid-template-columns:1fr 1fr;gap:56px;align-items:start}}
 
-/* pricing: a plain table */
-.price-head{display:grid;gap:16px;margin-bottom:36px}
-.ptable{border-top:1px solid var(--ink)}
-.prow{display:grid;grid-template-columns:1fr auto;gap:6px 20px;padding:22px 0;border-bottom:1px solid var(--line)}
-.prow h3{font-size:22px}
-.prow .amt{font-family:var(--display);font-weight:600;font-size:22px;letter-spacing:-.02em;white-space:nowrap;font-variant-numeric:tabular-nums}
-.prow .amt small{font-family:var(--body);font-weight:400;font-size:14px;color:var(--ink-2);letter-spacing:0;margin-right:4px}
-.prow p{grid-column:1 / -1;color:var(--ink-2);font-size:16px;max-width:44em}
-@media (min-width:900px){.prow{grid-template-columns:260px 1fr 180px;align-items:baseline}.prow p{grid-column:auto;order:2}.prow .amt{order:3;text-align:right}}
-.rent{margin:40px 0;padding:24px;border-radius:16px;background:var(--paper-2);display:grid;gap:16px}
-.rent p{max-width:42em}
-.rent b{font-family:var(--display);font-weight:600;font-size:21px;display:block;margin-bottom:4px;letter-spacing:-.015em}
-@media (min-width:900px){.rent{grid-template-columns:1fr auto;align-items:center;padding:28px 32px}}
-.monthly h3.sub{font-size:24px;margin-bottom:14px}
+/* before / after (Hermes) */
+.ba-wrap{margin-top:48px}
+.ba-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.ba-head h3{font-size:clamp(20px,2.4vw,26px)}
+.ba-head span{font-size:14px;color:var(--on-dark)}
+.compare{position:relative;aspect-ratio:1200/750;border-radius:14px;overflow:hidden;border:1px solid #33393d;container-type:inline-size;--x:50%}
+.compare>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top}
+.before{position:absolute;inset:0;clip-path:inset(0 calc(100% - var(--x)) 0 0);background:#e9ecf1;display:flex;align-items:center;justify-content:flex-start;padding-left:4cqw;font-family:Arial,Helvetica,sans-serif;color:#202124}
+.listing{width:42cqw;background:#fff;border-radius:2cqw;box-shadow:0 1cqw 3cqw -1cqw rgba(0,0,0,.35);overflow:hidden;font-size:max(9px,1.5cqw)}
+.listing .q{padding:1.6cqw 2cqw;border-bottom:1px solid #e3e6ea;color:#5f6368}
+.listing .in{padding:2cqw 2.4cqw 2.4cqw;display:grid;gap:1cqw}
+.listing .nm{font-size:max(12px,2.4cqw);font-weight:600}
+.listing .sub{color:#5f6368}
+.listing .map{height:9cqw;border-radius:1cqw;background:#dce3ea}
+@container (max-width:560px){.listing .map{display:none}.listing .in{padding-bottom:2cqw}}
+.listing .btns{display:flex;gap:1cqw}
+.listing .btns span{flex:1;text-align:center;border:1px solid #dadce0;border-radius:99px;padding:.8cqw 0;color:#1a73e8}
+.listing .btns span.off{color:#5f6368;border-style:dashed;text-decoration:line-through}
+.handle{position:absolute;top:0;bottom:0;left:var(--x);width:3px;margin-left:-1.5px;background:var(--paper);pointer-events:none}
+.handle::after{content:"";position:absolute;top:50%;left:50%;width:40px;height:40px;margin:-20px 0 0 -20px;border-radius:50%;background:var(--paper);box-shadow:0 1px 4px rgba(0,0,0,.4);background-image:linear-gradient(90deg,transparent 13px,var(--ink) 13px 15px,transparent 15px 25px,var(--ink) 25px 27px,transparent 27px)}
+.lab{position:absolute;bottom:10px;font-size:12px;font-weight:600;padding:4px 9px;border-radius:4px;background:rgba(18,21,23,.85);color:var(--paper);pointer-events:none}
+.lab.l{left:10px}.lab.r{right:10px;background:var(--teal)}
+.compare input{position:absolute;inset:0;width:100%;height:100%;opacity:0;margin:0;cursor:ew-resize}
+.ba-note{margin-top:10px;font-size:14px;color:var(--on-dark)}
 
-/* process: an inline sequence */
+/* about: a text column */
+.about-grid{display:grid;gap:32px}
+.about-body{display:grid;gap:18px;font-size:clamp(18px,2vw,20px);max-width:34em}
+.about-body .soft{color:var(--ink-2);font-size:17px}
+.creds{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
+.creds li{padding:14px 0;border-bottom:1px solid var(--line)}
+.sign{font-family:var(--display);font-weight:600;font-size:20px}
+.sign small{display:block;font-family:var(--body);font-weight:400;font-size:15px;color:var(--ink-2)}
+@media (min-width:900px){.about-grid{grid-template-columns:1.3fr 1fr;gap:72px;align-items:start}}
+
+/* plans */
+.pricing{border-top:1px solid var(--line)}
+.plans{display:grid;gap:0;border-top:1px solid var(--ink)}
+.plan{padding:26px 0;border-bottom:1px solid var(--line);display:grid;gap:10px;min-width:0}
+.plan-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.plan h3{font-size:24px}
+.amt{font-family:var(--display);font-weight:600;font-size:34px;letter-spacing:-.03em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.amt small{font-family:var(--body);font-weight:400;font-size:15px;color:var(--ink-2);letter-spacing:0}
+.setup{font-size:15px;color:var(--ink-2)}
+.setup s{color:var(--ink-2)}
+.setup b{color:var(--teal);font-weight:600}
+.plan .for{font-size:16px}
+.plan .inc{font-size:14px;font-weight:600;margin-top:6px}
+.plan ul{margin:0;padding:0 0 0 18px;color:var(--ink-2);font-size:15px;display:grid;gap:4px}
+.plan .btn{justify-self:start;margin-top:8px}
+@media (min-width:900px){.plans{grid-template-columns:repeat(3,minmax(0,1fr));border-bottom:1px solid var(--line)}.plan{padding:28px 28px 32px;border-bottom:0}.plan:first-child{padding-left:0}.plan+.plan{border-left:1px solid var(--line)}}
+.launch{margin-top:32px;padding:26px 24px;border-radius:16px;background:var(--ink);color:var(--paper);display:grid;gap:16px}
+.launch p{color:var(--on-dark);max-width:40em}
+.launch .amt{font-size:30px}
+.launch .amt small{color:var(--on-dark)}
+.launch .btn-main{background:var(--paper);color:var(--ink)}
+.launch .btn-main:hover{background:var(--paper-2)}
+@media (min-width:900px){.launch{grid-template-columns:1.4fr auto auto;align-items:center;gap:32px;padding:30px 34px}}
+.more{border-bottom:1px solid var(--line)}
+.more:first-of-type{margin-top:28px;border-top:1px solid var(--ink)}
+.more summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 0;min-height:44px;font-family:var(--display);font-weight:600;font-size:19px;letter-spacing:-.01em}
+.more summary::-webkit-details-marker{display:none}
+.more summary .r{display:flex;align-items:center;gap:14px;font-family:var(--body);font-weight:600;font-size:16px;white-space:nowrap}
+.more summary .r::after{content:"+";font-weight:400;font-size:26px;line-height:1;color:var(--teal)}
+.more[open] summary .r::after{content:"\2212"}
+.more .in{padding:0 0 24px;display:grid;gap:14px;color:var(--ink-2);max-width:48em}
+.rows{border-top:1px solid var(--line)}
+.rows div{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--line);font-size:16px}
+.rows span:first-child{color:var(--ink)}
+.rows span:last-child{font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* price builder */
+.builder{background:var(--paper-2)}
+.b-grid{display:grid;gap:28px}
+fieldset{border:0;margin:0;padding:0;min-width:0}
+legend{font-family:var(--display);font-weight:600;font-size:19px;letter-spacing:-.01em;padding:0;margin-bottom:12px}
+.b-group{padding:22px 0;border-top:1px solid var(--line)}
+.b-group:first-child{border-top:1px solid var(--ink)}
+.choices{display:flex;flex-wrap:wrap;gap:8px}
+.choice{position:relative}
+.choice input{position:absolute;opacity:0;width:1px;height:1px}
+.choice span{display:flex;align-items:center;min-height:46px;padding:0 16px;border:1.5px solid #b9b7ad;border-radius:10px;background:var(--white);font-size:15px;cursor:pointer}
+.choice input:checked+span{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.choice input:focus-visible+span{outline:3px solid var(--teal);outline-offset:2px}
+.addon{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--line);cursor:pointer}
+.addon:last-child{border-bottom:0}
+.addon input{width:20px;height:20px;margin:2px 0 0;accent-color:var(--teal);flex:0 0 auto}
+.addon .nm{flex:1;min-width:0}
+.addon .nm b{display:block;font-weight:600;font-size:16px}
+.addon .nm small{display:block;color:var(--ink-2);font-size:14px}
+.addon .pr{font-size:15px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.addon.incl .pr{color:var(--teal);font-weight:600}
+.toggle{display:flex;align-items:center;gap:10px;cursor:pointer;font-size:16px;min-height:44px}
+.toggle input{width:20px;height:20px;accent-color:var(--teal);margin:0}
+.money{display:flex;align-items:center;gap:6px;max-width:220px;border:1.5px solid #b9b7ad;border-radius:10px;background:var(--white);padding:0 14px}
+.money:focus-within{border-color:var(--teal);box-shadow:0 0 0 3px rgba(14,107,99,.18)}
+.money span{font-size:20px;color:var(--ink-2)}
+.money input{border:0;background:transparent;font:600 24px var(--display);color:var(--ink);padding:10px 0;width:100%;min-width:0}
+.money input:focus{outline:none}
+.hint{font-size:14px;color:var(--ink-2);margin-top:8px}
+.summary{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:26px 24px;display:grid;gap:14px;align-self:start}
+.summary .big{font-family:var(--display);font-weight:800;font-size:clamp(44px,6vw,64px);letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums}
+.summary .big small{font-family:var(--body);font-weight:400;font-size:17px;letter-spacing:0;color:var(--ink-2)}
+.summary .worth{padding:14px 16px;border-radius:10px;background:var(--paper-2);font-size:16px}
+.summary .worth b{font-family:var(--display);font-size:22px}
+.summary .btn{width:100%}
+@media (min-width:900px){.b-grid{grid-template-columns:1.4fr 1fr;gap:48px}.summary{position:sticky;top:20px}}
+
+/* compare table */
+.cmp{border-top:1px solid var(--line)}
+.table-wrap{overflow-x:auto;border-top:1px solid var(--ink)}
+table{width:100%;min-width:560px;border-collapse:collapse;font-size:16px}
+th,td{text-align:left;padding:16px 16px 16px 0;border-bottom:1px solid var(--line);vertical-align:top}
+thead th{font-size:14px;color:var(--ink-2);font-weight:600}
+th.us,td.us{color:var(--teal);font-weight:600}
+tbody th{font-weight:600}
+.cmp .note{margin-top:14px}
+.cmp .note a{color:var(--ink-2)}
+
+/* process: day by day */
 .process{border-top:1px solid var(--line)}
-.seq{list-style:none;margin:36px 0 0;padding:0;display:grid;gap:28px;counter-reset:s}
-.seq li{counter-increment:s;display:grid;grid-template-columns:44px 1fr;gap:4px 14px}
-.seq li::before{content:counter(s);grid-row:span 2;font-family:var(--display);font-weight:800;font-size:40px;line-height:1;color:var(--teal)}
-.seq p{color:var(--ink-2)}
-@media (min-width:900px){.seq{grid-template-columns:repeat(3,1fr);gap:40px}}
+.days{list-style:none;margin:36px 0 0;padding:0;display:grid;gap:26px}
+.days li{display:grid;grid-template-columns:96px 1fr;gap:4px 18px}
+.days .when{grid-row:span 2;font-family:var(--display);font-weight:800;font-size:18px;color:var(--teal);line-height:1.4;padding-top:2px}
+.days p{color:var(--ink-2)}
+@media (min-width:900px){.days{grid-template-columns:repeat(4,1fr);gap:32px}.days li{grid-template-columns:1fr;border-top:1px solid var(--ink);padding-top:16px}.days .when{grid-row:auto}}
 
-/* faq: accordion */
+/* faq */
 .faq{background:var(--paper-2)}
 .faq-grid{display:grid;gap:28px}
 .qa{border-top:1px solid var(--ink)}
-details{border-bottom:1px solid var(--line)}
-summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 0;font-family:var(--display);font-weight:600;font-size:19px;letter-spacing:-.01em;min-height:44px}
-summary::-webkit-details-marker{display:none}
-summary::after{content:"+";font-family:var(--body);font-weight:400;font-size:26px;line-height:1;color:var(--teal)}
-details[open] summary::after{content:"\2212"}
-details div{padding:0 0 22px;color:var(--ink-2);display:grid;gap:10px;max-width:40em}
+.qa details{border-bottom:1px solid var(--line)}
+.qa summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 0;font-family:var(--display);font-weight:600;font-size:19px;letter-spacing:-.01em;min-height:44px}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::after{content:"+";font-family:var(--body);font-weight:400;font-size:26px;line-height:1;color:var(--teal)}
+.qa details[open] summary::after{content:"\2212"}
+.qa details div{padding:0 0 22px;color:var(--ink-2);display:grid;gap:10px;max-width:40em}
 @media (min-width:900px){.faq-grid{grid-template-columns:1fr 1.6fr;gap:64px;align-items:start}}
-
-/* about: a text column */
-.about-body{display:grid;gap:18px;font-size:clamp(18px,2vw,21px);max-width:34em;margin-top:24px}
-.about-body .sign{font-size:16px;color:var(--ink-2);padding-top:16px;border-top:1px solid var(--line)}
 
 /* contact */
 .contact{border-top:1px solid var(--line)}
@@ -170,27 +285,29 @@ details div{padding:0 0 22px;color:var(--ink-2);display:grid;gap:10px;max-width:
 .direct dt{font-size:14px;color:var(--ink-2)}
 .direct dd{margin:0;font-weight:600;overflow-wrap:anywhere}
 .direct dd a{display:inline-block;padding:10px 0;margin:-10px 0}
+.extras{margin-top:10px;padding-top:18px;border-top:1px solid var(--line);display:grid;gap:10px;font-size:16px;color:var(--ink-2)}
+.extras b{color:var(--ink)}
 form{display:grid;gap:18px}
 .field{display:grid;gap:7px;min-width:0}
-label,legend{font-size:15px;font-weight:600}
+label,.f-legend{font-size:15px;font-weight:600}
+.f-legend{font-family:var(--body);letter-spacing:0;margin-bottom:0}
 .opt{font-weight:400;color:var(--ink-2)}
-input,select,textarea{font:inherit;font-size:16px;color:var(--ink);background:#fff;border:1.5px solid #b9b7ad;border-radius:10px;padding:12px 14px;min-height:50px;width:100%}
-input:focus,select:focus,textarea:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px rgba(14,107,99,.18)}
-textarea{min-height:120px;resize:vertical}
-fieldset{border:0;margin:0;padding:0;display:grid;gap:10px;min-width:0}
+.field input,.field select,.field textarea{font:inherit;font-size:16px;color:var(--ink);background:#fff;border:1.5px solid #b9b7ad;border-radius:10px;padding:12px 14px;min-height:50px;width:100%}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px rgba(14,107,99,.18)}
+.field textarea{min-height:120px;resize:vertical}
+.site-q{display:grid;gap:10px}
 .radios{display:flex;gap:10px}
 .radios label{display:flex;align-items:center;gap:8px;font-weight:400;font-size:16px;border:1.5px solid #b9b7ad;border-radius:10px;padding:0 16px;min-height:48px;cursor:pointer;background:#fff}
-.radios input{width:18px;height:18px;min-height:0;margin:0;accent-color:var(--teal)}
-#f-url-wrap[hidden]{display:none}
+.radios input{width:18px;height:18px;margin:0;accent-color:var(--teal)}
 .form-foot{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
 .form-msg{font-size:15px;font-weight:600;color:var(--teal)}
 .form-msg.err{color:#a4301c}
 @media (min-width:600px){.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}}
 @media (min-width:900px){.contact-grid{grid-template-columns:1fr 1.25fr;gap:72px;align-items:start}}
 
-footer{border-top:1px solid var(--line);padding:32px 0 40px;font-size:14px;color:var(--ink-2)}
-footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;align-items:center}
-footer .brand{font-size:17px;color:var(--ink)}
+.site-foot{border-top:1px solid var(--line);padding:32px 0 40px;font-size:14px;color:var(--ink-2)}
+.site-foot .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;align-items:center}
+.site-foot .brand{font-size:17px;color:var(--ink)}
 
 /* phones: call and text always reachable */
 .callbar{position:fixed;left:0;right:0;bottom:0;z-index:30;display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(244,243,238,.96);border-top:1px solid var(--line)}
@@ -203,12 +320,16 @@ footer .brand{font-size:17px;color:var(--ink)}
 </head>
 <body>
 
+<div class="founding">
+  <b>Founding Client offer:</b> the first 10 Calgary businesses pay $0 setup and keep their monthly price for as long as they stay. <span data-spots>9 of 10</span> spots left.<a href="#pricing">See plans</a>
+</div>
+
 <header class="nav">
   <a class="brand" href="#top" aria-label="Northcrest Studio home">
     <svg width="26" height="26" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M11 39V12l22 27V7M27 13.5l6-7 6 7" stroke="#0e6b63" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round"/></svg>northcrest
   </a>
   <nav class="links" aria-label="Main">
-    <a href="#work">Work</a><a href="#pricing">Pricing</a><a href="#process">Process</a><a href="#faq">FAQ</a><a href="#about">About</a>
+    <a href="#work">Work</a><a href="#about">About</a><a href="#pricing">Pricing</a><a href="#process">Process</a><a href="#faq">FAQ</a>
     <a class="call" href="tel:+15875838450">(587) 583-8450</a>
   </nav>
 </header>
@@ -216,13 +337,13 @@ footer .brand{font-size:17px;color:var(--ink)}
 <main id="top">
   <section class="hero wrap" aria-labelledby="hero-title">
     <h1 id="hero-title">Look like the best in your field.</h1>
-    <p class="lead">We design and build websites for Calgary businesses, so the work you do shows up online and your phone rings.</p>
-    <p class="price-line">Websites from $999. Logos from $399.</p>
+    <p class="lead">We design your website, get you found on Google and keep it all running, so your phone rings more.</p>
+    <p class="price-line">From $129 a month. Live in 1 to 7 business days.</p>
     <div class="actions">
       <a class="btn btn-main" href="tel:+15875838450">Call us</a>
       <a class="btn btn-alt" href="sms:+15875838450">Text us</a>
     </div>
-    <a class="text-link" href="#work">See the work</a>
+    <a class="text-link" href="#pricing">See plans and pricing</a>
   </section>
 
   <section class="reel-sec" id="work" aria-labelledby="work-title">
@@ -254,76 +375,245 @@ footer .brand{font-size:17px;color:var(--ink)}
       <div class="dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i></div>
       <button class="step-btn" type="button" data-dir="1" aria-label="Next design" aria-controls="reel">&#8594;</button>
     </div>
-    <p class="reel-note wrap">Sample designs are made-up businesses, built to show how we design for each industry.</p>
+    <p class="reel-note note wrap">Sample designs are made-up businesses, built to show how we design for each industry.</p>
   </section>
 
-  <section class="why" aria-labelledby="why-title">
-    <div class="wrap why-grid">
-      <h2 id="why-title">Your business should look as good as the work you do.</h2>
-      <ul class="points">
-        <li><b>Built to bring in customers</b><span>Every site is set up to show up on Google and turn visitors into calls.</span></li>
-        <li><b>Prices up front</b><span>Every package has a starting price on this page. You get your exact quote in writing after a free 20-minute call.</span></li>
-        <li><b>Everything in one place</b><span>Logo, website, Google profile and ads, handled by one team.</span></li>
-        <li><b>Right here in Calgary</b><span>You work with a real person in your city, from the first call to launch day.</span></li>
+  <section class="promises" aria-labelledby="promise-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="promise-title">Less risk for you</h2>
+      </div>
+      <ul class="promise-list">
+        <li><h3>See your homepage before you pay</h3><p>We design your homepage first, free. If you don't love it, you walk away and owe nothing.</p></li>
+        <li><h3>Live in 7 business days, or your first month is free</h3><p>Once we have your photos and details, your site is live within 7 business days, or 10 for Premium. If we miss that, you don't pay for your first month.</p></li>
+        <li><h3>Founding Client pricing</h3><p>The first 10 Calgary businesses pay $0 setup, and their monthly price is locked for as long as they stay, even if our prices go up later.<br><span class="spots"><span data-spots>9 of 10</span> spots left</span></p></li>
       </ul>
     </div>
   </section>
 
-  <section class="feature" aria-labelledby="hermes-title">
+  <section class="feature" id="hermes" aria-labelledby="hermes-title">
     <div class="wrap">
-      <div class="feature-head">
-        <span class="tag real">Client site, live</span>
-        <h2 id="hermes-title">Hermes Framing</h2>
-        <p>Structural framing across Alberta and BC. We built their website with estimate requests and a project gallery, and designed matching business cards.</p>
+      <div class="feature-grid">
+        <div class="feature-head">
+          <span class="tag real">Client site, live &middot; Founding Client #1</span>
+          <h2 id="hermes-title">Hermes Framing</h2>
+          <p>Two decades of framing across Alberta and British Columbia, and no website. Builders looking them up found nothing to click. We built their first site, with estimate requests and a project gallery, a black and gold brand, and matching business cards.</p>
+          <dl class="facts">
+            <div><dt>Experience</dt><dd>20+ years</dd></div>
+            <div><dt>Crew</dt><dd>10 people</dd></div>
+            <div><dt>Serving</dt><dd>AB &amp; BC</dd></div>
+          </dl>
+        </div>
+        <blockquote>
+          <p>&ldquo;[Northcrest Studio] completely transformed our online presence at Hermes Framing. They built us an amazing website that made our company look more professional and credible, and we&rsquo;ve already seen more clients coming through it. Highly recommend them to any business looking to grow online.&rdquo;</p>
+          <footer>Kaleb Manrique, Owner, Hermes Framing</footer>
+        </blockquote>
       </div>
-      <div class="shots">
-        <img class="shot-desk" src="assets/img/hermes-desktop-1200.webp" srcset="assets/img/hermes-desktop-720.webp 720w, assets/img/hermes-desktop-1200.webp 1200w" sizes="(min-width:1160px) 840px, (min-width:760px) calc(100vw - 296px), calc(100vw - 40px)" width="1200" height="750" alt="The Hermes Framing homepage on a desktop screen, with a black and gold header, a crane photo and a Get in Touch form" loading="lazy">
-        <img class="shot-phone" src="assets/img/reel-hermes.webp" width="600" height="1077" alt="" loading="lazy">
-      </div>
-      <div class="feature-foot">
-        <a class="text-link" href="https://hermesframing.ca" target="_blank" rel="noopener">Visit hermesframing.ca<span class="sr"> (opens in a new tab)</span></a>
+
+      <div class="ba-wrap">
+        <div class="ba-head"><h3>From no website to the first thing builders see</h3><span>Drag to compare</span></div>
+        <div class="compare" id="cmp">
+          <img src="assets/img/hermes-desktop-1200.webp" srcset="assets/img/hermes-desktop-720.webp 720w, assets/img/hermes-desktop-1200.webp 1200w" sizes="(min-width:1160px) 1120px, calc(100vw - 40px)" width="1200" height="750" alt="After: the Hermes Framing website, with a black and gold header, a crane photo and a Get in Touch form" loading="lazy">
+          <div class="before" aria-hidden="true">
+            <div class="listing">
+              <div class="q">framing contractor alberta</div>
+              <div class="in">
+                <div class="nm">Hermes Framing Construction</div>
+                <div class="sub">Framing contractor</div>
+                <div class="map"></div>
+                <div class="btns"><span>Directions</span><span>Call</span><span class="off">Website</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="handle"></div>
+          <span class="lab l">Before</span><span class="lab r">After</span>
+          <input type="range" min="0" max="100" value="50" aria-label="Compare Hermes Framing before and after their website">
+        </div>
+        <p class="ba-note">The before panel is an illustration of a search listing with no website. The after panel is a real screenshot of hermesframing.ca. <a class="text-link" href="https://hermesframing.ca" target="_blank" rel="noopener">Visit hermesframing.ca<span class="sr"> (opens in a new tab)</span></a></p>
       </div>
     </div>
   </section>
 
-  <section id="pricing" aria-labelledby="pricing-title">
+  <section id="about" aria-labelledby="about-title">
+    <div class="wrap about-grid">
+      <div class="about-body">
+        <h2 id="about-title">Your work is better than your website. Let&rsquo;s fix that.</h2>
+        <p>I started Northcrest after watching great Calgary businesses lose customers to competitors with better websites. Not better work. Better websites.</p>
+        <p class="soft">Northcrest is a founder-led studio. I lead every project from the first call to launch day, and bring in trusted specialists for copy, photos and ads when your site needs them. Before anything goes live, I review it personally. Your name is on it, and so is ours.</p>
+        <p class="sign">Thomas Martinez<small>Founder, Northcrest Studio</small></p>
+      </div>
+      <ul class="creds" aria-label="About Thomas">
+        <li>Calgary local, building for Calgary businesses</li>
+        <li>Background in design and photo editing</li>
+        <li>Personally reviews every site before it launches</li>
+        <li>Works with Calgary trades and local businesses</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="pricing" class="pricing" aria-labelledby="pricing-title">
     <div class="wrap">
-      <div class="price-head">
-        <h2 id="pricing-title">Starting prices</h2>
-        <p class="lead">Your exact quote depends on pages, content and features. You get it in writing after a free 20-minute call.</p>
+      <div class="sec-head">
+        <h2 id="pricing-title">Plans</h2>
+        <p class="lead">Hosting, security, backups and edits are in every plan. 12-month minimum, then month to month. Prices in CAD, plus GST.</p>
       </div>
 
-      <div class="ptable">
-        <div class="prow"><h3>Brand Identity</h3><span class="amt"><small>from</small>$399</span><p>Custom logo, brand colours and fonts, business card design and social media graphics.</p></div>
-        <div class="prow"><h3>Starter Site</h3><span class="amt"><small>from</small>$999</span><p>Up to 5 pages, mobile-first, a contact form and Google Business Profile setup. Live in about 2 weeks.</p></div>
-        <div class="prow"><h3>Growth Site</h3><span class="amt"><small>from</small>$1,999</span><p>6 to 15 pages, local SEO setup, booking or quote forms, reviews and a gallery.</p></div>
-        <div class="prow"><h3>Acquisition Site</h3><span class="amt"><small>from</small>$3,999</span><p>A page for every service and area, built to rank across Calgary, with lead-qualifying quote forms and AI search visibility.</p></div>
+      <div class="plans">
+        <article class="plan">
+          <div class="plan-top"><h3>Starter</h3><span class="amt">$129<small>/month</small></span></div>
+          <p class="setup">$0 setup, always</p>
+          <p class="for">A clean, professional site that is always up and always current.</p>
+          <ul>
+            <li>Up to 5 pages, mobile-first</li>
+            <li>Hosting, domain and SSL</li>
+            <li>Contact form to your phone</li>
+            <li>Security updates and backups</li>
+            <li>30 minutes of edits a month</li>
+          </ul>
+          <a class="btn btn-alt" href="#price" data-plan="starter">Price it out</a>
+        </article>
+        <article class="plan">
+          <div class="plan-top"><h3>Growth</h3><span class="amt">$199<small>/month</small></span></div>
+          <p class="setup"><s>$399 setup</s> <b>$0 for Founding Clients</b></p>
+          <p class="for">For businesses that want the phone to ring more often.</p>
+          <p class="inc">Everything in Starter, plus:</p>
+          <ul>
+            <li>Up to 10 pages</li>
+            <li>Google Business Profile, plus 2 posts a month</li>
+            <li>Local SEO for your service area</li>
+            <li>Quote or booking form</li>
+            <li>Reviews section and gallery</li>
+            <li>1 hour of edits a month</li>
+          </ul>
+          <a class="btn btn-alt" href="#price" data-plan="growth">Price it out</a>
+        </article>
+        <article class="plan">
+          <div class="plan-top"><h3>Premium</h3><span class="amt">$349<small>/month</small></span></div>
+          <p class="setup"><s>$799 setup</s> <b>$0 for Founding Clients</b></p>
+          <p class="for">For owners who want their whole online presence handled.</p>
+          <p class="inc">Everything in Growth, plus:</p>
+          <ul>
+            <li>Up to 15 pages, plus service-area pages</li>
+            <li>Custom logo</li>
+            <li>Automatic Google review requests</li>
+            <li>Weekly Google profile posts</li>
+            <li>Monthly results report</li>
+            <li>Unlimited small edits, same day</li>
+          </ul>
+          <a class="btn btn-alt" href="#price" data-plan="premium">Price it out</a>
+        </article>
       </div>
 
-      <div class="rent">
-        <p><b>Rent-a-Site, from $129/month</b>Get any site with $0 down. Hosting and updates are included. 12-month minimum, then month to month.</p>
-        <a class="btn btn-alt" href="#contact">Ask about renting</a>
-      </div>
-
-      <div class="monthly">
-        <h3 class="sub">Monthly plans</h3>
-        <div class="ptable">
-          <div class="prow"><h3>Care</h3><span class="amt"><small>from</small>$79/mo</span><p>Hosting, security, backups and small edits.</p></div>
-          <div class="prow"><h3>Visibility</h3><span class="amt"><small>from</small>$299/mo</span><p>Local SEO, Google profile posts, review requests and a monthly report.</p></div>
-          <div class="prow"><h3>Lead Engine</h3><span class="amt"><small>from</small>$699/mo</span><p>Google and Meta ads managed for you, plus your ad budget. One business per trade per area.</p></div>
-          <div class="prow"><h3>Full System</h3><span class="amt"><small>from</small>$999/mo</span><p>Everything above, plus missed-call text-back, instant replies and quote follow-ups.</p></div>
+      <div class="launch">
+        <div>
+          <h3>Trades Launch Pack</h3>
+          <p>The kit we built for Hermes Framing: logo, website, Google profile, business cards and QR review cards.</p>
         </div>
+        <span class="amt">$199<small>/month + $995 setup</small></span>
+        <a class="btn btn-main" href="#contact" data-want="Trades Launch Pack">Ask about the Launch Pack</a>
       </div>
+
+      <details class="more">
+        <summary>Full System<span class="r">$999/month</span></summary>
+        <div class="in"><p>Everything in Premium, plus managed Google and Meta ads that bring in new leads every week. Ad spend is billed separately.</p></div>
+      </details>
+      <details class="more">
+        <summary>Rather pay once and own it?<span class="r">from $999</span></summary>
+        <div class="in">
+          <p>Pay 50% to start and 50% at launch. The site is yours. Add the Care plan for hosting, backups and edits.</p>
+          <div class="rows">
+            <div><span>Starter Site, up to 5 pages</span><span>from $999</span></div>
+            <div><span>Growth Site, 6 to 15 pages, local SEO</span><span>from $1,999</span></div>
+            <div><span>Acquisition Site, service and area pages</span><span>from $3,999</span></div>
+            <div><span>Brand Identity, logo, colours, fonts and cards</span><span>from $399</span></div>
+            <div><span>Care plan, hosting, backups and edits</span><span>$79/month</span></div>
+          </div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section id="price" class="builder" aria-labelledby="price-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="price-title">Price it out</h2>
+        <p class="lead">Pick your plan and any extras. The total updates as you go, and shows how many new customers it takes to cover a year.</p>
+      </div>
+      <div class="b-grid">
+        <form id="builder" aria-label="Price builder" onsubmit="return false">
+          <fieldset class="b-group">
+            <legend>Your business</legend>
+            <div class="choices" id="b-biz">
+              <label class="choice"><input type="radio" name="b-biz" value="trades" checked><span>Trades and contractors</span></label>
+              <label class="choice"><input type="radio" name="b-biz" value="salon"><span>Salon and wellness</span></label>
+              <label class="choice"><input type="radio" name="b-biz" value="food"><span>Restaurant and retail</span></label>
+              <label class="choice"><input type="radio" name="b-biz" value="other"><span>Something else</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="b-group">
+            <legend>Your plan</legend>
+            <div class="choices">
+              <label class="choice"><input type="radio" name="b-plan" value="starter"><span>Starter, $129/mo</span></label>
+              <label class="choice"><input type="radio" name="b-plan" value="growth" checked><span>Growth, $199/mo</span></label>
+              <label class="choice"><input type="radio" name="b-plan" value="premium"><span>Premium, $349/mo</span></label>
+            </div>
+            <label class="toggle" style="margin-top:12px"><input type="checkbox" id="b-yearly"> Pay yearly and get 2 months of your plan free</label>
+          </fieldset>
+          <fieldset class="b-group">
+            <legend>Add-ons</legend>
+            <div id="b-addons"></div>
+          </fieldset>
+          <div class="b-group">
+            <label for="b-value" id="b-value-label">Your average job</label>
+            <div class="money" style="margin-top:10px"><span>$</span><input id="b-value" inputmode="numeric" autocomplete="off" value="2,500"></div>
+            <p class="hint" id="b-value-hint">Example value. Change it to what a customer is really worth to you.</p>
+          </div>
+        </form>
+
+        <aside class="summary" aria-labelledby="sum-title">
+          <h3 id="sum-title"><span id="s-plan">Growth</span> plan</h3>
+          <div class="big" id="s-month">$278<small>/month</small></div>
+          <div class="rows" aria-live="polite">
+            <div><span>Setup</span><span id="s-setup">$0</span></div>
+            <div><span>One-time extras</span><span id="s-once">$0</span></div>
+            <div><span>First year, all in</span><span id="s-year">$3,336</span></div>
+            <div><span>Live within</span><span id="s-live">7 business days</span></div>
+          </div>
+          <p class="worth" aria-live="polite">About <b id="s-cust">2</b> <span id="s-cust-word">new customers</span> a year covers it.</p>
+          <a class="btn btn-main" href="#contact" id="s-send">Send me this plan</a>
+          <p class="note">Setup shown at the Founding Client price ($0), while spots last. CAD, plus GST. Results depend on your market and how fast you follow up.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="cmp" aria-labelledby="cmp-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="cmp-title">How it compares</h2>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col"><span class="sr">Cost</span></th><th scope="col" class="us">Northcrest</th><th scope="col">Typical Calgary web designer</th><th scope="col">Build it yourself</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Upfront cost</th><td class="us">$0 setup for Founding Clients, or pay once from $999</td><td>Most businesses budget $2,500 to $5,000</td><td>$500 to $1,500, plus your time</td></tr>
+            <tr><th scope="row">Hosting and upkeep</th><td class="us">Included in every plan</td><td>$300 to $1,200 a year on top</td><td>You handle it</td></tr>
+            <tr><th scope="row">Time to launch</th><td class="us">1 to 7 business days</td><td>Varies</td><td>Your evenings and weekends</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">Other columns use typical ranges from 2026 Calgary web design pricing guides by <a href="https://oxone.ca/blog/website-cost-calgary-2026" target="_blank" rel="noopener">OxOne</a> and <a href="https://marvelmarketing.ca/blog/website-design-cost-guide/" target="_blank" rel="noopener">Marvel Marketing</a>. Every provider is different.</p>
     </div>
   </section>
 
   <section id="process" class="process" aria-labelledby="process-title">
     <div class="wrap">
-      <h2 id="process-title">From first call to launch</h2>
-      <ol class="seq">
-        <li><h3>Free consultation</h3><p>A 20-minute call about your business and goals. You get a clear, written quote, with no pressure.</p></li>
-        <li><h3>Design and build</h3><p>We design your brand and site, you review it, and we refine it until it's right.</p></li>
-        <li><h3>Launch</h3><p>Your site goes live, your Google profile is set up, and we keep it working for you.</p></li>
+      <h2 id="process-title">Live in 1 to 7 business days</h2>
+      <ol class="days">
+        <li><span class="when">Day 1</span><h3>Free 20-minute call</h3><p>We talk through your business, your customers and what you want the site to do. You get a written quote the same day.</p></li>
+        <li><span class="when">Days 1 to 3</span><h3>Your homepage, free</h3><p>We design your homepage and show it to you on a real phone and laptop. Love it, and we carry on. If not, you owe nothing.</p></li>
+        <li><span class="when">Days 3 to 6</span><h3>Build and Google setup</h3><p>We build every page, write your copy, set up your Google Business Profile and connect your contact and quote forms.</p></li>
+        <li><span class="when">By day 7</span><h3>Founder review and launch</h3><p>Thomas reviews every page personally, then your site goes live on your domain. Premium sites with a custom logo launch within 10 business days.</p></li>
       </ol>
     </div>
   </section>
@@ -332,38 +622,15 @@ footer .brand{font-size:17px;color:var(--ink)}
     <div class="wrap faq-grid">
       <h2 id="faq-title">Questions</h2>
       <div class="qa">
-        <details>
-          <summary>How long does it take?</summary>
-          <div><p>A Starter Site is live in about 2 weeks. For bigger sites, we give you a timeline on the free call.</p></div>
-        </details>
-        <details>
-          <summary>Do I own my site?</summary>
-          <div><p>If you buy your site, yes. The site, your logo files, your Google Business Profile, and the text and photos are all yours.</p><p>If you ever want to leave our hosting, we hand over a full copy of your site for free.</p><p>Your domain is always registered in your name. We set it up for you, and the yearly fee is included while you're on Care or Rent-a-Site.</p></div>
-        </details>
-        <details>
-          <summary>What happens after the 12 months on Rent-a-Site?</summary>
-          <div><p>It continues month to month. If you cancel, the site comes down, and you keep your domain, your logo and your Google profile.</p></div>
-        </details>
-        <details>
-          <summary>What do I need to provide?</summary>
-          <div><p>Photos of your work, your basic business info (services, service area, hours and contact details), and logins for your domain and Google profile if you already have them.</p><p>We write the website text for you.</p></div>
-        </details>
-        <details>
-          <summary>Can you fix my current site?</summary>
-          <div><p>Yes. We either improve it or rebuild it, whichever is faster and better value, and we tell you which on the free call.</p></div>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <section id="about" aria-labelledby="about-title">
-    <div class="wrap">
-      <h2 id="about-title">Built in Calgary</h2>
-      <div class="about-body">
-        <p>Northcrest Studio was started by Thomas Martinez because too many great local businesses are losing customers to competitors with better websites.</p>
-        <p>Our job is to make sure you look like the best in your field, and that your phone rings like it.</p>
-        <p>You work directly with Thomas from the first call to launch day.</p>
-        <p class="sign">Thomas Martinez, founder, Northcrest Studio</p>
+        <details><summary>How fast can my site be live?</summary><div><p>Starter and Growth sites go live in 1 to 7 business days once we have your photos and details. Premium, which includes a custom logo, takes up to 10. If we miss that, your first month is free.</p></div></details>
+        <details><summary>What does &ldquo;see your homepage before you pay&rdquo; mean?</summary><div><p>We design your homepage first, at no cost. If you don't love it, you walk away and owe nothing. If you do, we build the rest of the site.</p></div></details>
+        <details><summary>What is the Founding Client offer?</summary><div><p>Our first 10 Calgary clients pay $0 setup, and their monthly price is locked for as long as they stay with us, even if our prices go up later. <span data-spots>9 of 10</span> spots are left.</p></div></details>
+        <details><summary>Who will actually work on my site?</summary><div><p>Every project is led by our founder, Thomas Martinez, who reviews your site personally before launch. Trusted specialists help with copywriting, photography and ads when your project needs them.</p></div></details>
+        <details><summary>Can I cancel?</summary><div><p>Monthly plans have a 12-month minimum, because the design and build work happens upfront. After that they go month to month, and you can cancel with 30 days' notice.</p></div></details>
+        <details><summary>Can I own my website?</summary><div><p>Yes. Pay once from $999 and it's yours. If you ever leave our hosting, we hand over a full copy of your site for free.</p><p>On a monthly plan, you can buy your site any time after 12 months for the cost of three months of your plan. If you cancel without buying it, the site comes down, and you keep your domain, your logo and your Google profile.</p></div></details>
+        <details><summary>Do I own my domain?</summary><div><p>Yes. Your domain is always registered in your name. We set it up for you, and the yearly fee is included while you're on a monthly plan.</p></div></details>
+        <details><summary>What do I need to provide?</summary><div><p>Photos of your work, your basic business info (services, service area, hours and contact details), and logins for your domain and Google profile if you already have them. We write the website text for you.</p></div></details>
+        <details><summary>Can you fix my current site?</summary><div><p>Yes. We either improve it or rebuild it, whichever is faster and better value, and we tell you which on the free call.</p></div></details>
       </div>
     </div>
   </section>
@@ -383,6 +650,10 @@ footer .brand{font-size:17px;color:var(--ink)}
             <div><dt>Email</dt><dd><a href="mailto:hello@northcreststudio.ca">hello@northcreststudio.ca</a></dd></div>
             <div><dt>Based in</dt><dd>Calgary, Alberta</dd></div>
           </dl>
+          <div class="extras">
+            <p><b>Not ready yet?</b> Ask for a free 5-minute audit: a short screen recording of your current website and Google listing, showing what's costing you calls and how to fix it. Yours to keep, no obligation.</p>
+            <p><b>$149 Google Profile Tune-Up.</b> Credited toward setup if you start a plan within 30 days.</p>
+          </div>
         </div>
       </div>
 
@@ -402,36 +673,26 @@ footer .brand{font-size:17px;color:var(--ink)}
             <option>Other</option>
           </select>
         </div>
-        <fieldset>
-          <legend>Do you have a website now?</legend>
+        <fieldset class="site-q">
+          <legend class="f-legend">Do you have a website now?</legend>
           <div class="radios">
             <label><input type="radio" name="has-site" value="Yes"> Yes</label>
             <label><input type="radio" name="has-site" value="No"> No</label>
           </div>
           <div class="field" id="f-url-wrap" hidden><label for="f-url">Link to your current site</label><input id="f-url" name="current-site" type="url" inputmode="url" placeholder="https://"></div>
         </fieldset>
-        <div class="field"><label for="f-need">What do you need?</label>
-          <select id="f-need" name="need">
-            <option>A new website</option>
-            <option>A logo or brand identity</option>
-            <option>Brand and website together</option>
-            <option>Improve my current website</option>
-            <option>Google ranking or ads</option>
+        <div class="field"><label for="f-want">I'm interested in</label>
+          <select id="f-want" name="interested-in">
+            <option>A free homepage design</option>
+            <option>A free 5-minute audit</option>
+            <option>Starter plan</option>
+            <option>Growth plan</option>
+            <option>Premium plan</option>
+            <option>Full System</option>
+            <option>Trades Launch Pack</option>
+            <option>$149 Google Profile Tune-Up</option>
+            <option>Paying once and owning my site</option>
             <option>Not sure yet</option>
-          </select>
-        </div>
-        <div class="field"><label for="f-pkg">Package</label>
-          <select id="f-pkg" name="package">
-            <option>Not sure</option>
-            <option>Brand Identity, from $399</option>
-            <option>Starter Site, from $999</option>
-            <option>Growth Site, from $1,999</option>
-            <option>Acquisition Site, from $3,999</option>
-            <option>Rent-a-Site, from $129/month</option>
-            <option>Care, from $79/month</option>
-            <option>Visibility, from $299/month</option>
-            <option>Lead Engine, from $699/month</option>
-            <option>Full System, from $999/month</option>
           </select>
         </div>
         <div class="field"><label for="f-msg">Message <span class="opt">(optional)</span></label><textarea id="f-msg" name="message"></textarea></div>
@@ -444,18 +705,26 @@ footer .brand{font-size:17px;color:var(--ink)}
   </section>
 </main>
 
-<footer>
+<footer class="site-foot">
   <div class="wrap">
     <a class="brand" href="#top" aria-label="Back to top">
       <svg width="22" height="22" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M11 39V12l22 27V7M27 13.5l6-7 6 7" stroke="#0e6b63" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round"/></svg>northcrest
     </a>
-    <span>&copy; 2026 Northcrest Studio &middot; Calgary, Alberta &middot; <a href="tel:+15875838450">(587) 583-8450</a></span>
+    <span>&copy; 2026 Northcrest Studio &middot; Founder-led in Calgary, Alberta &middot; <a href="tel:+15875838450">(587) 583-8450</a></span>
   </div>
 </footer>
 
 <div class="callbar"><a href="tel:+15875838450">Call us</a><a href="sms:+15875838450">Text us</a></div>
 
 <script>
+// Founding Client spots. Lower this only when a real client signs. Hermes Framing is #1.
+var FOUNDING_SPOTS_LEFT = 9;
+(function () {
+  var t = FOUNDING_SPOTS_LEFT + ' of 10';
+  [].forEach.call(document.querySelectorAll('[data-spots]'), function (el) { el.textContent = t; });
+  if (FOUNDING_SPOTS_LEFT <= 0) document.querySelector('.founding').hidden = true;
+})();
+
 // Work reel: the card in the middle steps forward; dots and arrow buttons follow. Swiping is native scroll-snap.
 (function () {
   var reel = document.getElementById('reel');
@@ -489,6 +758,111 @@ footer .brand{font-size:17px;color:var(--ink)}
   });
   set(0);
 })();
+
+// Hermes before/after: drag (or use arrow keys) to move the divider.
+(function () {
+  var cmp = document.getElementById('cmp');
+  var range = cmp.querySelector('input');
+  range.addEventListener('input', function () { cmp.style.setProperty('--x', range.value + '%'); });
+})();
+
+// Price builder and "is it worth it" in one.
+(function () {
+  var PLANS = {
+    starter: { name: 'Starter', m: 129, setup: 0, live: '7 business days' },
+    growth: { name: 'Growth', m: 199, setup: 399, live: '7 business days' },
+    premium: { name: 'Premium', m: 349, setup: 799, live: '10 business days' }
+  };
+  var ADDONS = [
+    { id: 'reviews', name: 'Review Booster', desc: 'Automatic texts asking customers for Google reviews', m: 79, once: 0, inPremium: true },
+    { id: 'social', name: 'Social posting', desc: '8 to 12 branded posts a month', m: 249, once: 0 },
+    { id: 'ads', name: 'Lead Engine', desc: 'Managed Google and Meta ads, ad spend separate', m: 699, once: 0 },
+    { id: 'brand', name: 'Brand identity', desc: 'Logo, colours, fonts and business cards', m: 0, once: 399, inPremium: true },
+    { id: 'page', name: 'Extra page', desc: 'A new service, promo or hiring page', m: 0, once: 199 }
+  ];
+  var BIZ = {
+    trades: { value: 2500, label: 'Your average job' },
+    salon: { value: 600, label: 'What a regular client spends in a year' },
+    food: { value: 400, label: 'What a regular customer spends in a year' },
+    other: { value: 1000, label: 'What a typical customer is worth to you in a year' }
+  };
+  var founding = FOUNDING_SPOTS_LEFT > 0;
+  var form = document.getElementById('builder');
+  var addBox = document.getElementById('b-addons');
+  var valueIn = document.getElementById('b-value');
+  var money = function (n) { return '$' + Math.round(n).toLocaleString('en-CA'); };
+  var $ = function (id) { return document.getElementById(id); };
+
+  addBox.innerHTML = ADDONS.map(function (a) {
+    var price = a.m ? money(a.m) + '/mo' : money(a.once) + ' once';
+    return '<label class="addon" data-id="' + a.id + '"><input type="checkbox" name="b-add" value="' + a.id + '">' +
+      '<span class="nm"><b>' + a.name + '</b><small>' + a.desc + '</small></span><span class="pr" data-price="' + price + '">' + price + '</span></label>';
+  }).join('');
+
+  function checked(name) { var el = form.querySelector('input[name="' + name + '"]:checked'); return el ? el.value : null; }
+  function update() {
+    var planKey = checked('b-plan'), p = PLANS[planKey];
+    var yearly = $('b-yearly').checked;
+    var addM = 0, once = 0, picked = [];
+    ADDONS.forEach(function (a) {
+      var row = addBox.querySelector('[data-id="' + a.id + '"]');
+      var box = row.querySelector('input'), pr = row.querySelector('.pr');
+      var incl = !!a.inPremium && planKey === 'premium';
+      row.classList.toggle('incl', incl);
+      box.disabled = incl;
+      pr.textContent = incl ? 'Included' : pr.dataset.price;
+      if (box.checked && !incl) { addM += a.m; once += a.once; picked.push(a.name); }
+    });
+    var setup = founding ? 0 : p.setup;
+    var planYear = yearly ? p.m * 10 : p.m * 12;
+    var year = setup + once + planYear + addM * 12;
+    var value = parseInt(valueIn.value.replace(/[^\d]/g, ''), 10) || 0;
+    var cust = value > 0 ? Math.max(1, Math.ceil(year / value)) : null;
+
+    $('s-plan').textContent = p.name;
+    $('s-month').innerHTML = money(p.m + addM) + '<small>/month' + (yearly ? ', plan billed yearly' : '') + '</small>';
+    $('s-setup').innerHTML = founding && p.setup ? '<s>' + money(p.setup) + '</s> $0' : money(setup);
+    $('s-once').textContent = money(once);
+    $('s-year').textContent = money(year);
+    $('s-live').textContent = p.live;
+    $('s-cust').textContent = cust === null ? '?' : cust;
+    $('s-cust-word').textContent = cust === 1 ? 'new customer' : 'new customers';
+    $('s-send').dataset.summary = p.name + ' plan' + (yearly ? ', paid yearly' : '') + (picked.length ? ', with ' + picked.join(', ') : '') +
+      '. About ' + money(p.m + addM) + '/month, ' + money(year) + ' for the first year.';
+    $('s-send').dataset.plan = p.name + ' plan';
+  }
+  form.addEventListener('change', function (e) {
+    if (e.target.name === 'b-biz') {
+      var b = BIZ[e.target.value];
+      valueIn.value = b.value.toLocaleString('en-CA');
+      $('b-value-label').textContent = b.label;
+    }
+    update();
+  });
+  valueIn.addEventListener('input', update);
+
+  // "Price it out" buttons on the plan columns pick that plan.
+  [].forEach.call(document.querySelectorAll('[data-plan]'), function (a) {
+    a.addEventListener('click', function () {
+      form.querySelector('input[name="b-plan"][value="' + a.dataset.plan + '"]').checked = true;
+      update();
+    });
+  });
+
+  // "Send me this plan" fills in the contact form.
+  $('s-send').addEventListener('click', function () {
+    var want = document.getElementById('f-want');
+    [].forEach.call(want.options, function (o) { if (o.text === $('s-send').dataset.plan) want.value = o.value; });
+    var msg = document.getElementById('f-msg');
+    if (!msg.value.trim()) msg.value = 'Price builder: ' + $('s-send').dataset.summary;
+  });
+  update();
+})();
+
+// Buttons that point at the contact form with a topic pick that topic.
+[].forEach.call(document.querySelectorAll('[data-want]'), function (a) {
+  a.addEventListener('click', function () { document.getElementById('f-want').value = a.dataset.want; });
+});
 
 // Contact form: show the link field when they have a site, check name and phone, send to Netlify Forms.
 (function () {
