@@ -1,518 +1,445 @@
 <!doctype html>
-<html lang="en-CA" style="background:#07090d;color:#eef3f7">
+<html lang="en-CA">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Northcrest Studio | Calgary Web Design &amp; Branding</title>
-<meta name="description" content="Northcrest Studio designs fast, modern websites, logos and marketing for Calgary businesses. Websites from $1,200. Book a free consultation.">
+<meta name="description" content="Northcrest Studio designs and builds websites and logos for Calgary businesses. Websites from $999, logos from $399. Call or text (587) 583-8450.">
 <meta property="og:title" content="Northcrest Studio | Calgary Web Design &amp; Branding">
-<meta property="og:description" content="Fast, modern websites and brands for Calgary businesses, built to get you found on Google.">
+<meta property="og:description" content="Websites and logos for Calgary businesses. Websites from $999, logos from $399.">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#07090d">
-<link rel="canonical" href="https://northcreststudio.ca/">
 <meta property="og:url" content="https://northcreststudio.ca/">
+<meta name="theme-color" content="#f4f3ee">
+<link rel="canonical" href="https://northcreststudio.ca/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='11' fill='%2307090d'/%3E%3Cpath d='M11 39V12l22 27V7M27 13.5l6-7 6 7' fill='none' stroke='%235eead4' stroke-width='4.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="preload" href="assets/fonts/bricolage-grotesque-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/public-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ProfessionalService","name":"Northcrest Studio","url":"https://northcreststudio.ca/","telephone":"+1-587-583-8450","email":"hello@northcreststudio.ca","address":{"@type":"PostalAddress","addressLocality":"Calgary","addressRegion":"AB","addressCountry":"CA"},"areaServed":"Calgary","founder":{"@type":"Person","name":"Thomas Martinez"}}
+</script>
 <style>
-/* Layout: one scrolling page on a deep graphite night sky. A slow northern-lights glow (the "north" in Northcrest) sits behind the hero only; everything else is calm glass panels on a faint grid. The aurora gradient is used in exactly three places: the mark, the hero glow and the primary button. Deliberately one dark look. */
+/* Layout: "Showroom". A light, quiet page where the work is the product. One signature motion: the work reel,
+   where the card in the middle steps forward as you swipe. Everything else stays still.
+   Each section has its own shape: centred hero and reel, a plain list, a large client feature,
+   a price table, an inline sequence, an accordion, a text column, a form. */
+@font-face{font-family:"Bricolage Grotesque";src:url(assets/fonts/bricolage-grotesque-latin-800-normal.woff2) format("woff2");font-weight:800;font-display:swap}
+@font-face{font-family:"Bricolage Grotesque";src:url(assets/fonts/bricolage-grotesque-latin-600-normal.woff2) format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"Public Sans";src:url(assets/fonts/public-sans-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Public Sans";src:url(assets/fonts/public-sans-latin-600-normal.woff2) format("woff2");font-weight:600;font-display:swap}
 :root{
-  --night:#07090d;
-  --night-2:#0c1016;
-  --panel:rgba(255,255,255,.035);
-  --panel-hi:rgba(255,255,255,.06);
-  --line:rgba(226,236,245,.13);
-  --line-hi:rgba(226,236,245,.26);
-  --ice:#eef3f7;
-  --mist:#bcc6d0;
-  --mist-2:#95a0ab;
-  --aurora-a:#5eead4;
-  --aurora-b:#7dd3fc;
-  --aurora-c:#a78bfa;
-  --aurora:linear-gradient(100deg,var(--aurora-a) 0%,var(--aurora-b) 50%,var(--aurora-c) 100%);
-  --display:'Sora', 'Avenir Next', 'Segoe UI', system-ui, sans-serif;
-  --body:'Geist', 'Helvetica Neue', 'Segoe UI', system-ui, sans-serif;
-  --mono:'Geist Mono', ui-monospace, 'SF Mono', Menlo, monospace;
-  --radius:18px;
-  color-scheme:dark;
+  --paper:#f4f3ee;
+  --paper-2:#eae8df;
+  --ink:#121517;
+  --ink-2:#4a5257;
+  --line:#d6d4ca;
+  --teal:#0e6b63;
+  --teal-hi:#5eead4;
+  --display:"Bricolage Grotesque",system-ui,sans-serif;
+  --body:"Public Sans",system-ui,sans-serif;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--night);color:var(--ice);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-a{color:var(--aurora-a)}
-:focus-visible{outline:2px solid var(--aurora-b);outline-offset:3px;border-radius:6px}
-h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;letter-spacing:-.025em}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:16px}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--teal);outline-offset:3px;border-radius:4px}
+h1,h2,h3{font-family:var(--display);margin:0;letter-spacing:-.025em;text-wrap:balance}
+h2{font-weight:800;font-size:clamp(32px,5.4vw,56px);line-height:1.02}
+h3{font-weight:600;font-size:21px;line-height:1.2;letter-spacing:-.015em}
 p{margin:0}
-.wrap{width:100%;max-width:1180px;margin-inline:auto;padding-inline:24px}
-@media (max-width:480px){.wrap{padding-inline:16px}}
-.tag{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mist);display:inline-flex;align-items:center;gap:10px}
-.tag::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--aurora-a);box-shadow:0 0 12px var(--aurora-a)}
-.grad{color:var(--aurora-a)}
-@supports ((-webkit-background-clip:text) or (background-clip:text)){.grad{background:var(--aurora);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}}
+.wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+section{padding:72px 0}
+@media (min-width:900px){section{padding:112px 0}}
+.lead{color:var(--ink-2);font-size:clamp(17px,1.8vw,19px);max-width:34em}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 24px;border-radius:12px;font-weight:600;font-size:16px;text-decoration:none;white-space:nowrap}
+.btn-main{background:var(--ink);color:var(--paper)}
+.btn-main:hover{background:#2a2f33}
+.btn-alt{border:1.5px solid var(--ink);color:var(--ink)}
+.btn-alt:hover{background:var(--paper-2)}
+.text-link{color:var(--teal);font-weight:600;text-underline-offset:4px}
 
 /* nav */
-.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(7,9,13,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
-.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ice)}
-.brand svg{flex:0 0 auto}
-.wordmark{display:flex;align-items:baseline;gap:8px;line-height:1}
-.wordmark b{font-family:var(--display);font-weight:600;font-size:19px;letter-spacing:-.02em}
-.wordmark span{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mist)}
-.nav-links{display:flex;align-items:center;gap:30px}
-.nav-links a{color:#d3dbe2;text-decoration:none;font-size:14px;font-weight:500;transition:color .2s}
-.nav-links a:hover{color:var(--ice)}
-.nav-links a.btn-primary,.nav-links a.btn-primary:hover{color:#061014}
-@media (max-width:820px){.nav-links a:not(.btn){display:none}}
-@media (max-width:400px){.wordmark span{display:none}}
-
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 24px;border-radius:999px;font-family:var(--body);font-size:15px;font-weight:600;text-decoration:none;cursor:pointer;border:0;white-space:nowrap;transition:transform .2s,box-shadow .2s,background .2s,color .2s}
-.btn-primary{background:var(--aurora);color:#061014}
-.btn-primary:hover{color:#061014;transform:translateY(-1px);box-shadow:0 10px 30px -8px rgba(94,234,212,.55)}
-.btn-glass{background:var(--panel-hi);color:var(--ice);border:1px solid var(--line-hi)}
-.btn-glass:hover{color:var(--ice);background:rgba(255,255,255,.1)}
-.nav .btn{min-height:44px;padding:0 20px;font-size:14px}
-.btn .arrow{transition:transform .2s}
-.btn:hover .arrow{transform:translateX(3px)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 20px;max-width:1160px;margin:0 auto}
+.brand{display:flex;align-items:center;gap:9px;text-decoration:none;font-family:var(--display);font-weight:600;font-size:20px;letter-spacing:-.02em}
+.links{display:flex;gap:28px;align-items:center;font-size:15px}
+.links a{text-decoration:none;color:var(--ink-2)}
+.links a:hover{color:var(--ink)}
+.links a.call{color:var(--ink);font-weight:600}
+@media (max-width:899px){.links a:not(.call){display:none}}
 
 /* hero */
-.hero{position:relative;padding-block:120px 96px;overflow:hidden;isolation:isolate}
-.hero::before{content:"";position:absolute;inset:0;z-index:-2;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 80% 70% at 50% 20%,#000 30%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse 80% 70% at 50% 20%,#000 30%,transparent 75%);opacity:.6}
-.aurora{position:absolute;z-index:-1;inset:-20% -10% auto -10%;height:620px;pointer-events:none;filter:blur(80px);opacity:.38}
-.aurora i{position:absolute;border-radius:50%}
-.aurora i:nth-child(1){width:46%;height:60%;left:8%;top:10%;background:var(--aurora-a);animation:drift1 18s ease-in-out infinite alternate}
-.aurora i:nth-child(2){width:40%;height:55%;left:38%;top:0;background:var(--aurora-b);opacity:.7;animation:drift2 22s ease-in-out infinite alternate}
-.aurora i:nth-child(3){width:38%;height:50%;left:60%;top:18%;background:var(--aurora-c);opacity:.75;animation:drift1 26s ease-in-out infinite alternate-reverse}
-@keyframes drift1{to{transform:translate(8%,10%) scale(1.1)}}
-@keyframes drift2{to{transform:translate(-10%,8%) scale(.92)}}
-@media (prefers-reduced-motion: reduce){.aurora i{animation:none}html{scroll-behavior:auto}.btn,.btn .arrow{transition:none}}
-.hero-inner{display:flex;flex-direction:column;align-items:flex-start;gap:28px;max-width:900px}
-.hero h1{font-size:clamp(44px,7.4vw,96px);font-weight:600;line-height:.98;letter-spacing:-.045em}
-.hero .lede{font-size:clamp(17px,1.6vw,20px);color:var(--mist);max-width:36em;line-height:1.55}
-.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
-.chips span{font-family:var(--mono);font-size:13px;color:#d3dbe2;padding:7px 12px;border:1px solid var(--line);border-radius:999px;background:var(--panel)}
-@media (max-width:640px){.hero{padding-block:72px 64px}}
+.hero{text-align:center;padding:40px 0 0}
+.hero h1{font-weight:800;font-size:clamp(40px,8.6vw,96px);line-height:.98;letter-spacing:-.035em;margin:0 auto;max-width:12ch}
+.hero .lead{margin:18px auto 0;max-width:30em;font-size:clamp(17px,2vw,21px)}
+.price-line{margin-top:14px;font-weight:600;font-size:16px}
+.actions{display:flex;gap:10px;justify-content:center;margin-top:24px}
+.hero .text-link{display:inline-block;margin-top:16px}
+@media (min-width:900px){.hero{padding-top:72px}}
 
-section{padding-block:112px}
-@media (max-width:640px){section{padding-block:76px}}
-.head{display:flex;flex-direction:column;gap:18px;max-width:760px;margin-bottom:56px}
-.head h2{font-size:clamp(34px,4.6vw,58px);font-weight:600;line-height:1.02}
-.head p{font-size:17px;color:var(--mist);max-width:40em}
-.border-top{border-top:1px solid var(--line)}
+/* work reel: the signature motion */
+.reel-sec{padding:32px 0 56px}
+.reel{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 20px 18px;scrollbar-width:none;scroll-padding-inline:20px;overscroll-behavior-x:contain}
+.reel::-webkit-scrollbar{display:none}
+.item{flex:0 0 min(72vw,300px);scroll-snap-align:center;margin:0}
+.item img{width:100%;aspect-ratio:600/1077;object-fit:cover;object-position:top;border-radius:22px;border:1px solid var(--line);background:var(--paper-2);transition:transform .5s cubic-bezier(.2,.7,.2,1),opacity .5s}
+.reel.ready .item:not(.on) img{transform:scale(.94);opacity:.72}
+.item figcaption{margin-top:12px;font-size:15px;display:flex;justify-content:space-between;gap:10px}
+.item b{font-weight:600}
+.tag{font-size:13px;color:var(--ink-2)}
+.tag.real{color:var(--teal);font-weight:600}
+.reel-foot{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:6px}
+.dots{display:flex;gap:6px}
+.dots i{width:7px;height:7px;border-radius:4px;background:var(--line);transition:background .3s,width .3s}
+.dots i.on{background:var(--ink);width:20px}
+.step-btn{display:none;width:44px;height:44px;border-radius:50%;border:1.5px solid var(--ink);background:transparent;color:var(--ink);font-size:18px;line-height:1;cursor:pointer}
+.step-btn:hover{background:var(--paper-2)}
+.step-btn:disabled{opacity:.3;cursor:default;background:transparent}
+.reel-note{text-align:center;margin-top:14px;font-size:14px;color:var(--ink-2)}
+@media (min-width:900px){.step-btn{display:inline-block}.reel{padding-inline:calc((100vw - 300px)/2)}.item{flex-basis:300px}}
+@media (prefers-reduced-motion:reduce){.item img,.dots i{transition:none}.reel.ready .item:not(.on) img{transform:none;opacity:1}.reel{scroll-behavior:auto}}
 
-/* why */
-.why{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:28px;display:flex;flex-direction:column;gap:14px;min-width:0;transition:border-color .25s,background .25s}
-.card:hover{border-color:var(--line-hi);background:var(--panel-hi)}
-.icon{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:rgba(94,234,212,.08);border:1px solid rgba(94,234,212,.22);color:var(--aurora-a)}
-.card h3{font-size:20px;font-weight:600;letter-spacing:-.015em}
-.card p{color:var(--mist);font-size:16px}
-@media (max-width:980px){.why{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:540px){.why{grid-template-columns:1fr}}
+/* why: a plain list */
+.why{border-top:1px solid var(--line)}
+.why-grid{display:grid;gap:28px}
+.points{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
+.points li{padding:20px 0;border-bottom:1px solid var(--line);display:grid;gap:4px}
+.points b{font-family:var(--display);font-weight:600;font-size:20px;letter-spacing:-.015em}
+.points span{color:var(--ink-2)}
+@media (min-width:900px){.why-grid{grid-template-columns:1fr 1.1fr;gap:64px;align-items:start}.points li{grid-template-columns:230px 1fr;gap:24px;align-items:baseline}}
 
-/* work */
-.work{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
-.shot{display:flex;flex-direction:column;gap:18px;background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:14px 14px 22px;min-width:0;text-decoration:none;color:var(--ice);transition:border-color .25s,transform .25s}
-a.shot:hover{border-color:var(--line-hi);transform:translateY(-2px);color:var(--ice)}
-.frame{border-radius:12px;overflow:hidden;border:1px solid var(--line)}
-.bar{display:flex;align-items:center;gap:6px;padding:9px 12px;background:#10141b}
-.bar i{width:8px;height:8px;border-radius:50%;background:#2a313c}
-.bar em{margin-left:8px;flex:1;font-style:normal;font-family:var(--mono);font-size:11px;color:var(--mist-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.screen{container-type:inline-size;display:flex;flex-direction:column}
-.s-nav{display:flex;justify-content:space-between;align-items:center;padding:4.5cqw 5cqw 0;font-size:2.3cqw;font-weight:700;letter-spacing:.12em}
-.s-nav span:last-child{display:flex;gap:2.5cqw;font-weight:500;letter-spacing:.03em;opacity:.75}
-.s-hero{display:flex;flex-direction:column;gap:2.4cqw;padding:6cqw 5cqw 5cqw}
-.s-hero h4{margin:0;font-size:5.4cqw;line-height:1.05;max-width:80%}
-.s-hero p{font-size:2.5cqw;line-height:1.45;max-width:66%;opacity:.8}
-.s-btn{align-self:flex-start;margin-top:.8cqw;font-size:2cqw;font-weight:700;letter-spacing:.06em;padding:1.6cqw 3cqw;border-radius:3px}
-.s-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2.6cqw;padding:0 5cqw 5cqw}
-.s-row div{aspect-ratio:4/3;border-radius:4px}
-.meta{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:10px 16px;padding-inline:8px}
-.meta h3{font-size:21px;font-weight:600}
-.meta p{color:var(--mist);font-size:14px;margin-top:4px}
-.pill{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:5px 10px;border-radius:999px;border:1px solid var(--line-hi);color:var(--mist);white-space:nowrap}
-.pill.live{border-color:rgba(94,234,212,.4);color:var(--aurora-a)}
-@media (max-width:760px){.work{grid-template-columns:1fr}}
+/* client feature: real work, big */
+.feature{background:var(--ink);color:var(--paper)}
+.feature .tag.real{color:var(--teal-hi)}
+.feature-head{display:grid;gap:14px;margin-bottom:36px}
+.feature-head p{color:#c9ced1;max-width:34em}
+.shots{display:grid;gap:16px;align-items:end}
+.shots img{border-radius:14px;border:1px solid #2c3337}
+.shot-phone{display:none}
+.feature-foot{display:flex;flex-wrap:wrap;gap:14px 28px;align-items:center;margin-top:28px;color:#c9ced1;font-size:15px}
+.feature .text-link{color:var(--teal-hi)}
+@media (min-width:760px){.shots{grid-template-columns:1fr 240px}.shot-phone{display:block}}
 
-.m-frame{background:linear-gradient(120deg,#1f2124,#2b2e32 55%,#3a3226);color:#f2efe9;font-family:var(--body)}
-.m-frame h4{font-weight:800;text-transform:uppercase;font-size:4.4cqw}
-.m-frame .s-btn{background:#d98c2b;color:#1f2124}
-.m-frame .s-row div{background:repeating-linear-gradient(90deg,#8a6a45 0 6px,#a07c52 6px 14px)}
-.m-frame .s-row div:nth-child(2){background:repeating-linear-gradient(0deg,#6e5436 0 5px,#8f7049 5px 12px)}
-.m-frame .s-row div:nth-child(3){background:linear-gradient(135deg,#3c4046,#565b62)}
-.m-land{background:#f3f1e7;color:#1d3326;font-family:Georgia,serif}
-.m-land .s-nav,.m-land .s-hero p,.m-land .s-btn{font-family:var(--body)}
-.m-land .s-btn{background:#1d3326;color:#f3f1e7}
-.m-land .s-row div{background:linear-gradient(160deg,#5c7a3a,#2f4d2c)}
-.m-land .s-row div:nth-child(2){background:linear-gradient(160deg,#a9b98a,#6d8a52)}
-.m-land .s-row div:nth-child(3){background:linear-gradient(160deg,#c7b89a,#8f7d5c)}
-.m-salon{background:#f7ebe6;color:#3b1f2e;font-family:var(--body)}
-.m-salon h4{font-family:Georgia,serif;font-style:italic;font-weight:400}
-.m-salon .s-btn{background:#3b1f2e;color:#f7ebe6;border-radius:20px}
-.m-salon .s-row div{background:linear-gradient(160deg,#d9a7a0,#b27a7c);border-radius:40px 40px 4px 4px}
-.m-salon .s-row div:nth-child(2){background:linear-gradient(160deg,#e8c9b9,#c89e8c)}
-.m-salon .s-row div:nth-child(3){background:linear-gradient(160deg,#8e5a6c,#5c3345)}
-.m-food{background:#15110e;color:#f4e6d4;font-family:var(--body)}
-.m-food h4{font-family:Georgia,serif;text-transform:uppercase;letter-spacing:.05em}
-.m-food .s-btn{background:#e0662e;color:#15110e}
-.m-food .s-row div{background:radial-gradient(circle at 40% 40%,#e0662e,#6e2a12)}
-.m-food .s-row div:nth-child(2){background:radial-gradient(circle at 60% 40%,#d9a441,#6d4a15)}
-.m-food .s-row div:nth-child(3){background:radial-gradient(circle at 50% 50%,#8f3d2a,#2b1510)}
+/* pricing: a plain table */
+.price-head{display:grid;gap:16px;margin-bottom:36px}
+.ptable{border-top:1px solid var(--ink)}
+.prow{display:grid;grid-template-columns:1fr auto;gap:6px 20px;padding:22px 0;border-bottom:1px solid var(--line)}
+.prow h3{font-size:22px}
+.prow .amt{font-family:var(--display);font-weight:600;font-size:22px;letter-spacing:-.02em;white-space:nowrap;font-variant-numeric:tabular-nums}
+.prow .amt small{font-family:var(--body);font-weight:400;font-size:14px;color:var(--ink-2);letter-spacing:0;margin-right:4px}
+.prow p{grid-column:1 / -1;color:var(--ink-2);font-size:16px;max-width:44em}
+@media (min-width:900px){.prow{grid-template-columns:260px 1fr 180px;align-items:baseline}.prow p{grid-column:auto;order:2}.prow .amt{order:3;text-align:right}}
+.rent{margin:40px 0;padding:24px;border-radius:16px;background:var(--paper-2);display:grid;gap:16px}
+.rent p{max-width:42em}
+.rent b{font-family:var(--display);font-weight:600;font-size:21px;display:block;margin-bottom:4px;letter-spacing:-.015em}
+@media (min-width:900px){.rent{grid-template-columns:1fr auto;align-items:center;padding:28px 32px}}
+.monthly h3.sub{font-size:24px;margin-bottom:14px}
 
-/* pricing */
-.pricing-note{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;margin-bottom:28px;padding:16px 20px;border-radius:14px;border:1px solid rgba(125,211,252,.22);background:rgba(125,211,252,.05);color:var(--ice);font-size:15px}
-.pricing-note b{font-weight:600}
-.pkgs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
-.pkg{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:30px 26px;display:flex;flex-direction:column;gap:18px;min-width:0}
-.pkg.pop{background:linear-gradient(var(--night-2),var(--night-2)) padding-box,var(--aurora) border-box;border:1px solid transparent}
-.pkg .kicker{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mist)}
-.pkg.pop .kicker{color:var(--aurora-a)}
-.pkg h3{font-size:24px;font-weight:600}
-.from{display:flex;flex-direction:column;gap:2px}
-.from span{font-family:var(--mono);font-size:12px;color:var(--mist-2)}
-.from b{font-family:var(--display);font-size:36px;font-weight:600;letter-spacing:-.03em;font-variant-numeric:tabular-nums;line-height:1.1}
-.pkg ul{list-style:none;margin:0;padding:18px 0 0;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:11px;font-size:15px;color:#dde4ea}
-.pkg li{display:flex;gap:10px;align-items:flex-start}
-.pkg li svg{flex:0 0 16px;margin-top:3px;color:var(--aurora-a)}
-@media (max-width:1040px){.pkgs{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:560px){.pkgs{grid-template-columns:1fr}}
+/* process: an inline sequence */
+.process{border-top:1px solid var(--line)}
+.seq{list-style:none;margin:36px 0 0;padding:0;display:grid;gap:28px;counter-reset:s}
+.seq li{counter-increment:s;display:grid;grid-template-columns:44px 1fr;gap:4px 14px}
+.seq li::before{content:counter(s);grid-row:span 2;font-family:var(--display);font-weight:800;font-size:40px;line-height:1;color:var(--teal)}
+.seq p{color:var(--ink-2)}
+@media (min-width:900px){.seq{grid-template-columns:repeat(3,1fr);gap:40px}}
 
-.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:16px;margin-top:16px}
-.rent{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:28px;display:flex;flex-direction:column;gap:14px;justify-content:space-between;min-width:0}
-.rent h3{font-size:24px;font-weight:600}
-.rent p{color:var(--mist);font-size:15px}
-.plans{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:10px 28px;min-width:0}
-.plan{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 20px;padding:18px 0;border-bottom:1px solid var(--line)}
-.plan:last-child{border-bottom:0}
-.plan h4{margin:0;font-family:var(--display);font-size:18px;font-weight:600}
-.plan .p{font-family:var(--mono);font-size:14px;color:var(--aurora-a);white-space:nowrap;font-variant-numeric:tabular-nums}
-.plan p{grid-column:1 / -1;color:var(--mist);font-size:14px}
-@media (max-width:860px){.split{grid-template-columns:1fr}}
+/* faq: accordion */
+.faq{background:var(--paper-2)}
+.faq-grid{display:grid;gap:28px}
+.qa{border-top:1px solid var(--ink)}
+details{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 0;font-family:var(--display);font-weight:600;font-size:19px;letter-spacing:-.01em;min-height:44px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--body);font-weight:400;font-size:26px;line-height:1;color:var(--teal)}
+details[open] summary::after{content:"\2212"}
+details div{padding:0 0 22px;color:var(--ink-2);display:grid;gap:10px;max-width:40em}
+@media (min-width:900px){.faq-grid{grid-template-columns:1fr 1.6fr;gap:64px;align-items:start}}
 
-/* process */
-.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-.step{padding:30px 28px;border-radius:var(--radius);border:1px solid var(--line);background:var(--panel);display:flex;flex-direction:column;gap:12px;min-width:0}
-.step .n{font-family:var(--mono);font-size:13px;color:var(--aurora-a)}
-.step h3{font-size:22px;font-weight:600}
-.step p{color:var(--mist);font-size:15px}
-@media (max-width:820px){.steps{grid-template-columns:1fr}}
-
-/* about */
-.about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:64px;align-items:start}
-.about h2{font-size:clamp(34px,4.6vw,56px);font-weight:600;line-height:1.02;margin-top:18px}
-.about-body{display:flex;flex-direction:column;gap:18px;font-size:18px;color:#dde4ea;max-width:36em}
-.sig{display:flex;align-items:center;gap:14px;margin-top:10px;padding-top:22px;border-top:1px solid var(--line)}
-.avatar{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--aurora);color:#061014;font-family:var(--display);font-weight:700;font-size:17px}
-.sig b{display:block;font-family:var(--display);font-weight:600;font-size:17px;color:var(--ice)}
-.sig span{font-family:var(--mono);font-size:12px;color:var(--mist)}
-@media (max-width:860px){.about{grid-template-columns:1fr;gap:28px}}
+/* about: a text column */
+.about-body{display:grid;gap:18px;font-size:clamp(18px,2vw,21px);max-width:34em;margin-top:24px}
+.about-body .sign{font-size:16px;color:var(--ink-2);padding-top:16px;border-top:1px solid var(--line)}
 
 /* contact */
-.contact{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:48px;padding:48px;border-radius:28px;border:1px solid var(--line);background:radial-gradient(120% 90% at 0% 0%,rgba(94,234,212,.09),transparent 55%),radial-gradient(90% 80% at 100% 100%,rgba(167,139,250,.08),transparent 55%),var(--night-2)}
-.contact h2{font-size:clamp(34px,4.4vw,52px);font-weight:600;line-height:1.02;margin-top:18px}
-.contact .lede{color:var(--mist);font-size:17px;margin-top:18px}
-.details{margin-top:32px;display:flex;flex-direction:column;gap:16px}
-.detail{display:flex;flex-direction:column;gap:2px}
-.detail span{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mist-2)}
-.detail b{font-size:16px;font-weight:600;user-select:all;overflow-wrap:anywhere}
-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-.field{display:flex;flex-direction:column;gap:8px;min-width:0}
-.field.wide{grid-column:1 / -1}
-label{font-size:14px;font-weight:600;color:#e6ecf1}
-input,select,textarea{font:inherit;font-size:16px;color:var(--ice);background:rgba(255,255,255,.04);border:1px solid var(--line-hi);border-radius:12px;padding:13px 14px;min-height:50px;width:100%;transition:border-color .2s,background .2s}
-select option{color:#0b0f14}
-textarea{min-height:130px;resize:vertical}
-input::placeholder,textarea::placeholder{color:var(--mist-2)}
-input:focus,select:focus,textarea:focus{outline:none;border-color:var(--aurora-b);background:rgba(125,211,252,.06)}
-.form-foot{grid-column:1 / -1;display:flex;flex-wrap:wrap;align-items:center;gap:16px}
-.form-msg{font-size:14px;color:var(--aurora-a)}
-@media (max-width:900px){.contact{grid-template-columns:1fr;padding:32px 24px}}
-@media (max-width:520px){form{grid-template-columns:1fr}.contact{padding:28px 18px;border-radius:22px}}
+.contact{border-top:1px solid var(--line)}
+.contact-grid{display:grid;gap:40px}
+.direct{display:grid;gap:18px;margin-top:22px}
+.direct .actions{justify-content:flex-start;margin-top:4px}
+.direct dl{margin:12px 0 0;display:grid;gap:12px}
+.direct dt{font-size:14px;color:var(--ink-2)}
+.direct dd{margin:0;font-weight:600;overflow-wrap:anywhere}
+.direct dd a{display:inline-block;padding:10px 0;margin:-10px 0}
+form{display:grid;gap:18px}
+.field{display:grid;gap:7px;min-width:0}
+label,legend{font-size:15px;font-weight:600}
+.opt{font-weight:400;color:var(--ink-2)}
+input,select,textarea{font:inherit;font-size:16px;color:var(--ink);background:#fff;border:1.5px solid #b9b7ad;border-radius:10px;padding:12px 14px;min-height:50px;width:100%}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px rgba(14,107,99,.18)}
+textarea{min-height:120px;resize:vertical}
+fieldset{border:0;margin:0;padding:0;display:grid;gap:10px;min-width:0}
+.radios{display:flex;gap:10px}
+.radios label{display:flex;align-items:center;gap:8px;font-weight:400;font-size:16px;border:1.5px solid #b9b7ad;border-radius:10px;padding:0 16px;min-height:48px;cursor:pointer;background:#fff}
+.radios input{width:18px;height:18px;min-height:0;margin:0;accent-color:var(--teal)}
+#f-url-wrap[hidden]{display:none}
+.form-foot{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.form-msg{font-size:15px;font-weight:600;color:var(--teal)}
+.form-msg.err{color:#a4301c}
+@media (min-width:600px){.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}}
+@media (min-width:900px){.contact-grid{grid-template-columns:1fr 1.25fr;gap:72px;align-items:start}}
 
-footer{padding-block:40px 56px}
-footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;font-size:13px;color:var(--mist-2)}
-footer .brand{gap:8px}
+footer{border-top:1px solid var(--line);padding:32px 0 40px;font-size:14px;color:var(--ink-2)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;align-items:center}
+footer .brand{font-size:17px;color:var(--ink)}
+
+/* phones: call and text always reachable */
+.callbar{position:fixed;left:0;right:0;bottom:0;z-index:30;display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(244,243,238,.96);border-top:1px solid var(--line)}
+.callbar a{display:flex;align-items:center;justify-content:center;min-height:50px;border-radius:12px;text-decoration:none;font-weight:600;font-size:16px}
+.callbar a:first-child{background:var(--ink);color:var(--paper)}
+.callbar a:last-child{border:1.5px solid var(--ink)}
+@media (max-width:899px){body{padding-bottom:76px}}
+@media (min-width:900px){.callbar{display:none}}
 </style>
 </head>
-<body style="margin:0;background:#07090d;color:#eef3f7">
-
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <defs>
-    <linearGradient id="ng" x1="0" y1="1" x2="1" y2="0">
-      <stop offset="0" stop-color="#5eead4"></stop>
-      <stop offset=".55" stop-color="#7dd3fc"></stop>
-      <stop offset="1" stop-color="#a78bfa"></stop>
-    </linearGradient>
-  </defs>
-</svg>
+<body>
 
 <header class="nav">
-  <div class="wrap">
-    <a class="brand" href="#top" aria-label="Northcrest Studio home">
-      <svg width="30" height="30" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-        <path d="M11 39 V12 L33 39 V7" stroke="url(#ng)" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"></path>
-        <path d="M27 13.5 L33 6.5 L39 13.5" stroke="url(#ng)" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"></path>
-      </svg>
-      <span class="wordmark"><b>northcrest</b><span>studio</span></span>
-    </a>
-    <nav class="nav-links" aria-label="Main">
-      <a href="#work">Work</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#process">Process</a>
-      <a href="#about">About</a>
-      <a class="btn btn-primary" href="#contact">Book a call</a>
-    </nav>
-  </div>
+  <a class="brand" href="#top" aria-label="Northcrest Studio home">
+    <svg width="26" height="26" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M11 39V12l22 27V7M27 13.5l6-7 6 7" stroke="#0e6b63" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round"/></svg>northcrest
+  </a>
+  <nav class="links" aria-label="Main">
+    <a href="#work">Work</a><a href="#pricing">Pricing</a><a href="#process">Process</a><a href="#faq">FAQ</a><a href="#about">About</a>
+    <a class="call" href="tel:+15875838450">(587) 583-8450</a>
+  </nav>
 </header>
 
 <main id="top">
-  <section class="hero" aria-labelledby="hero-title">
-    <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+  <section class="hero wrap" aria-labelledby="hero-title">
+    <h1 id="hero-title">Look like the best in your field.</h1>
+    <p class="lead">We design and build websites for Calgary businesses, so the work you do shows up online and your phone rings.</p>
+    <p class="price-line">Websites from $999. Logos from $399.</p>
+    <div class="actions">
+      <a class="btn btn-main" href="tel:+15875838450">Call us</a>
+      <a class="btn btn-alt" href="sms:+15875838450">Text us</a>
+    </div>
+    <a class="text-link" href="#work">See the work</a>
+  </section>
+
+  <section class="reel-sec" id="work" aria-labelledby="work-title">
+    <h2 id="work-title" class="sr">Our work</h2>
+    <div class="reel" id="reel" tabindex="0" aria-label="Website designs, swipe to see more">
+      <figure class="item on">
+        <img src="assets/img/reel-hermes.webp" width="600" height="1077" alt="The Hermes Framing homepage on a phone: a gold headline reading Built from experience, framed for what's next, over a crane on a job site" fetchpriority="high">
+        <figcaption><b>Hermes Framing</b><span class="tag real">Client site, live</span></figcaption>
+      </figure>
+      <figure class="item">
+        <img src="assets/img/reel-tallpine.webp" width="600" height="1077" alt="Sample roofing website on a phone: a roofer on a house and a headline about roof repairs across Calgary" loading="lazy">
+        <figcaption><b>Tallpine Roofing</b><span class="tag">Sample design</span></figcaption>
+      </figure>
+      <figure class="item">
+        <img src="assets/img/reel-foothill.webp" width="600" height="1077" alt="Sample landscaping website on a phone: a modern home and lawn at dusk with a free quote button" loading="lazy">
+        <figcaption><b>Foothill Yard Co.</b><span class="tag">Sample design</span></figcaption>
+      </figure>
+      <figure class="item">
+        <img src="assets/img/reel-maison.webp" width="600" height="1077" alt="Sample salon website on a phone: soft pink colours, an italic serif headline and a book appointment button" loading="lazy">
+        <figcaption><b>Maison Rose</b><span class="tag">Sample design</span></figcaption>
+      </figure>
+      <figure class="item">
+        <img src="assets/img/reel-emberline.webp" width="600" height="1077" alt="Sample restaurant website on a phone: wood-fired pizza and a reserve a table button" loading="lazy">
+        <figcaption><b>Emberline</b><span class="tag">Sample design</span></figcaption>
+      </figure>
+    </div>
+    <div class="reel-foot">
+      <button class="step-btn" type="button" data-dir="-1" aria-label="Previous design" aria-controls="reel">&#8592;</button>
+      <div class="dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+      <button class="step-btn" type="button" data-dir="1" aria-label="Next design" aria-controls="reel">&#8594;</button>
+    </div>
+    <p class="reel-note wrap">Sample designs are made-up businesses, built to show how we design for each industry.</p>
+  </section>
+
+  <section class="why" aria-labelledby="why-title">
+    <div class="wrap why-grid">
+      <h2 id="why-title">Your business should look as good as the work you do.</h2>
+      <ul class="points">
+        <li><b>Built to bring in customers</b><span>Every site is set up to show up on Google and turn visitors into calls.</span></li>
+        <li><b>Prices up front</b><span>Every package has a starting price on this page. You get your exact quote in writing after a free 20-minute call.</span></li>
+        <li><b>Everything in one place</b><span>Logo, website, Google profile and ads, handled by one team.</span></li>
+        <li><b>Right here in Calgary</b><span>You work with a real person in your city, from the first call to launch day.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="feature" aria-labelledby="hermes-title">
     <div class="wrap">
-      <div class="hero-inner">
-        <span class="tag">Calgary · Web design &amp; branding studio</span>
-        <h1 id="hero-title">Websites and brands, <span class="grad">built to lead.</span></h1>
-        <p class="lede">We design fast, modern websites and brands for Calgary businesses, built to get you found on Google and turn visitors into customers.</p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#contact">Book a free consultation <span class="arrow" aria-hidden="true">→</span></a>
-          <a class="btn btn-glass" href="#work">See our work</a>
-        </div>
-        <div class="chips" aria-label="What we do">
-          <span>Websites</span><span>Logos &amp; branding</span><span>Google ranking</span><span>Ads &amp; lead generation</span><span>Follow-up automation</span>
+      <div class="feature-head">
+        <span class="tag real">Client site, live</span>
+        <h2 id="hermes-title">Hermes Framing</h2>
+        <p>Structural framing across Alberta and BC. We built their website with estimate requests and a project gallery, and designed matching business cards.</p>
+      </div>
+      <div class="shots">
+        <img class="shot-desk" src="assets/img/hermes-desktop-1200.webp" srcset="assets/img/hermes-desktop-720.webp 720w, assets/img/hermes-desktop-1200.webp 1200w" sizes="(min-width:1160px) 840px, (min-width:760px) calc(100vw - 296px), calc(100vw - 40px)" width="1200" height="750" alt="The Hermes Framing homepage on a desktop screen, with a black and gold header, a crane photo and a Get in Touch form" loading="lazy">
+        <img class="shot-phone" src="assets/img/reel-hermes.webp" width="600" height="1077" alt="" loading="lazy">
+      </div>
+      <div class="feature-foot">
+        <a class="text-link" href="https://hermesframing.ca" target="_blank" rel="noopener">Visit hermesframing.ca<span class="sr"> (opens in a new tab)</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing" aria-labelledby="pricing-title">
+    <div class="wrap">
+      <div class="price-head">
+        <h2 id="pricing-title">Starting prices</h2>
+        <p class="lead">Your exact quote depends on pages, content and features. You get it in writing after a free 20-minute call.</p>
+      </div>
+
+      <div class="ptable">
+        <div class="prow"><h3>Brand Identity</h3><span class="amt"><small>from</small>$399</span><p>Custom logo, brand colours and fonts, business card design and social media graphics.</p></div>
+        <div class="prow"><h3>Starter Site</h3><span class="amt"><small>from</small>$999</span><p>Up to 5 pages, mobile-first, a contact form and Google Business Profile setup. Live in about 2 weeks.</p></div>
+        <div class="prow"><h3>Growth Site</h3><span class="amt"><small>from</small>$1,999</span><p>6 to 15 pages, local SEO setup, booking or quote forms, reviews and a gallery.</p></div>
+        <div class="prow"><h3>Acquisition Site</h3><span class="amt"><small>from</small>$3,999</span><p>A page for every service and area, built to rank across Calgary, with lead-qualifying quote forms and AI search visibility.</p></div>
+      </div>
+
+      <div class="rent">
+        <p><b>Rent-a-Site, from $129/month</b>Get any site with $0 down. Hosting and updates are included. 12-month minimum, then month to month.</p>
+        <a class="btn btn-alt" href="#contact">Ask about renting</a>
+      </div>
+
+      <div class="monthly">
+        <h3 class="sub">Monthly plans</h3>
+        <div class="ptable">
+          <div class="prow"><h3>Care</h3><span class="amt"><small>from</small>$79/mo</span><p>Hosting, security, backups and small edits.</p></div>
+          <div class="prow"><h3>Visibility</h3><span class="amt"><small>from</small>$299/mo</span><p>Local SEO, Google profile posts, review requests and a monthly report.</p></div>
+          <div class="prow"><h3>Lead Engine</h3><span class="amt"><small>from</small>$699/mo</span><p>Google and Meta ads managed for you, plus your ad budget. One business per trade per area.</p></div>
+          <div class="prow"><h3>Full System</h3><span class="amt"><small>from</small>$999/mo</span><p>Everything above, plus missed-call text-back, instant replies and quote follow-ups.</p></div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="border-top" aria-labelledby="why-title">
+  <section id="process" class="process" aria-labelledby="process-title">
     <div class="wrap">
-      <div class="head">
-        <span class="tag">Why Northcrest</span>
-        <h2 id="why-title">Your business should look as good as the work you do.</h2>
-      </div>
-      <div class="why">
-        <div class="card">
-          <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8L3.5 9.2l5.9-.9z"></path></svg></div>
-          <h3>Premium design, local pricing</h3>
-          <p>Agency-quality work without the agency price tag.</p>
-        </div>
-        <div class="card">
-          <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"></path><path d="M15 7h6v6"></path></svg></div>
-          <h3>Built to bring in customers</h3>
-          <p>Every site is set up to rank on Google and turn visitors into calls.</p>
-        </div>
-        <div class="card">
-          <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect></svg></div>
-          <h3>One partner for everything</h3>
-          <p>Logo, website, Google profile and ads, all under one roof.</p>
-        </div>
-        <div class="card">
-          <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg></div>
-          <h3>Right here in Calgary</h3>
-          <p>You work with a real person in your city, from first call to launch day.</p>
-        </div>
+      <h2 id="process-title">From first call to launch</h2>
+      <ol class="seq">
+        <li><h3>Free consultation</h3><p>A 20-minute call about your business and goals. You get a clear, written quote, with no pressure.</p></li>
+        <li><h3>Design and build</h3><p>We design your brand and site, you review it, and we refine it until it's right.</p></li>
+        <li><h3>Launch</h3><p>Your site goes live, your Google profile is set up, and we keep it working for you.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="faq" class="faq" aria-labelledby="faq-title">
+    <div class="wrap faq-grid">
+      <h2 id="faq-title">Questions</h2>
+      <div class="qa">
+        <details>
+          <summary>How long does it take?</summary>
+          <div><p>A Starter Site is live in about 2 weeks. For bigger sites, we give you a timeline on the free call.</p></div>
+        </details>
+        <details>
+          <summary>Do I own my site?</summary>
+          <div><p>If you buy your site, yes. The site, your logo files, your Google Business Profile, and the text and photos are all yours.</p><p>If you ever want to leave our hosting, we hand over a full copy of your site for free.</p><p>Your domain is always registered in your name. We set it up for you, and the yearly fee is included while you're on Care or Rent-a-Site.</p></div>
+        </details>
+        <details>
+          <summary>What happens after the 12 months on Rent-a-Site?</summary>
+          <div><p>It continues month to month. If you cancel, the site comes down, and you keep your domain, your logo and your Google profile.</p></div>
+        </details>
+        <details>
+          <summary>What do I need to provide?</summary>
+          <div><p>Photos of your work, your basic business info (services, service area, hours and contact details), and logins for your domain and Google profile if you already have them.</p><p>We write the website text for you.</p></div>
+        </details>
+        <details>
+          <summary>Can you fix my current site?</summary>
+          <div><p>Yes. We either improve it or rebuild it, whichever is faster and better value, and we tell you which on the free call.</p></div>
+        </details>
       </div>
     </div>
   </section>
 
-  <section id="work" class="border-top" aria-labelledby="work-title">
+  <section id="about" aria-labelledby="about-title">
     <div class="wrap">
-      <div class="head">
-        <span class="tag">Selected work</span>
-        <h2 id="work-title">Designed for the way each industry sells.</h2>
-        <p>Every business gets a site shaped around how its customers decide, whether that's a quote, a booking or a reservation.</p>
-      </div>
-      <div class="work">
-        <article class="shot">
-          <div class="frame">
-            <div class="bar"><i></i><i></i><i></i><em>landscaping-concept</em></div>
-            <div class="screen m-land" aria-hidden="true">
-              <div class="s-nav"><span>FOOTHILL YARD CO.</span><span><span>Services</span><span>Gallery</span></span></div>
-              <div class="s-hero"><h4>Yards Calgary neighbours stop to look at.</h4><p>Design, sod, pavers and seasonal care across Calgary and area.</p><span class="s-btn">GET A FREE QUOTE</span></div>
-              <div class="s-row"><div></div><div></div><div></div></div>
-            </div>
-          </div>
-          <div class="meta"><div><h3>Landscaping &amp; trades</h3><p>Quote-first layout with a page for every service and community.</p></div><span class="pill">Concept</span></div>
-        </article>
-        <article class="shot">
-          <div class="frame">
-            <div class="bar"><i></i><i></i><i></i><em>salon-concept</em></div>
-            <div class="screen m-salon" aria-hidden="true">
-              <div class="s-nav"><span>MAISON ROSE</span><span><span>Services</span><span>Book</span></span></div>
-              <div class="s-hero"><h4>Colour, cut and care, done beautifully.</h4><p>A boutique salon experience with online booking in two taps.</p><span class="s-btn">BOOK NOW</span></div>
-              <div class="s-row"><div></div><div></div><div></div></div>
-            </div>
-          </div>
-          <div class="meta"><div><h3>Beauty &amp; wellness</h3><p>Booking-led design with a service menu and a gallery that sells.</p></div><span class="pill">Concept</span></div>
-        </article>
-        <a class="shot" href="https://hermesframing.ca" target="_blank" rel="noopener">
-          <div class="frame">
-            <div class="bar"><i></i><i></i><i></i><em>hermesframing.ca</em></div>
-            <div class="screen m-frame" aria-hidden="true">
-              <div class="s-nav"><span>HERMES FRAMING</span><span><span>Services</span><span>Projects</span></span></div>
-              <div class="s-hero"><h4>Built from experience. Framed for what's next.</h4><p>Structural framing across Alberta and BC.</p><span class="s-btn">REQUEST AN ESTIMATE</span></div>
-              <div class="s-row"><div></div><div></div><div></div></div>
-            </div>
-          </div>
-          <div class="meta"><div><h3>Construction &amp; framing</h3><p>Estimate requests, project gallery and matching business cards.</p></div><span class="pill live">Live site ↗</span></div>
-        </a>
-        <article class="shot">
-          <div class="frame">
-            <div class="bar"><i></i><i></i><i></i><em>restaurant-concept</em></div>
-            <div class="screen m-food" aria-hidden="true">
-              <div class="s-nav"><span>EMBERLINE</span><span><span>Menu</span><span>Reserve</span></span></div>
-              <div class="s-hero"><h4>Wood-fired, Calgary-made.</h4><p>A live menu, reservations and private dining in one place.</p><span class="s-btn">RESERVE A TABLE</span></div>
-              <div class="s-row"><div></div><div></div><div></div></div>
-            </div>
-          </div>
-          <div class="meta"><div><h3>Restaurants &amp; retail</h3><p>Menu-first pages that load fast on phones.</p></div><span class="pill">Concept</span></div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section id="pricing" class="border-top" aria-labelledby="pricing-title">
-    <div class="wrap">
-      <div class="head">
-        <span class="tag">Pricing</span>
-        <h2 id="pricing-title">Clear starting prices. No surprises.</h2>
-        <p>Pick a starting point. Your exact quote depends on pages, content and features, and you'll have it in writing after a free 20-minute call.</p>
-      </div>
-
-      <div class="pkgs">
-        <article class="pkg">
-          <span class="kicker">Branding</span>
-          <h3>Brand Identity</h3>
-          <div class="from"><span>starting at</span><b>$400</b></div>
-          <ul>
-            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"></path></svg>Custom logo</li>
-            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"></path></svg>Brand colours and fonts</li>
-            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"></path></svg>Business card design</li>
-            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"></path></svg>Social media graphics</li>
-          </ul>
-        </article>
-        <article class="pkg">
-          <span class="kicker">Get online</span>
-          <h3>Starter Site</h3>
-          <div class="from"><span>starting at</span><b>$1,200</b></div>
-          <ul>
-            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"></path></svg>Up to 5 pages, mobile-first</li>
-            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"></path></svg>Contact form</li>
-            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"></path></svg>Google Business Profile setup</li>
-            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"></path></svg>Live in about 2 weeks</li>
-          </ul>
-        </article>
-        <article class="pkg pop">
-          <span class="kicker">Most popular</span>
-          <h3>Growth Site</h3>
-          <div class="from"><span>starting at</span><b>$2,500</b></div>
-          <ul>
-            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"></path></svg>6–15 pages</li>
-            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"></path></svg>Local SEO setup</li>
-            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"></path></svg>Booking or quote forms</li>
-            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"></path></svg>Reviews and gallery</li>
-          </ul>
-        </article>
-        <article class="pkg">
-          <span class="kicker">Own your market</span>
-          <h3>Acquisition Site</h3>
-          <div class="from"><span>starting at</span><b>$4,500</b></div>
-          <ul>
-            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"></path></svg>A page for every service and area</li>
-            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"></path></svg>Built to rank across Calgary</li>
-            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"></path></svg>Lead-qualifying quote forms</li>
-            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"></path></svg>AI search visibility</li>
-          </ul>
-        </article>
-      </div>
-
-      <div class="split">
-        <div class="rent">
-          <div style="display:flex;flex-direction:column;gap:10px">
-            <span class="kicker" style="font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--aurora-a)">$0 down</span>
-            <h3>Rent-a-Site</h3>
-            <p>Get any site with no upfront cost, from $149/month with hosting and updates included. 12-month minimum.</p>
-          </div>
-          <a class="btn btn-glass" href="#contact">Ask about renting</a>
-        </div>
-        <div class="plans" aria-label="Monthly plans">
-          <div class="plan"><h4>Care</h4><span class="p">from $79/mo</span><p>Hosting, security, backups and small edits.</p></div>
-          <div class="plan"><h4>Visibility</h4><span class="p">from $299/mo</span><p>Local SEO, Google profile posts, review requests and a monthly report.</p></div>
-          <div class="plan"><h4>Lead Engine</h4><span class="p">from $699/mo</span><p>Google and Meta ads managed for you, plus your ad budget. One business per trade per area.</p></div>
-          <div class="plan"><h4>Full System</h4><span class="p">from $1,199/mo</span><p>Everything above, plus missed-call text-back, instant replies and quote follow-ups.</p></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="process" class="border-top" aria-labelledby="process-title">
-    <div class="wrap">
-      <div class="head">
-        <span class="tag">How it works</span>
-        <h2 id="process-title">From first call to launch in three steps.</h2>
-      </div>
-      <div class="steps">
-        <div class="step"><span class="n">01</span><h3>Free consultation</h3><p>A 20-minute call about your business and goals. You get a clear, written quote. No pressure.</p></div>
-        <div class="step"><span class="n">02</span><h3>Design and build</h3><p>We design your brand and site, you review it, and we refine it until it's right.</p></div>
-        <div class="step"><span class="n">03</span><h3>Launch and grow</h3><p>Your site goes live, your Google profile is set up, and we keep it working for you.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="about" class="border-top" aria-labelledby="about-title">
-    <div class="wrap about">
-      <div>
-        <span class="tag">About</span>
-        <h2 id="about-title">Built in Calgary. Built to last.</h2>
-      </div>
+      <h2 id="about-title">Built in Calgary</h2>
       <div class="about-body">
-        <p>I'm Thomas Martinez, founder of Northcrest Studio.</p>
-        <p>I started Northcrest because too many great local businesses are losing customers to competitors with better websites. My job is to make sure you look like the best in your field, and that your phone rings like it.</p>
-        <p>You work directly with me from the first call to launch day.</p>
-        <div class="sig"><span class="avatar" aria-hidden="true">TM</span><div><b>Thomas Martinez</b><span>Founder, Northcrest Studio</span></div></div>
+        <p>Northcrest Studio was started by Thomas Martinez because too many great local businesses are losing customers to competitors with better websites.</p>
+        <p>Our job is to make sure you look like the best in your field, and that your phone rings like it.</p>
+        <p>You work directly with Thomas from the first call to launch day.</p>
+        <p class="sign">Thomas Martinez, founder, Northcrest Studio</p>
       </div>
     </div>
   </section>
 
-  <section id="contact" aria-labelledby="contact-title">
-    <div class="wrap">
-      <div class="contact">
-        <div>
-          <span class="tag">Contact</span>
-          <h2 id="contact-title">Let's build something great.</h2>
-          <p class="lede">Tell us about your business and what you need. We reply within one business day.</p>
-          <div class="details">
-            <div class="detail"><span>Email</span><b>hello@northcreststudio.ca</b></div>
-            <div class="detail"><span>Phone</span><b><a href="tel:+15875838450" style="color:inherit;text-decoration:none">(587) 583-8450</a></b></div>
-            <div class="detail"><span>Based in</span><b>Calgary, Alberta</b></div>
+  <section id="contact" class="contact" aria-labelledby="contact-title">
+    <div class="wrap contact-grid">
+      <div>
+        <h2 id="contact-title">Tell us about your business</h2>
+        <div class="direct">
+          <p class="lead">The fastest way to reach us is a call or text. Or send the form and we'll reply within one business day.</p>
+          <div class="actions">
+            <a class="btn btn-main" href="tel:+15875838450">Call us</a>
+            <a class="btn btn-alt" href="sms:+15875838450">Text us</a>
           </div>
+          <dl>
+            <div><dt>Phone and text</dt><dd><a href="tel:+15875838450">(587) 583-8450</a></dd></div>
+            <div><dt>Email</dt><dd><a href="mailto:hello@northcreststudio.ca">hello@northcreststudio.ca</a></dd></div>
+            <div><dt>Based in</dt><dd>Calgary, Alberta</dd></div>
+          </dl>
         </div>
-        <form id='contact-form' method='POST' name='contact' novalidate>
-          <input type="hidden" name="form-name" value="contact">
-          <p hidden><label>Leave this empty: <input name="bot-field"></label></p>
-          <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" placeholder="Jane Smith"></div>
-          <div class="field"><label for="f-biz">Business name</label><input id="f-biz" name="business" autocomplete="organization" placeholder="Smith Landscaping"></div>
-          <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" placeholder="you@business.com"></div>
-          <div class="field"><label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" autocomplete="tel" placeholder="(403) 555-0123"></div>
-          <div class="field wide"><label for="f-need">What do you need?</label>
-            <select id="f-need" name="need">
-              <option>A new website</option>
-              <option>A logo or brand identity</option>
-              <option>Brand and website together</option>
-              <option>Improve my current website</option>
-              <option>Google ranking or ads</option>
-              <option>Not sure yet</option>
-            </select>
-          </div>
-          <div class="field wide"><label for="f-msg">Message</label><textarea id="f-msg" name="message" placeholder="Tell us a bit about your business"></textarea></div>
-          <div class="form-foot">
-            <button class="btn btn-primary" type="submit">Send message <span class="arrow" aria-hidden="true">→</span></button>
-            <p class="form-msg" id="form-msg" role="status" aria-live="polite"></p>
-          </div>
-        </form>
       </div>
+
+      <form id="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+        <input type="hidden" name="form-name" value="contact">
+        <p hidden><label>Leave this empty: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+        <div class="two">
+          <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" required></div>
+          <div class="field"><label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required></div>
+        </div>
+        <div class="field"><label for="f-email">Email <span class="opt">(optional)</span></label><input id="f-email" name="email" type="email" autocomplete="email"></div>
+        <div class="field"><label for="f-type">Type of business</label>
+          <select id="f-type" name="business-type">
+            <option>Trades or contractor</option>
+            <option>Salon or wellness</option>
+            <option>Restaurant or retail</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <fieldset>
+          <legend>Do you have a website now?</legend>
+          <div class="radios">
+            <label><input type="radio" name="has-site" value="Yes"> Yes</label>
+            <label><input type="radio" name="has-site" value="No"> No</label>
+          </div>
+          <div class="field" id="f-url-wrap" hidden><label for="f-url">Link to your current site</label><input id="f-url" name="current-site" type="url" inputmode="url" placeholder="https://"></div>
+        </fieldset>
+        <div class="field"><label for="f-need">What do you need?</label>
+          <select id="f-need" name="need">
+            <option>A new website</option>
+            <option>A logo or brand identity</option>
+            <option>Brand and website together</option>
+            <option>Improve my current website</option>
+            <option>Google ranking or ads</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="field"><label for="f-pkg">Package</label>
+          <select id="f-pkg" name="package">
+            <option>Not sure</option>
+            <option>Brand Identity, from $399</option>
+            <option>Starter Site, from $999</option>
+            <option>Growth Site, from $1,999</option>
+            <option>Acquisition Site, from $3,999</option>
+            <option>Rent-a-Site, from $129/month</option>
+            <option>Care, from $79/month</option>
+            <option>Visibility, from $299/month</option>
+            <option>Lead Engine, from $699/month</option>
+            <option>Full System, from $999/month</option>
+          </select>
+        </div>
+        <div class="field"><label for="f-msg">Message <span class="opt">(optional)</span></label><textarea id="f-msg" name="message"></textarea></div>
+        <div class="form-foot">
+          <button class="btn btn-main" type="submit">Send</button>
+          <p class="form-msg" id="form-msg" role="status" aria-live="polite"></p>
+        </div>
+      </form>
     </div>
   </section>
 </main>
@@ -520,33 +447,74 @@ footer .brand{gap:8px}
 <footer>
   <div class="wrap">
     <a class="brand" href="#top" aria-label="Back to top">
-      <svg width="22" height="22" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-        <path d="M11 39 V12 L33 39 V7" stroke="url(#ng)" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"></path>
-        <path d="M27 13.5 L33 6.5 L39 13.5" stroke="url(#ng)" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"></path>
-      </svg>
-      <span class="wordmark"><b style="font-size:16px">northcrest</b></span>
+      <svg width="22" height="22" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M11 39V12l22 27V7M27 13.5l6-7 6 7" stroke="#0e6b63" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round"/></svg>northcrest
     </a>
-    <span>© 2026 Northcrest Studio · Calgary, Alberta</span>
+    <span>&copy; 2026 Northcrest Studio &middot; Calgary, Alberta &middot; <a href="tel:+15875838450">(587) 583-8450</a></span>
   </div>
 </footer>
 
-<script>
-document.getElementById('contact-form').addEventListener('submit', function (e) {
-  e.preventDefault();
-  var msg = document.getElementById('form-msg');
-  var name = document.getElementById('f-name');
-  var email = document.getElementById('f-email');
-  if (!name.value.trim()) { msg.textContent = 'Please add your name.'; name.focus(); return; }
-  if (!/^\S+@\S+\.\S+$/.test(email.value.trim())) { msg.textContent = 'Please add a valid email so we can reply.'; email.focus(); return; }
-  var form = e.target;
-  var btn = form.querySelector('button[type=submit]');
-  btn.disabled = true; msg.textContent = 'Sending…';
-  fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(new FormData(form)).toString() })
-    .then(function (r) { if (!r.ok) throw new Error(); form.reset(); msg.textContent = 'Thanks! Your message was sent. We will reply within one business day.'; })
-    .catch(function () { msg.textContent = 'Something went wrong. Please email hello@northcreststudio.ca instead.'; })
-    .finally(function () { btn.disabled = false; });
-});
-</script>
+<div class="callbar"><a href="tel:+15875838450">Call us</a><a href="sms:+15875838450">Text us</a></div>
 
+<script>
+// Work reel: the card in the middle steps forward; dots and arrow buttons follow. Swiping is native scroll-snap.
+(function () {
+  var reel = document.getElementById('reel');
+  var items = [].slice.call(reel.children);
+  var dots = [].slice.call(document.querySelectorAll('.dots i'));
+  var btns = [].slice.call(document.querySelectorAll('.step-btn'));
+  var cur = 0;
+  function set(i) {
+    cur = i;
+    items.forEach(function (x, j) { x.classList.toggle('on', j === i); dots[j].classList.toggle('on', j === i); });
+    btns[0].disabled = i === 0; btns[1].disabled = i === items.length - 1;
+  }
+  var queued = false;
+  function nearest() {
+    queued = false;
+    var mid = reel.scrollLeft + reel.clientWidth / 2, best = 0, bestD = Infinity;
+    items.forEach(function (x, j) { var d = Math.abs(x.offsetLeft + x.offsetWidth / 2 - mid); if (d < bestD) { bestD = d; best = j; } });
+    if (best !== cur) set(best);
+  }
+  reel.addEventListener('scroll', function () { if (!queued) { queued = true; requestAnimationFrame(nearest); } }, { passive: true });
+  reel.classList.add('ready');
+  var smooth = !matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function go(i) {
+    var t = items[Math.max(0, Math.min(items.length - 1, i))];
+    reel.scrollTo({ left: t.offsetLeft - (reel.clientWidth - t.offsetWidth) / 2, behavior: smooth ? 'smooth' : 'auto' });
+  }
+  btns.forEach(function (b) { b.addEventListener('click', function () { go(cur + +b.dataset.dir); }); });
+  reel.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight') { e.preventDefault(); go(cur + 1); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); go(cur - 1); }
+  });
+  set(0);
+})();
+
+// Contact form: show the link field when they have a site, check name and phone, send to Netlify Forms.
+(function () {
+  var form = document.getElementById('contact-form');
+  var msg = document.getElementById('form-msg');
+  var urlWrap = document.getElementById('f-url-wrap');
+  [].forEach.call(form.querySelectorAll('input[name="has-site"]'), function (r) {
+    r.addEventListener('change', function () { urlWrap.hidden = !(r.checked && r.value === 'Yes'); });
+  });
+  function say(text, err) { msg.textContent = text; msg.classList.toggle('err', !!err); }
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = document.getElementById('f-name');
+    var phone = document.getElementById('f-phone');
+    var email = document.getElementById('f-email');
+    if (!name.value.trim()) { say('Please add your name.', true); name.focus(); return; }
+    if (phone.value.replace(/\D/g, '').length < 10) { say('Please add a phone number so we can call or text you back.', true); phone.focus(); return; }
+    if (email.value.trim() && !/^\S+@\S+\.\S+$/.test(email.value.trim())) { say('That email looks incomplete.', true); email.focus(); return; }
+    var btn = form.querySelector('button[type=submit]');
+    btn.disabled = true; say('Sending...');
+    fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(new FormData(form)).toString() })
+      .then(function (r) { if (!r.ok) throw new Error(); form.reset(); urlWrap.hidden = true; say('Thanks. Your message was sent, and we will get back to you within one business day.'); })
+      .catch(function () { say('Something went wrong. Please call or text (587) 583-8450, or email hello@northcreststudio.ca.', true); })
+      .finally(function () { btn.disabled = false; });
+  });
+})();
+</script>
 </body>
 </html>
