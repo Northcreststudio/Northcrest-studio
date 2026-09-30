@@ -55,3 +55,11 @@ The only facts the website may use. First collected 2026-09-30, updated the same
 
 ## Contact
 - hello@northcreststudio.ca, (587) 583-8450, Calgary, Alberta. Leads go to Netlify form "contact" with email notification to hello@.
+
+## Added 2026-09-30 (Clean Modern build)
+- Hours: Mon–Fri 8am–6pm · Replies within one business day.
+- Service area: Serving Calgary, Airdrie, Cochrane, Chestermere and Okotoks.
+- "Most popular" tag on the Growth plan (requested).
+- Privacy policy page (privacy.html): the form is used only to reply, never sold; deletion on request by email to hello@northcreststudio.ca, confirmed by email.
+- Google Business Profile: not set up yet. Paste the link into GOOGLE_PROFILE_URL at the top of the page script to show "Find us on Google".
+- Price builder: Due today = first plan payment (a month, or the year when paying yearly) + first month of add-ons + setup + one-time extras. Yearly saves 2 months of the plan.
