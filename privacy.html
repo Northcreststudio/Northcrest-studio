@@ -7,7 +7,7 @@
 <meta name="robots" content="index, follow">
 <meta name="description" content="How Northcrest Studio uses the information you send through our contact form.">
 <link rel="canonical" href="https://northcreststudio.ca/privacy.html">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='11' fill='%2307090d'/%3E%3Cpath d='M11 39V12l22 27V7M27 13.5l6-7 6 7' fill='none' stroke='%235eead4' stroke-width='4.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='11' fill='%230b0b0b'/%3E%3Cpath d='M11 39V12l22 27V7M27 13.5l6-7 6 7' fill='none' stroke='%23ff4a26' stroke-width='4.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <style>
 @font-face{font-family:"Archivo";src:url(assets/fonts/archivo-latin-variable.woff2) format("woff2");font-weight:100 900;font-stretch:62% 125%;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 /* Shared structure. Colour and type come only from tokens each version defines on :root.
@@ -67,6 +67,7 @@ section{padding:var(--sec-y) 0;background:var(--bg);color:var(--ink)}
 .js .hero h1 .ln>span{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
 .js .hero h1 .ln:nth-child(2)>span{animation-delay:.08s}
 .js .hero h1 .ln:nth-child(3)>span{animation-delay:.16s}
+.js .hero h1 .ln:nth-child(4)>span{animation-delay:.24s}
 @keyframes rise{from{transform:translateY(105%)}}
 .hero h1 em{font-style:normal}
 .hero .lead{margin-top:22px;max-width:30em}
@@ -385,6 +386,67 @@ form.contact{display:grid;gap:18px;padding:24px;background:var(--surface);color:
   .browser,.pocket{transform:none!important}
 }
 
+/* built for trades */
+.trade-list{list-style:none;margin:0 0 44px;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.trade-list li{font-size:15px;font-weight:600;padding:8px 14px;border:var(--btn-border) solid var(--ink);border-radius:var(--radius-btn)}
+.musts-grid{display:grid;gap:44px}
+.musts-grid>*{min-width:0}
+.must-list{list-style:none;margin:0;padding:0;display:grid;border-top:var(--rule-strong) solid var(--ink);counter-reset:m}
+.must-list li{counter-increment:m;padding:22px 0 24px;border-bottom:1px solid var(--line);display:grid;gap:8px;align-content:start}
+.must-list li::before{content:counter(m,decimal-leading-zero);font-family:var(--display);font-weight:700;font-size:14px;color:var(--accent-text)}
+.must-list h3{font-size:21px;line-height:1.15}
+.must-list p{color:var(--muted);font-size:16px;max-width:30em}
+.musts-note{margin-top:22px}
+@media (min-width:700px){.must-list{grid-template-columns:1fr 1fr;column-gap:32px}}
+@media (min-width:980px){.musts-grid{grid-template-columns:330px minmax(0,1fr);gap:64px;align-items:start}.mock{position:sticky;top:calc(var(--nav-h) + 32px)}}
+/* sample phone */
+.mock{margin:0;justify-self:center;width:100%;max-width:330px}
+.ph{border:8px solid #0a0a0a;border-radius:30px;overflow:hidden;background:#fff;color:#14202b;font-family:Arial,Helvetica,sans-serif;box-shadow:0 18px 40px -18px rgba(0,0,0,.45)}
+.ph-bar{display:flex;align-items:baseline;gap:6px;padding:12px 14px;background:#0f2a43;color:#fff;font-size:12px}
+.ph-bar b{font-size:16px;letter-spacing:.02em}
+.ph-bar i{margin-left:auto;width:18px;height:2px;background:#fff;box-shadow:0 5px 0 #fff,0 -5px 0 #fff;align-self:center}
+.ph-emerg{background:#d7261e;color:#fff;font-size:13px;padding:9px 14px;font-weight:600}
+.ph-emerg b{text-decoration:underline}
+.ph-photo{aspect-ratio:16/10;display:grid;place-items:center;text-align:center;padding:12px;background:repeating-linear-gradient(-45deg,#e6ebf0 0 10px,#dde3e9 10px 20px);color:#4b5a68;font-size:12px;font-weight:600}
+.ph-body{padding:14px;display:grid;gap:10px}
+.ph-body strong{font-size:19px;line-height:1.15;color:#0f2a43}
+.ph-btn{justify-self:start;background:#f2a516;color:#14202b;font-weight:700;font-size:14px;padding:10px 16px;border-radius:6px}
+.ph-badges{display:flex;gap:6px;flex-wrap:wrap}
+.ph-badges span{font-size:11px;font-weight:700;padding:4px 8px;border:1.5px solid #0f2a43;border-radius:4px;color:#0f2a43}
+.ph-rev{color:#e0a100;font-size:15px;letter-spacing:1px}
+.ph-rev small{color:#4b5a68;font-size:12px;letter-spacing:0;margin-left:4px}
+.ph-dock{display:grid;grid-template-columns:1fr 1fr 1.4fr;gap:4px;padding:6px;background:#0f2a43}
+.ph-dock span{display:grid;place-items:center;min-height:34px;color:#fff;font-size:12px;font-weight:700;border-radius:4px;background:rgba(255,255,255,.12)}
+.ph-dock .go{background:#f2a516;color:#14202b}
+.mock figcaption{margin-top:12px;font-size:14px;color:var(--muted);text-align:center}
+
+/* pay once */
+.own-jump{margin-top:22px;font-size:17px;color:var(--muted)}
+.pkgs{display:grid;gap:var(--rule-strong);background:var(--ink);border:var(--rule-strong) solid var(--ink)}
+.pkg{background:var(--bg);color:var(--ink);padding:24px 22px 26px;display:grid;gap:10px;align-content:start;min-width:0}
+.pkg p{color:var(--muted);font-size:16px}
+.pkg .when-ready{font-size:14px;font-weight:600;color:var(--ink)}
+.pkg .btn{justify-self:start;margin-top:6px;min-height:46px}
+.pkg-pop{background:var(--bg-alt)}
+.pkg .amt{font-size:38px}
+@media (min-width:700px){.pkgs{grid-template-columns:repeat(2,minmax(0,1fr))}.pkg:last-child{grid-column:1/-1}}
+@media (min-width:980px){.pkgs{grid-template-columns:repeat(6,minmax(0,1fr))}.pkg{grid-column:span 2}.pkg:nth-child(-n+2){grid-column:span 3}.pkg:last-child{grid-column:span 2}}
+.menus{display:grid;gap:48px;margin-top:56px}
+.menus>*{min-width:0}
+.menu .note{margin:6px 0 16px}
+.mi{display:flex;justify-content:space-between;gap:18px;padding:16px 0;border-bottom:1px solid var(--line)}
+.mi:first-of-type{border-top:var(--rule-strong) solid var(--ink)}
+.mi>div{display:grid;gap:4px;min-width:0}
+.mi b{font-size:17px}
+.mi span{color:var(--muted);font-size:15px}
+.mi small{font-size:13px;font-weight:600;color:var(--dim)}
+.mi .mp{font-family:var(--display);font-weight:700;font-size:20px;color:var(--ink);white-space:nowrap}
+.own-note{margin-top:36px;max-width:46em}
+@media (min-width:980px){.menus{grid-template-columns:1fr 1fr;gap:64px}}
+.own>.wrap>.sub-title{margin:8px 0 20px}
+.bundle-top{margin:0 0 48px}
+.badge.rec{margin-bottom:10px;background:var(--on-accent);color:var(--accent)}
+
 /* Swiss. Layout: International Typographic Style. Pure white, true black, one signal red. Wide
    Archivo set big and tight, 2px black rules on a strict grid, square corners, nothing ornamental. */
 :root{
@@ -472,6 +534,14 @@ form.contact{border:2px solid var(--ink)}
 .dock a{color:var(--ink);font-weight:700}
 .dock a.go{background:var(--accent);color:#fff}
 #faq h2{font-size:clamp(34px,3.4vw,50px)}
+/* trades homepage */
+@media (max-width:979px){.plan-pop{order:-1}}
+.musts{background:var(--bg-alt)}
+.must-list h3{font-weight:800;font-stretch:112%;letter-spacing:-.025em}
+.pkg h3{font-size:24px;font-weight:800;font-stretch:112%}
+.pkg-pop .badge{justify-self:start}
+.bundle{margin-top:32px}
+.mi .mp{font-stretch:112%;font-weight:800}
 /* Swiss Noir: the Swiss system inverted. Near-black ground, white type, signal red-orange; the Hermes story flips to a white band. */
 :root{--bg:#0b0b0b;--bg-alt:#151515;--surface:#111111;--field:#161616;--ink:#f4f4f4;--muted:#b8b8b8;--dim:#8c8c8c;--line:#2f2f2f;--control-line:#f4f4f4;
   --accent:#ff4a26;--accent-hover:#ff6a4a;--on-accent:#0b0b0b;--accent-text:#ff6a4f;--focus:#f4f4f4;--focus-ring:rgba(255,74,38,.35);--error:#ff6a4f;

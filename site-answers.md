@@ -63,3 +63,16 @@ The only facts the website may use. First collected 2026-09-30, updated the same
 - Privacy policy page (privacy.html): the form is used only to reply, never sold; deletion on request by email to hello@northcreststudio.ca, confirmed by email.
 - Google Business Profile: https://www.google.com/search?kgmid=/g/11p1fg1tm2 (set in GOOGLE_PROFILE_URL at the top of the page script).
 - Price builder: Due today = first plan payment (a month, or the year when paying yearly) + first month of add-ons + setup + one-time extras. Yearly saves 2 months of the plan.
+
+## Added 2026-10-01 (trades redesign, Swiss Noir)
+- Positioning: "the website studio for Calgary trades". Lead trades: roofing; landscaping and snow removal; plumbing, heating and HVAC; electrical; renovations, basements, decks and fences; painting, cleaning and home services. Also framing and general contracting.
+- Pay once and own it is the main sell (goal: cash upfront, then Care at $79/month). 50% to start, 50% at launch; packages under $500 paid in full upfront.
+- Websites to own: Trades Growth Site $1,999 (most popular); Trades Business Launch Kit $1,999; Trades Starter Site $999; Website Rescue $999; Trades Acquisition Site $3,999 (date confirmed in writing).
+- Recommended bundle: Own It + Year of Care $2,499 (Trades Growth Site + 12 months of Care, prepaid, saves $448).
+- Quick wins: Google Profile Tune-Up $149; Google Profile Pro Setup $399 (credited toward a site within 30 days); Review Starter Kit $249; Job Site Photo Day $449, drone shots included; Trades Print Pack $299.
+- Add-ons to owned sites: Seasonal Promo Page $499; Brand Identity $399; Care $79/month. Truck & Sign Design was removed (do not offer).
+- Founding Client offer, one shared pool of 10 spots: monthly plans get $0 setup and a locked price; sites bought from $1,999 get Care locked at $79 a month for as long as they keep it.
+- Removed the "monthly is usually the better deal" line; the page says "Prefer smaller payments? Monthly plans start at $129."
+- Price builder job examples: new roof about $12,000 and roof repair about $3,000 in Calgary (HomeStars); other trade job $2,500 (example).
+- Payment by card or Interac e-Transfer to hello@northcreststudio.ca. Referrals: clients get $100 or a free month; partners get $100 per signed client.
+- Site copy says "call or text", not "call or text Thomas".
