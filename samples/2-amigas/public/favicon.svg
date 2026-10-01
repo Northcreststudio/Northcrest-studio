@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" role="img" aria-label="2 Amigas">
+  <!-- 2 Amigas mark only (favicon, jar lid). Replace to swap. -->
+  <style>.amg-ink{fill:var(--logo-ink,#22103F)}.amg-badge{fill:var(--logo-badge,#E5197A)}.amg-badge-ink{fill:var(--logo-badge-ink,#FFF3E0)}</style>
+  <g class="amg-mark">
+    <!-- heart between the two friends -->
+    <path fill="#E5197A" d="M50 19c-3-4.5-10-3.2-10 2 0 4.6 6.4 8 10 11 3.6-3 10-6.4 10-11 0-5.2-7-6.5-10-2z"/>
+    <!-- left amiga: red chili, leaning right -->
+    <g>
+      <path fill="#F2452C" d="M48 37c4 9 2 22-6 34-7 10-18 19-32 22 6-6 10-14 12-24 2-13 5-25 14-31 4-3 9-4 12-1z"/>
+      <path fill="#fff" opacity=".35" d="M30 46c-3 7-4 15-6 22-1 4-2 7-4 10 4-3 7-8 9-14 2-6 2-12 4-17 0-2-2-3-3-1z"/>
+      <path fill="#1E7A3A" d="M33 36c3-5 13-6 17-1-3 1-5 3-8 3-3 1-6 0-9-2z"/>
+      <path fill="none" stroke="#1E7A3A" stroke-width="4" stroke-linecap="round" d="M43 35c0-5 2-9 6-11"/>
+      <circle fill="#22103F" cx="35" cy="52" r="2.6"/><circle fill="#22103F" cx="43" cy="50" r="2.6"/>
+      <path fill="none" stroke="#22103F" stroke-width="2.4" stroke-linecap="round" d="M35 59c3 2 7 1 9-2"/>
+    </g>
+    <!-- right amiga: green chili, mirrored -->
+    <g transform="translate(100 0) scale(-1 1)">
+      <path fill="#2FA84F" d="M48 37c4 9 2 22-6 34-7 10-18 19-32 22 6-6 10-14 12-24 2-13 5-25 14-31 4-3 9-4 12-1z"/>
+      <path fill="#fff" opacity=".35" d="M30 46c-3 7-4 15-6 22-1 4-2 7-4 10 4-3 7-8 9-14 2-6 2-12 4-17 0-2-2-3-3-1z"/>
+      <path fill="#1E7A3A" d="M33 36c3-5 13-6 17-1-3 1-5 3-8 3-3 1-6 0-9-2z"/>
+      <path fill="none" stroke="#1E7A3A" stroke-width="4" stroke-linecap="round" d="M43 35c0-5 2-9 6-11"/>
+      <circle fill="#22103F" cx="35" cy="52" r="2.6"/><circle fill="#22103F" cx="43" cy="50" r="2.6"/>
+      <path fill="none" stroke="#22103F" stroke-width="2.4" stroke-linecap="round" d="M35 59c3 2 7 1 9-2"/>
+    </g>
+  </g>
+</svg>

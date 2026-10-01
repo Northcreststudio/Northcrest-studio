@@ -1,0 +1,15 @@
+# Netlify settings for the 2 Amigas sample.
+# If this folder lives inside a bigger repo, set the site's
+# "Base directory" to samples/2-amigas in the Netlify UI.
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Long cache for hashed assets, no cache for the page itself.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
