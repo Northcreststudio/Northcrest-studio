@@ -1,0 +1,15 @@
+# Preview build: keep it out of search results so it never competes with europeangardendesign.ca.
+# Remove the X-Robots-Tag line when this becomes the live site.
+/*
+  X-Robots-Tag: noindex
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+
+/images/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/main.js
+  Cache-Control: public, max-age=3600
+
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
