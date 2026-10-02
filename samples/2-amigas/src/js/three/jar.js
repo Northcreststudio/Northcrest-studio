@@ -1,130 +1,140 @@
 /**
- * The procedural salsa jar: glass, salsa, label, lid.
- * Everything is built from code (lathe + cylinder geometry), and
- * the label/lid art is painted onto canvases at runtime using the
- * real logo SVG, so swapping src/assets/logo.svg updates the jar too.
+ * The salsa jar, built from code and shaded physically:
+ * refractive glass (transmission + IOR), wet chunky salsa, a printed
+ * paper label and a knurled black steel lid with a gold-printed seal.
+ * The label art is painted at runtime from the real logo SVG, so
+ * swapping src/assets/logo.svg updates the jar too.
  */
 import * as THREE from 'three';
 import { brand } from '../../config/content.js';
+import { fbm, canvas, tex, salsaMaps } from './textures.js';
 
 const v2 = (x, y) => new THREE.Vector2(x, y);
+const smoothProfile = (pts, n = 64) => new THREE.SplineCurve(pts).getPoints(n);
 
-/** Smooth a rough profile into many points for a nicer lathe. */
-function smoothProfile(points, divisions = 64) {
-  const curve = new THREE.SplineCurve(points);
-  return curve.getPoints(divisions);
-}
-
-/* Jar dimensions (local units). The jar is ~2.5 units tall with lid. */
+/* Jar dimensions (local units). The jar's base sits on y = 0. */
 export const JAR = {
-  bottom: -1.15,
-  neckTop: 1.08,
-  lidHeight: 0.26,
-  mouthY: 1.1,
+  bottom: 0,
+  neckTop: 2.23,
+  lidHeight: 0.27,
+  mouthY: 2.25,
   height: 2.5,
+  centreY: 1.2,
 };
 
-export function buildJar({ segments = 64, labelTexture, salsaTexture, lidTexture }) {
+export function buildJar({ segments = 96, look, lidTexture, lidMetal, quality = 'high' }) {
   const group = new THREE.Group();
 
-  // Glass outer profile: flat base, straight sides, rounded shoulder, short threaded neck.
+  // Mason-style glass: thick base, straight walls, rounded shoulder, threaded neck.
   const glassProfile = smoothProfile([
-    v2(0.001, -1.15), v2(0.8, -1.15), v2(0.94, -1.12), v2(0.995, -1.03), v2(1.0, -0.9),
-    v2(1.0, 0.6), v2(0.985, 0.74), v2(0.93, 0.85), v2(0.84, 0.92), v2(0.8, 0.96), v2(0.8, 1.08),
-  ], 80);
-  const glassGeo = new THREE.LatheGeometry(glassProfile, segments);
-
+    v2(0.001, 0), v2(0.84, 0), v2(0.95, 0.03), v2(0.995, 0.12), v2(1.0, 0.25),
+    v2(1.0, 1.75), v2(0.985, 1.89), v2(0.93, 2.0), v2(0.84, 2.07), v2(0.8, 2.11), v2(0.8, 2.23),
+  ], 90);
   const glassMat = new THREE.MeshPhysicalMaterial({
     color: 0xffffff,
-    roughness: 0.06,
     metalness: 0,
-    transparent: true,
-    opacity: 0.12,
-    clearcoat: 1,
-    clearcoatRoughness: 0.04,
-    envMapIntensity: 1.6,
-    depthWrite: false,
+    roughness: 0.03,
+    transmission: 1,
+    thickness: 0.12,
+    ior: 1.5,
+    attenuationColor: new THREE.Color('#e3efe6'),
+    attenuationDistance: 1.4,
+    specularIntensity: 1,
+    envMapIntensity: 1.25,
   });
-  // Fresnel: nearly clear face-on, brighter and more opaque at the edges,
-  // which is what makes glass read as glass.
-  glassMat.onBeforeCompile = (shader) => {
-    shader.fragmentShader = shader.fragmentShader.replace(
-      '#include <opaque_fragment>',
-      `float fres = pow(1.0 - clamp(abs(dot(normalize(normal), normalize(vViewPosition))), 0.0, 1.0), 2.2);
-      gl_FragColor = vec4(outgoingLight + vec3(fres * 0.35), diffuseColor.a * (0.45 + fres * 4.0));`
-    );
-  };
-  const glass = new THREE.Mesh(glassGeo, glassMat);
+  if (quality === 'low') {
+    // Phones: skip the extra transmission pass, fake glass with a fresnel edge.
+    Object.assign(glassMat, { transmission: 0, transparent: true, opacity: 0.16, depthWrite: false });
+    glassMat.onBeforeCompile = (shader) => {
+      shader.fragmentShader = shader.fragmentShader.replace(
+        '#include <opaque_fragment>',
+        `float fres = pow(1.0 - clamp(abs(dot(normalize(normal), normalize(vViewPosition))), 0.0, 1.0), 2.4);
+        gl_FragColor = vec4(outgoingLight + vec3(fres * 0.25), diffuseColor.a * (0.4 + fres * 4.5));`
+      );
+    };
+  }
+  const glass = new THREE.Mesh(new THREE.LatheGeometry(glassProfile, segments), glassMat);
+  glass.castShadow = false; // the salsa inside casts the shadow
   glass.renderOrder = 3;
 
-  // A faint back-face pass gives the glass some thickness.
-  const glassBack = new THREE.Mesh(
-    glassGeo,
-    new THREE.MeshPhysicalMaterial({ color: 0xffffff, roughness: 0.1, transparent: true, opacity: 0.1, side: THREE.BackSide, depthWrite: false })
-  );
-  glassBack.renderOrder = 2;
-
-  // Salsa fill: slightly inside the glass, with a gently domed top.
-  const salsaProfile = smoothProfile([
-    v2(0.001, -1.09), v2(0.82, -1.09), v2(0.93, -1.02), v2(0.955, -0.9), v2(0.955, 0.6),
-    v2(0.935, 0.72), v2(0.87, 0.81), v2(0.76, 0.86), v2(0.4, 0.88), v2(0.001, 0.885),
-  ], 64);
-  const salsaMat = new THREE.MeshStandardMaterial({ map: salsaTexture, roughness: 0.32, metalness: 0 });
-  const salsa = new THREE.Mesh(new THREE.LatheGeometry(salsaProfile, segments), salsaMat);
-
-  // Label: an open cylinder wrapping ~234° around the front.
-  const labelArc = Math.PI * 1.3;
-  const labelGeo = new THREE.CylinderGeometry(1.008, 1.008, 1.18, segments * 2, 1, true, -labelArc / 2, labelArc);
-  const labelMat = new THREE.MeshStandardMaterial({ map: labelTexture, roughness: 0.55, metalness: 0 });
-  const label = new THREE.Mesh(labelGeo, labelMat);
-  label.position.y = -0.18;
-  label.renderOrder = 4;
-
-  // Lid with knurled ridges (vertices pushed out in a wave around the rim).
-  const lidPivot = new THREE.Group();
-  lidPivot.position.y = JAR.neckTop;
-  const lidGeo = new THREE.CylinderGeometry(0.87, 0.87, JAR.lidHeight, 144, 2);
-  const pos = lidGeo.attributes.position;
-  for (let i = 0; i < pos.count; i++) {
-    const x = pos.getX(i);
-    const z = pos.getZ(i);
-    const r = Math.hypot(x, z);
-    if (r < 0.86) continue; // skip cap centres
-    const a = Math.atan2(x, z);
-    const k = 1 + 0.018 * Math.max(0, Math.cos(a * 48));
-    pos.setX(i, x * k);
-    pos.setZ(i, z * k);
-  }
-  lidGeo.computeVertexNormals();
-  const lidMat = new THREE.MeshStandardMaterial({ color: 0xffb01f, roughness: 0.32, metalness: 0.45 });
-  const lid = new THREE.Mesh(lidGeo, lidMat);
-  lid.position.y = JAR.lidHeight / 2;
-  const lidTop = new THREE.Mesh(
-    new THREE.CircleGeometry(0.8, segments),
-    new THREE.MeshStandardMaterial({ map: lidTexture, roughness: 0.4, metalness: 0.2 })
-  );
-  lidTop.rotation.x = -Math.PI / 2;
-  lidTop.position.y = JAR.lidHeight + 0.002;
-  // Rolled rim at the lid's bottom edge.
-  const lidRim = new THREE.Mesh(new THREE.TorusGeometry(0.875, 0.03, 8, segments * 2), lidMat);
-  lidRim.rotation.x = Math.PI / 2;
-  lidRim.position.y = 0.01;
-  lidPivot.add(lid, lidTop, lidRim);
-
-  // Glass screw threads on the neck (visible when the lid pops off).
-  const threadMat = new THREE.MeshPhysicalMaterial({ color: 0xffffff, roughness: 0.1, transparent: true, opacity: 0.35, clearcoat: 1 });
-  [0.99, 1.04].forEach((y) => {
-    const thread = new THREE.Mesh(new THREE.TorusGeometry(0.805, 0.012, 6, segments), threadMat);
-    thread.rotation.x = Math.PI / 2;
-    thread.position.y = y;
-    group.add(thread);
+  // Glass screw threads on the neck
+  const threadGeo = new THREE.TorusGeometry(0.808, 0.014, 8, segments);
+  [2.14, 2.2].forEach((y) => {
+    const t = new THREE.Mesh(threadGeo, glassMat);
+    t.rotation.x = Math.PI / 2;
+    t.position.y = y;
+    group.add(t);
   });
 
-  group.add(salsa, label, glassBack, glass, lidPivot);
+  // Salsa: slightly inside the glass, filled into the shoulder.
+  const salsaProfile = smoothProfile([
+    v2(0.001, 0.07), v2(0.83, 0.07), v2(0.93, 0.12), v2(0.958, 0.25), v2(0.958, 1.78),
+    v2(0.935, 1.9), v2(0.87, 1.98), v2(0.76, 2.03), v2(0.4, 2.05), v2(0.001, 2.055),
+  ], 70);
+  const salsaMat = new THREE.MeshPhysicalMaterial({
+    map: look.salsa.map,
+    bumpMap: look.salsa.bumpMap,
+    bumpScale: 1.4,
+    roughness: 0.34,
+    clearcoat: 0.6,
+    clearcoatRoughness: 0.18,
+  });
+  const salsa = new THREE.Mesh(new THREE.LatheGeometry(salsaProfile, segments), salsaMat);
+  salsa.castShadow = true;
+
+  // Paper label wrapping ~234° of the jar.
+  const labelArc = Math.PI * 1.3;
+  const labelMat = new THREE.MeshPhysicalMaterial({
+    map: look.label.map,
+    roughnessMap: look.label.roughnessMap,
+    bumpMap: look.label.bumpMap,
+    bumpScale: 0.6,
+    roughness: 1,
+    sheen: 0.4,
+    sheenRoughness: 0.8,
+    sheenColor: new THREE.Color('#ffffff'),
+  });
+  const label = new THREE.Mesh(new THREE.CylinderGeometry(1.006, 1.006, 1.18, segments * 2, 1, true, -labelArc / 2, labelArc), labelMat);
+  label.position.y = 1.02;
+  label.castShadow = true;
+
+  // Lid: knurled steel band, printed top, rolled edges.
+  const lidPivot = new THREE.Group();
+  lidPivot.position.y = JAR.neckTop - 0.11;
+  const lidGeo = new THREE.CylinderGeometry(0.87, 0.87, JAR.lidHeight, 240, 4);
+  const p = lidGeo.attributes.position;
+  for (let i = 0; i < p.count; i++) {
+    const x = p.getX(i);
+    const z = p.getZ(i);
+    if (Math.hypot(x, z) < 0.86) continue;
+    const edge = Math.abs(p.getY(i)) > JAR.lidHeight * 0.42 ? 0.3 : 1; // ridges soften toward the edges
+    const k = 1 + 0.011 * edge * Math.pow(Math.max(0, Math.cos(Math.atan2(x, z) * 90)), 0.6);
+    p.setX(i, x * k);
+    p.setZ(i, z * k);
+  }
+  lidGeo.computeVertexNormals();
+  const lidMat = new THREE.MeshPhysicalMaterial({ color: '#141111', metalness: 0.85, roughness: 0.38, clearcoat: 0.4, clearcoatRoughness: 0.3 });
+  const lid = new THREE.Mesh(lidGeo, lidMat);
+  lid.position.y = JAR.lidHeight / 2;
+  lid.castShadow = true;
+  const lidTop = new THREE.Mesh(
+    new THREE.CircleGeometry(0.86, segments),
+    new THREE.MeshPhysicalMaterial({ map: lidTexture, metalnessMap: lidMetal, metalness: 1, roughness: 0.34, clearcoat: 0.5 })
+  );
+  lidTop.rotation.x = -Math.PI / 2;
+  lidTop.position.y = JAR.lidHeight + 0.001;
+  const rim = new THREE.Mesh(new THREE.TorusGeometry(0.872, 0.022, 10, segments * 2), lidMat);
+  rim.rotation.x = Math.PI / 2;
+  rim.position.y = JAR.lidHeight;
+  const rimLow = rim.clone();
+  rimLow.position.y = 0.01;
+  lidPivot.add(lid, lidTop, rim, rimLow);
+
+  group.add(salsa, label, glass, lidPivot);
   return { group, lidPivot, materials: { salsaMat, labelMat } };
 }
 
-/* ───────────── Canvas textures ───────────── */
+/* ───────── Label + lid artwork ───────── */
 
 const loadImage = (src) =>
   new Promise((resolve) => {
@@ -134,240 +144,220 @@ const loadImage = (src) =>
     img.src = src;
   });
 
-/** Loads the logo SVGs as images so they can be painted onto canvases. */
-export async function loadLogoImages(logoUrl, markUrl) {
-  const [logo, mark] = await Promise.all([loadImage(logoUrl), loadImage(markUrl)]);
-  return { logo, mark };
+/**
+ * Loads the logo SVGs as images in label ink and lid gold.
+ * (The SVG's CSS variables are swapped for real colours so it paints on a canvas.)
+ */
+export async function loadLogoImages(logoSvg, markSvg) {
+  const recolor = (svg, ink, accent) =>
+    loadImage(`data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg.replaceAll('var(--logo-ink,#1C1411)', ink).replaceAll('var(--logo-accent,#B3311E)', accent))}`);
+  const [logo, markGold] = await Promise.all([recolor(logoSvg, '#1C1411', '#A92C1B'), recolor(markSvg, '#D9B472', '#D9B472')]);
+  return { logo, markGold };
 }
 
-const toTexture = (canvas, renderer) => {
-  const tex = new THREE.CanvasTexture(canvas);
-  tex.colorSpace = THREE.SRGBColorSpace;
-  tex.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy());
-  return tex;
+const FONT = {
+  display: (px) => `${Math.round(px)}px Gloock, "Bodoni Moda", Georgia, serif`,
+  body: (px, w = 500) => `${w} ${Math.round(px)}px "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif`,
+  caps: (px, w = 600) => `${w} ${Math.round(px)}px "Big Shoulders Text", "Arial Narrow", sans-serif`,
 };
 
-function scallopBand(ctx, w, y, h, color, down) {
-  ctx.fillStyle = color;
-  ctx.fillRect(0, down ? y : y + h * 0.45, w, h * 0.55);
-  const r = h * 0.45;
-  for (let x = r; x < w + r; x += r * 2) {
-    ctx.beginPath();
-    ctx.arc(x, down ? y + h * 0.55 : y + h * 0.45, r, 0, Math.PI * 2);
-    ctx.fill();
-  }
+function spaced(ctx, text, x, y, spacing, align = 'center') {
+  ctx.textAlign = align;
+  if ('letterSpacing' in ctx) {
+    ctx.letterSpacing = `${spacing}px`;
+    ctx.fillText(text, x + (align === 'center' ? spacing / 2 : 0), y);
+    ctx.letterSpacing = '0px';
+  } else ctx.fillText(text, x, y);
 }
 
-function chili(ctx, x, y, s, fill) {
-  ctx.save();
-  ctx.translate(x, y);
-  ctx.scale(s / 32, s / 32);
-  ctx.fillStyle = fill;
-  ctx.beginPath();
-  ctx.moveTo(21, 9);
-  ctx.bezierCurveTo(24, 14, 22, 21, 17, 25);
-  ctx.bezierCurveTo(13, 28, 8, 29, 4, 28);
-  ctx.bezierCurveTo(8, 26, 11, 22, 12, 17);
-  ctx.bezierCurveTo(13, 13, 15, 9, 18, 8);
-  ctx.closePath();
-  ctx.fill();
-  ctx.strokeStyle = '#2FA84F';
-  ctx.lineWidth = 2.6;
-  ctx.lineCap = 'round';
-  ctx.beginPath();
-  ctx.moveTo(17, 9);
-  ctx.quadraticCurveTo(19, 5, 23, 6);
-  ctx.stroke();
-  ctx.restore();
-}
-
-/** Paints the jar label for one flavour. */
-export function makeLabelTexture(f, images, renderer, { width = 2048 } = {}) {
-  const W = width;
-  const H = Math.round(width * 0.29);
-  const c = document.createElement('canvas');
-  c.width = W;
-  c.height = H;
-  const ctx = c.getContext('2d');
-  const u = (x) => x * W;
-  const display = (px) => `${Math.round(px)}px "Bagel Fat One", "Arial Rounded MT Bold", sans-serif`;
-  const body = (px, weight = 700) => `${weight} ${Math.round(px)}px "DM Sans", system-ui, sans-serif`;
-
-  // Paper + subtle grain
-  ctx.fillStyle = f.label.paper;
-  ctx.fillRect(0, 0, W, H);
-  ctx.fillStyle = 'rgba(34,16,63,0.035)';
-  for (let i = 0; i < 1400; i++) ctx.fillRect(Math.random() * W, Math.random() * H, 2, 2);
-
-  // Papel-picado style scalloped bands top and bottom
-  const band = H * 0.12;
-  scallopBand(ctx, W, 0, band, f.accent, true);
-  scallopBand(ctx, W, H - band, band, f.accent, false);
-  // tiny cut-out dots in the bands
-  ctx.fillStyle = f.label.paper;
-  for (let x = H * 0.06; x < W; x += H * 0.12) {
-    ctx.beginPath();
-    ctx.arc(x, band * 0.3, H * 0.012, 0, Math.PI * 2);
-    ctx.arc(x, H - band * 0.3, H * 0.012, 0, Math.PI * 2);
-    ctx.fill();
-  }
-
-  // Logo lockup, front and centre
-  const midX = u(0.5);
-  if (images.logo) {
-    const lw = u(0.25);
-    const lh = lw * (images.logo.height / images.logo.width || 100 / 380);
-    ctx.drawImage(images.logo, midX - lw / 2, H * 0.17, lw, lh);
-  } else {
-    ctx.fillStyle = f.label.ink;
-    ctx.font = display(H * 0.16);
-    ctx.textAlign = 'center';
-    ctx.fillText(brand.name, midX, H * 0.34);
-  }
-
-  // Flavour name
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'alphabetic';
-  ctx.fillStyle = f.accentDeep;
-  ctx.font = display(H * 0.17);
-  ctx.fillText(f.name, midX, H * 0.64);
-
-  // Heat chilis + label
-  const cs = H * 0.075;
-  const startX = midX - (5 * cs * 1.1) / 2 - u(0.045);
-  for (let i = 0; i < 5; i++) chili(ctx, startX + i * cs * 1.1, H * 0.68, cs, i < f.heat ? f.accent : 'rgba(34,16,63,0.15)');
-  ctx.fillStyle = f.label.ink;
-  ctx.font = body(H * 0.045, 800);
-  ctx.textAlign = 'left';
-  ctx.fillText(`HEAT ${f.heat}/5 · ${f.heatLabel.toUpperCase()}`, startX + 5 * cs * 1.1 + H * 0.02, H * 0.735);
-
-  // Left panel: "homemade salsa" stamp
-  ctx.textAlign = 'center';
-  ctx.fillStyle = f.label.ink;
-  ctx.font = display(H * 0.075);
-  ctx.fillText('Homemade', u(0.25), H * 0.4);
-  ctx.fillText('Salsa', u(0.25), H * 0.49);
-  ctx.font = body(H * 0.04, 700);
-  ctx.fillText('SMALL BATCH · HECHO A MANO', u(0.25), H * 0.58);
-  ctx.strokeStyle = f.accent;
-  ctx.lineWidth = H * 0.012;
-  ctx.beginPath();
-  ctx.arc(u(0.25), H * 0.46, H * 0.25, Math.PI * 1.15, Math.PI * 1.85);
-  ctx.stroke();
-  ctx.font = body(H * 0.038, 500);
-  ctx.fillText('250 mL', u(0.25), H * 0.7);
-
-  // Right panel: ingredients
-  ctx.textAlign = 'left';
-  ctx.font = body(H * 0.04, 800);
-  const rx = u(0.66);
-  ctx.fillText('INGREDIENTS', rx, H * 0.32);
-  ctx.font = body(H * 0.036, 500);
-  let y = H * 0.4;
-  const maxW = u(0.17);
+function wrap(ctx, text, x, y, maxW, lh) {
   let line = '';
-  f.ingredients.join(', ').split(' ').forEach((word) => {
+  text.split(' ').forEach((word) => {
     const test = line ? `${line} ${word}` : word;
-    if (ctx.measureText(test).width > maxW) {
-      ctx.fillText(line, rx, y);
+    if (ctx.measureText(test).width > maxW && line) {
+      ctx.fillText(line, x, y);
       line = word;
-      y += H * 0.05;
+      y += lh;
     } else line = test;
   });
-  if (line) ctx.fillText(line, rx, y);
-  ctx.font = body(H * 0.034, 700);
-  ctx.fillText(`Made in ${brand.city}`, rx, H * 0.78);
+  if (line) ctx.fillText(line, x, y);
+  return y;
+}
 
-  // Little marigold flowers between panels
-  [0.375, 0.625].forEach((p) => {
-    const fx = u(p);
-    const fy = H * 0.5;
-    ctx.fillStyle = '#FFB01F';
-    for (let k = 0; k < 8; k++) {
-      const a = (k / 8) * Math.PI * 2;
-      ctx.beginPath();
-      ctx.arc(fx + Math.cos(a) * H * 0.04, fy + Math.sin(a) * H * 0.04, H * 0.028, 0, Math.PI * 2);
+/**
+ * Prints the label for one flavour: colour, roughness (ink is glossier
+ * than paper) and bump (paper fibre + pressed ink) maps.
+ */
+export function makeLabel(f, images, renderer, { width = 2048 } = {}) {
+  const W = width;
+  const H = Math.round(W / 3.49);
+  const k = W / 2048;
+  const c = canvas(W, H);
+  const ctx = c.getContext('2d');
+  const u = (x) => x * W;
+  const ink = f.label.ink;
+
+  // Paper with fibre and slightly aged edges
+  const fibre = fbm(256, { freq: 32, octaves: 3, seed: 3 });
+  const fc = canvas(256);
+  const fctx = fc.getContext('2d');
+  const fi = fctx.createImageData(256, 256);
+  for (let i = 0; i < 256 * 256; i++) {
+    const v = 240 + (fibre[i] - 0.5) * 22;
+    fi.data.set([v, v, v, 255], i * 4);
+  }
+  fctx.putImageData(fi, 0, 0);
+  ctx.fillStyle = f.label.paper;
+  ctx.fillRect(0, 0, W, H);
+  ctx.globalCompositeOperation = 'multiply';
+  ctx.fillStyle = ctx.createPattern(fc, 'repeat');
+  ctx.fillRect(0, 0, W, H);
+  const vg = ctx.createLinearGradient(0, 0, 0, H);
+  vg.addColorStop(0, 'rgba(150,115,80,0.9)');
+  vg.addColorStop(0.1, 'rgba(255,255,255,1)');
+  vg.addColorStop(0.9, 'rgba(255,255,255,1)');
+  vg.addColorStop(1, 'rgba(150,115,80,0.9)');
+  ctx.fillStyle = vg;
+  ctx.fillRect(0, 0, W, H);
+  ctx.globalCompositeOperation = 'source-over';
+
+  // Double rules top and bottom
+  ctx.fillStyle = ink;
+  [[0.055, 3], [0.075, 1.2], [0.92, 1.2], [0.94, 3]].forEach(([y, t]) => ctx.fillRect(0, H * y, W, t * k));
+  ctx.textBaseline = 'alphabetic';
+
+  /* Front panel */
+  const mid = u(0.5);
+  if (images.logo) {
+    const lw = u(0.2);
+    const lh = (lw * images.logo.height) / images.logo.width;
+    ctx.drawImage(images.logo, mid - lw / 2, H * 0.13, lw, lh);
+  }
+  ctx.fillStyle = ink;
+  ctx.font = FONT.display(H * 0.15);
+  ctx.textAlign = 'center';
+  ctx.fillText(f.name, mid, H * 0.54);
+  ctx.fillStyle = f.accentDeep;
+  ctx.fillRect(mid - u(0.035), H * 0.585, u(0.07), 3 * k);
+  ctx.font = FONT.caps(H * 0.05, 700);
+  spaced(ctx, f.kind.toUpperCase(), mid, H * 0.67, H * 0.012);
+  ctx.fillStyle = ink;
+  ctx.font = FONT.caps(H * 0.036, 600);
+  spaced(ctx, `HEAT ${f.heat} OF 5 · ${f.heatLabel.toUpperCase()}`, mid, H * 0.765, H * 0.008);
+  for (let i = 0; i < 5; i++) {
+    ctx.beginPath();
+    ctx.arc(mid - H * 0.12 + i * H * 0.06, H * 0.815, H * 0.013, 0, Math.PI * 2);
+    if (i < f.heat) {
+      ctx.fillStyle = f.accentDeep;
       ctx.fill();
+    } else {
+      ctx.strokeStyle = ink;
+      ctx.lineWidth = 2 * k;
+      ctx.stroke();
     }
-    ctx.fillStyle = '#E5197A';
-    ctx.beginPath();
-    ctx.arc(fx, fy, H * 0.03, 0, Math.PI * 2);
-    ctx.fill();
+  }
+  ctx.fillStyle = ink;
+  ctx.font = FONT.caps(H * 0.034, 600);
+  spaced(ctx, '250 mL · 8.5 FL OZ', u(0.42), H * 0.895, H * 0.006);
+  spaced(ctx, 'HECHO A MANO', u(0.58), H * 0.895, H * 0.006);
+
+  /* Left panel: ingredients + storage */
+  const lx = u(0.17);
+  const colW = u(0.15);
+  ctx.font = FONT.caps(H * 0.042, 700);
+  spaced(ctx, 'INGREDIENTS', lx, H * 0.2, H * 0.008, 'left');
+  ctx.font = FONT.body(H * 0.034, 500);
+  const y = wrap(ctx, f.ingredients.join(', ') + '.', lx, H * 0.27, colW, H * 0.046);
+  ctx.font = FONT.body(H * 0.03, 400);
+  wrap(ctx, 'Refrigerate after opening and enjoy within 3 weeks. No preservatives.', lx, y + H * 0.06, colW, H * 0.042);
+  ctx.font = FONT.caps(H * 0.032, 600);
+  spaced(ctx, `MADE IN ${brand.city.toUpperCase()}`, lx, H * 0.86, H * 0.006, 'left');
+
+  /* Right panel: nutrition facts */
+  const rx = u(0.665);
+  const rw = u(0.16);
+  ctx.strokeStyle = ink;
+  ctx.lineWidth = 2.5 * k;
+  ctx.strokeRect(rx, H * 0.15, rw, H * 0.62);
+  ctx.textAlign = 'left';
+  ctx.font = FONT.display(H * 0.05);
+  ctx.fillText('Nutrition Facts', rx + H * 0.02, H * 0.22);
+  ctx.font = FONT.body(H * 0.026, 500);
+  ctx.fillText('Per 2 tbsp (30 mL)', rx + H * 0.02, H * 0.262);
+  ctx.fillRect(rx, H * 0.283, rw, 7 * k);
+  const hot = f.heat > 3;
+  [['Calories', hot ? '15' : '10'], ['Fat', '0 g'], ['Sodium', '120 mg'], ['Carbohydrate', hot ? '3 g' : '2 g'], ['Sugars', hot ? '2 g' : '1 g'], ['Protein', '0 g']].forEach(([key, val], i) => {
+    const fy = H * (0.345 + i * 0.066);
+    ctx.font = FONT.body(H * 0.03, i === 0 ? 600 : 500);
+    ctx.textAlign = 'left';
+    ctx.fillText(key, rx + H * 0.02, fy);
+    ctx.textAlign = 'right';
+    ctx.fillText(val, rx + rw - H * 0.02, fy);
+    ctx.fillRect(rx + H * 0.02, fy + H * 0.02, rw - H * 0.04, 1.2 * k);
   });
+  ctx.font = FONT.caps(H * 0.03, 600);
+  spaced(ctx, `LOTE ${String(40 + f.heat * 3).padStart(3, '0')} · BEST BEFORE 2027-03`, rx, H * 0.86, H * 0.005, 'left');
 
-  return toTexture(c, renderer);
-}
-
-/** Chunky salsa texture: base colour with blobs of tomato, onion, herbs. */
-export function makeSalsaTexture(f, renderer, size = 512) {
-  const c = document.createElement('canvas');
-  c.width = c.height = size;
-  const ctx = c.getContext('2d');
-  ctx.fillStyle = f.salsa;
-  ctx.fillRect(0, 0, size, size);
-  // Seeded-ish randomness so every load looks the same.
-  let seed = f.id.length * 9301;
-  const rnd = () => ((seed = (seed * 9301 + 49297) % 233280) / 233280);
-  // Darker flecks first (char + depth), then the chunky bits on top.
-  for (let i = 0; i < 260; i++) {
-    ctx.globalAlpha = 0.18 + rnd() * 0.2;
-    ctx.fillStyle = '#000';
-    ctx.beginPath();
-    ctx.arc(rnd() * size, rnd() * size, 1 + rnd() * 4, 0, Math.PI * 2);
-    ctx.fill();
+  /* Barcode on the far edge (seen when the jar turns) */
+  let bx = u(0.862);
+  let seed = 7 + f.heat;
+  const rnd = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
+  while (bx < u(0.94)) {
+    const bw = (1 + Math.floor(rnd() * 3)) * 3 * k;
+    if (rnd() > 0.42) ctx.fillRect(bx, H * 0.3, bw, H * 0.42);
+    bx += bw + 2.5 * k;
   }
-  for (let i = 0; i < 520; i++) {
-    ctx.globalAlpha = 0.35 + rnd() * 0.5;
-    ctx.fillStyle = f.salsaBits[i % 7 === 0 ? 1 : i % 3 === 0 ? 2 : 0];
-    const x = rnd() * size;
-    const y = rnd() * size;
-    const r = (1.5 + rnd() * (i % 6 === 0 ? 6 : 3)) * (size / 512);
-    ctx.beginPath();
-    ctx.ellipse(x, y, r, r * (0.6 + rnd() * 0.6), rnd() * Math.PI, 0, Math.PI * 2);
-    ctx.fill();
+  ctx.textAlign = 'left';
+  ctx.font = FONT.body(H * 0.03, 500);
+  ctx.fillText(`6 27843 0${f.heat}1${f.heat}5 ${f.heat}`, u(0.862), H * 0.78);
+
+  // Data maps: ink is slightly glossier and pressed into the paper.
+  const px = ctx.getImageData(0, 0, W, H).data;
+  const rough = canvas(W, H);
+  const bump = canvas(W, H);
+  const rctx = rough.getContext('2d');
+  const bctx = bump.getContext('2d');
+  const rimg = rctx.createImageData(W, H);
+  const bimg = bctx.createImageData(W, H);
+  for (let i = 0, n = W * H; i < n; i++) {
+    const lum = (px[i * 4] + px[i * 4 + 1] + px[i * 4 + 2]) / 3;
+    const isInk = lum < 150;
+    const r = isInk ? 130 : 228;
+    const b = isInk ? 96 : 150 + (lum - 225) * 1.6;
+    const o = i * 4;
+    rimg.data[o] = rimg.data[o + 1] = rimg.data[o + 2] = r;
+    bimg.data[o] = bimg.data[o + 1] = bimg.data[o + 2] = b;
+    rimg.data[o + 3] = bimg.data[o + 3] = 255;
   }
-  ctx.globalAlpha = 1;
-  const tex = toTexture(c, renderer);
-  tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
-  tex.repeat.set(3, 2);
-  return tex;
+  rctx.putImageData(rimg, 0, 0);
+  bctx.putImageData(bimg, 0, 0);
+
+  return {
+    map: tex(c, { renderer }),
+    roughnessMap: tex(rough, { color: false }),
+    bumpMap: tex(bump, { color: false }),
+  };
 }
 
-/** Lid top: marigold disc with the chili mark. */
-export function makeLidTexture(images, renderer, size = 512) {
-  const c = document.createElement('canvas');
-  c.width = c.height = size;
+/** All per-flavour textures for the jar. */
+export function makeLook(f, images, renderer, { labelWidth = 2048, salsaSize = 512 } = {}) {
+  return { label: makeLabel(f, images, renderer, { width: labelWidth }), salsa: salsaMaps(f, renderer, salsaSize) };
+}
+
+/** Lid top: black enamel with the seal printed in gold foil (the metalness map marks the foil). */
+export function makeLidTextures(images, renderer, size = 512) {
+  const c = canvas(size);
   const ctx = c.getContext('2d');
-  const g = ctx.createRadialGradient(size * 0.4, size * 0.4, 0, size / 2, size / 2, size / 2);
-  g.addColorStop(0, '#FFC94D');
-  g.addColorStop(1, '#F59E0B');
-  ctx.fillStyle = g;
+  ctx.fillStyle = '#141111';
   ctx.fillRect(0, 0, size, size);
-  ctx.strokeStyle = '#22103F';
-  ctx.globalAlpha = 0.25;
-  ctx.lineWidth = size * 0.012;
-  ctx.beginPath();
-  ctx.arc(size / 2, size / 2, size * 0.42, 0, Math.PI * 2);
-  ctx.stroke();
-  ctx.globalAlpha = 1;
-  ctx.fillStyle = '#FFF3E0';
-  ctx.beginPath();
-  ctx.arc(size / 2, size / 2, size * 0.32, 0, Math.PI * 2);
-  ctx.fill();
-  if (images.mark) ctx.drawImage(images.mark, size * 0.24, size * 0.22, size * 0.52, size * 0.52);
-  return toTexture(c, renderer);
-}
-
-/** Soft round shadow that sits under the jar. */
-export function makeShadowTexture(renderer) {
-  const c = document.createElement('canvas');
-  c.width = c.height = 128;
-  const ctx = c.getContext('2d');
-  const g = ctx.createRadialGradient(64, 64, 0, 64, 64, 64);
-  g.addColorStop(0, 'rgba(34,16,63,0.55)');
-  g.addColorStop(0.5, 'rgba(34,16,63,0.22)');
-  g.addColorStop(1, 'rgba(34,16,63,0)');
-  ctx.fillStyle = g;
-  ctx.fillRect(0, 0, 128, 128);
-  return toTexture(c, renderer);
+  if (images.markGold) ctx.drawImage(images.markGold, size * 0.19, size * 0.19, size * 0.62, size * 0.62);
+  const m = canvas(size);
+  const mctx = m.getContext('2d');
+  mctx.fillStyle = '#5a5a5a';
+  mctx.fillRect(0, 0, size, size);
+  if (images.markGold) {
+    mctx.filter = 'brightness(4) grayscale(1)';
+    mctx.drawImage(images.markGold, size * 0.19, size * 0.19, size * 0.62, size * 0.62);
+  }
+  return { map: tex(c, { renderer }), metalnessMap: tex(m, { color: false }) };
 }

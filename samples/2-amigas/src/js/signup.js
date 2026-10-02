@@ -16,7 +16,7 @@ export function initSignup() {
     const valid = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value);
     input.setAttribute('aria-invalid', String(!valid));
     if (!valid) {
-      msg.textContent = 'Hmm, that email looks a little spicy. Mind checking it?';
+      msg.textContent = 'Enter a full email address, like name@example.com.';
       form.classList.remove('is-success');
       form.classList.add('is-error');
       input.focus();

@@ -6,15 +6,15 @@
  */
 import { flavours } from '../config/flavours.js';
 import { getFlavourIndex, setFlavour, onFlavourChange } from './state.js';
+import { heatPips } from './flavoursSection.js';
 
 export function createSwitcher(el) {
   el.setAttribute('role', 'radiogroup');
   el.innerHTML = flavours
     .map(
       (f, i) => `<button type="button" role="radio" class="switcher__opt" data-index="${i}" style="--opt:${f.accent}">
-        <span class="switcher__dot" aria-hidden="true"></span>
         <span class="switcher__name">${f.name}</span>
-        <span class="switcher__heat" aria-hidden="true">${'●'.repeat(f.heat)}</span>
+        ${heatPips(f.heat)}
         <span class="visually-hidden">, heat ${f.heat} of 5</span>
       </button>`
     )

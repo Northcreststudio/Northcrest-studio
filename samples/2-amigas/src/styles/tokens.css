@@ -2,75 +2,58 @@
  * ─────────────────────────────────────────────────────────────
  *  DESIGN TOKENS: change the brand colours and fonts here.
  * ─────────────────────────────────────────────────────────────
- *  Palette: "Fiesta de Noche"
- *  Rosa Mexicano pink + marigold on a deep aubergine night,
- *  with turquoise and cream to keep it fresh. Each flavour adds
- *  its own accent (see src/config/flavours.js), which is
- *  written into --accent / --accent-deep at runtime.
+ *  Layout: a product-photography studio. Full-bleed 3D stage up top,
+ *  then editorial sections on warm charcoal with brass hairlines.
+ *
+ *  This is a deliberately dark, single-theme design (like a food
+ *  photo shot on black), so there is no light-mode variant.
+ *  Each flavour adds its own accent (src/config/flavours.js), which
+ *  is written into --accent / --accent-deep at runtime.
  */
 
-/* Registering the accent lets the browser animate it smoothly
-   when the flavour changes (falls back to an instant swap). */
 @property --accent {
   syntax: '<color>';
   inherits: true;
-  initial-value: #F2452C;
-}
-@property --accent-deep {
-  syntax: '<color>';
-  inherits: true;
-  initial-value: #B3261A;
+  initial-value: #d2442b;
 }
 
 :root {
-  /* Core brand palette */
-  --rosa: #E5197A;          /* Rosa Mexicano: primary pop colour */
-  --rosa-deep: #B0105C;
-  --marigold: #FFB01F;      /* Cempasúchil marigold: highlights, lid, badges */
-  --marigold-soft: #FFD37A;
-  --noche: #22103F;         /* Deep aubergine night: text + dark sections */
-  --noche-soft: #3A2166;
-  --turquesa: #00A5A0;      /* Turquoise: cool counterpoint */
-  --turquesa-deep: #00736F; /* Turquoise dark enough for small text on cream */
-  --crema: #FFF3E0;         /* Warm cream: page background */
-  --crema-deep: #FBE3BF;
-  --chile: #F2452C;
-  --nopal: #2FA84F;
+  color-scheme: dark;
 
-  /* Flavour accent (overwritten by JS when the flavour changes) */
-  --accent: #F2452C;
-  --accent-deep: #B3261A;
+  /* Palette */
+  --carbon: #100c0a;      /* page ground: charred, warm black */
+  --carbon-2: #17110e;    /* raised surfaces */
+  --carbon-3: #221a16;    /* inputs, hover */
+  --masa: #efe5d6;        /* primary text: corn-masa cream */
+  --masa-dim: #b8ab9b;    /* secondary text */
+  --masa-faint: #8c8072;  /* captions, meta */
+  --brass: #c9a46a;       /* hairlines, small highlights */
+  --chile: #d2442b;       /* brand red (logo chile) */
+  --line: rgba(239, 229, 214, 0.12);
+  --line-strong: rgba(239, 229, 214, 0.26);
 
-  /* Semantic roles */
-  --bg: var(--crema);
-  --text: var(--noche);
-  --text-soft: #4F3B70;
-  --surface: #FFFFFF;
-  --on-dark: var(--crema);
+  /* Flavour accent (overwritten by JS) */
+  --accent: #d2442b;
+  --accent-deep: #8e2416;
 
   /* Typography */
-  --font-display: 'Bagel Fat One', 'Arial Rounded MT Bold', 'Trebuchet MS', system-ui, sans-serif;
-  --font-body: 'DM Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-display: Gloock, 'Bodoni Moda', 'Didot', Georgia, serif;
+  --font-body: 'Hanken Grotesk', 'Helvetica Neue', Arial, sans-serif;
+  --font-caps: 'Big Shoulders Text', 'Arial Narrow', 'Roboto Condensed', sans-serif;
 
-  /* Fluid type scale */
-  --fs-hero: clamp(2.9rem, 1.6rem + 6vw, 6.4rem);
-  --fs-h2: clamp(2.1rem, 1.3rem + 3.6vw, 4.2rem);
-  --fs-h3: clamp(1.4rem, 1.1rem + 1.2vw, 2rem);
-  --fs-body: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --fs-hero: clamp(2.7rem, 1.3rem + 4.6vw, 5.8rem);
+  --fs-h2: clamp(2.2rem, 1.4rem + 3.4vw, 4.4rem);
+  --fs-h3: clamp(1.45rem, 1.2rem + 1vw, 2.1rem);
+  --fs-body: clamp(1rem, 0.96rem + 0.2vw, 1.1rem);
+  --fs-small: 0.9rem;
+  --fs-caps: 0.82rem;
 
-  /* Shape + depth */
-  --radius: 22px;
-  --radius-lg: 36px;
-  --shadow-pop: 6px 6px 0 var(--noche);
-  --shadow-pop-sm: 3px 3px 0 var(--noche);
-  --shadow-soft: 0 20px 50px -20px rgba(34, 16, 63, 0.45);
-
-  /* Layout */
-  --max: 1200px;
-  --gutter: clamp(16px, 4vw, 40px);
-  --nav-h: 72px;
+  /* Shape + layout */
+  --radius: 4px;
+  --max: 1240px;
+  --gutter: clamp(16px, 4vw, 48px);
+  --nav-h: 76px;
 
   /* Motion */
-  --ease-pop: cubic-bezier(0.34, 1.56, 0.64, 1);
-  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }

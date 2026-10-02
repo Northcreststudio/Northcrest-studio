@@ -2,6 +2,8 @@
 
 A single-page brand showcase for **2 Amigas**, a homemade salsa brand started by two best friends in Calgary. It's a sales-pitch sample built by Northcrest Studio, so it's a showcase, not a store: no cart, no checkout, and no photos. Everything on the page is either built in 3D in the browser, drawn as an SVG illustration, or done in CSS.
 
+The look is product photography: a physically shaded glass jar on a stone counter under studio light, rendered live in the browser.
+
 **Stack:** [Vite](https://vitejs.dev) + plain JavaScript, [Three.js](https://threejs.org) for the 3D, and [GSAP](https://gsap.com) + ScrollTrigger for the animation. It builds to a plain static folder (`dist/`) that runs on any host.
 
 ---
@@ -24,6 +26,14 @@ To check the production build:
 npm run build      # outputs to dist/
 npm run preview    # serves dist/ at http://localhost:4173
 ```
+
+### Build for a claude.ai Artifact
+
+```bash
+npm run build:artifact   # outputs artifact/ (Three.js + GSAP load from jsDelivr)
+```
+
+Publish `artifact/index.html` with the files in `artifact/assets/` and `artifact/favicon.svg` alongside it.
 
 ## Deploy
 
@@ -74,51 +84,54 @@ You can add a fourth flavour by adding another object to the list. The switchers
 
 ### Colours
 
-The palette ("Fiesta de Noche") is set in `tokens.css`:
+The site is deliberately dark, like food shot on black. The palette is set in `tokens.css`:
 
 | Token | Hex | Used for |
 | --- | --- | --- |
-| `--rosa` | `#E5197A` | Rosa Mexicano pink: primary pop colour |
-| `--marigold` | `#FFB01F` | Cempasúchil marigold: highlights, lid, buttons |
-| `--noche` | `#22103F` | Deep aubergine: text, outlines, dark sections |
-| `--turquesa` | `#00A5A0` | Turquoise: cool counterpoint, rivers, Talavera bowl |
-| `--crema` | `#FFF3E0` | Warm cream: page background |
+| `--carbon` | `#100C0A` | Page background: charred, warm black |
+| `--carbon-2` | `#17110E` | Raised sections |
+| `--masa` | `#EFE5D6` | Main text: corn-masa cream |
+| `--masa-dim` | `#B8AB9B` | Secondary text |
+| `--brass` | `#C9A46A` | Hairlines and small highlights |
+| `--chile` | `#D2442B` | Brand red (the logo's chile) |
 
-Each flavour also brings its own accent colour: tomato red, tomatillo green and habanero orange.
+Each flavour also brings its own accent colour (roasted tomato, tomatillo, habanero). It tints the headline, the backdrop light in the 3D scene and the heat dial.
 
 ### Fonts
 
-The fonts are **Bagel Fat One** (display) and **DM Sans** (body), both from Google Fonts. To swap them, change the `<link>` in `index.html` and `--font-display` / `--font-body` in `tokens.css`.
+The fonts are **Gloock** (display serif), **Hanken Grotesk** (body) and **Big Shoulders Text** (labels and figures), all from Google Fonts. To swap them, change the `<link>` in `index.html` and the `--font-*` tokens in `tokens.css`. The jar label is painted with the same fonts.
 
 ### Logo
 
-The logo is a placeholder that Northcrest Studio designed for the pitch. To use the real one, replace `src/assets/logo.svg` and `src/assets/logo-mark.svg` and keep the same file names. That one swap updates the nav, the footer, the loader, the story illustration, the **3D jar label** and the jar lid. For the cleanest result on the 3D label, give the new SVG explicit `width`/`height` attributes and outline any text (convert it to paths). The current wordmark is already outlined.
+The logo is a concept that Northcrest Studio designed for the pitch: a seal with two crossed chiles and "Hecho a mano · Calgary · Est. 2025" around the ring, plus a serif wordmark. All of its text is outlined (converted to paths).
 
-The wordmark switches to cream on dark backgrounds through the CSS variable `--logo-ink`. To keep that behaviour in a new logo, give its ink-coloured shapes `class="amg-ink"`.
+To use the real logo, replace `src/assets/logo.svg` and `src/assets/logo-mark.svg` and keep the same file names. That one swap updates the nav, the footer, the loader, the **printed jar label** and the gold seal on the lid. For the cleanest result, give the new SVG explicit `width`/`height` attributes and outline its text.
+
+Colours follow two CSS variables: ink shapes use `fill:var(--logo-ink,#1C1411)` and the red chile uses `var(--logo-accent,#B3311E)`. Keep those exact strings in a new logo if you want it to switch to cream on dark backgrounds and print in gold on the lid.
 
 ---
 
 ## What's on the page
 
-1. **Loader**: a little jar fills with salsa while the 3D warms up. It never shows for less than 0.9 s or more than 9 s.
-2. **Hero**: a procedural Three.js jar (lathe-built glass with a fresnel edge, salsa, a canvas-painted label using the real logo, and a knurled lid). Drag it to spin it, with inertia. The flavour switcher spins the jar, swaps the label and salsa at the blur point, squashes the jar, fires a fountain of that flavour's ingredients, and re-tints the page.
-3. **Exploding ingredients**: one sticky WebGL canvas spans the hero and a tall scroll section. As you scroll, the lid pops, ingredients burst out, orbit the jar, then dive back in and the lid closes. Captions tell the story along the way.
-4. **Flavours**: three jar cards (an accessible tab list) and a detail panel with an SVG heat gauge. The needle springs into place, canvas flames scale with the heat, and at 5/5 the gauge wobbles.
-5. **Our Story**: placeholder copy, an illustrated recipe card and molcajete, a spinning "Hecho en Calgary" stamp, and milestones.
-6. **Chip-dip**: drag the tortilla chip into the Talavera bowl. The chip slides *between* the bowl's back and front layers, so it really looks dunked. You get a splash, a coated chip, a per-flavour message, CRUNCH!, and a fresh chip. A "Dip the chip" button does the same for keyboard users.
-7. **Recipes**: four illustrated idea cards that tilt on hover. Each "Try it with…" button selects that flavour.
+1. **Loader**: the seal mark turns while the scene builds, with a real progress figure.
+2. **Hero**: the jar on a honed basalt counter, under a studio softbox environment, a key spotlight with soft shadows and a coloured gel glow behind. The glass refracts (transmission, IOR 1.5). The salsa is wet and chunky. The paper label is printed from the logo with ingredients, a nutrition panel, a lot number and a barcode, and the lid is knurled steel with a gold seal. Drag to turn the jar. Changing flavour turns the jar until its unlabelled back faces you, swaps the salsa and label there, and brings it round.
+3. **Ingredients on scroll**: the lid unscrews and lifts, then tomatoes (whole and halved), chiles, onion halves, cilantro, lime wheels, garlic, mango, tomatillos and tortilla chips rise out in slow motion. They hang in the air while the camera circles, then sink back in. Everything is built and textured in code.
+4. **Flavours**: product shots of each jar (rendered by the 3D scene at load), a detail panel, and a heat dial with a brushed-steel bezel, a spring-damped needle, a Scoville readout and a real-time flame shader. At 5/5 the needle buzzes against the stop and the dial trembles.
+5. **Our Story**: placeholder copy beside a rendered group shot of all three jars with produce, plus a timeline.
+6. **Dip a chip**: a 3D stoneware bowl on a walnut board. Drag the tortilla chip in, and the salsa coat climbs as far as the chip goes under. Droplets fly and land on the board, ripples spread, and letting go eats the chip. A "Dip the chip" button does it for keyboard users.
+7. **Recipes**: four idea cards, each linked to the salsa it pairs with.
 8. **Where to buy**: placeholder Calgary markets and pop-ups linked to pins on a stylised map.
-9. **Contact**: a front-end-only signup form with validation, plus the wholesale/catering line and social icons.
+9. **Contact**: a front-end-only signup form with validation, plus wholesale details with copy buttons and social links.
 10. **Footer**: logo, links, and "Website by Northcrest Studio".
 
 ## Performance, accessibility and motion
 
-- **3D loads lazily.** Three.js is in its own chunk (~150 KB gzipped) and loads after the page paints. The whole site ships about 215 KB of gzipped JS.
-- **On phones**, the device pixel ratio is capped (1.5× on phones, 2× on desktop), and phones get fewer ingredients (14 vs 26), smaller textures, lower-poly geometry, no antialiasing on low-power devices, and about 45% fewer particles.
+- **3D loads lazily.** Three.js loads after the page paints, and the chip-dip scene only builds when you scroll near it. Both scenes stop rendering when off screen, and the dip scene renders only while something is moving.
+- **On phones**, the device pixel ratio is capped (1.5× on phones, 2× on desktop). Phones also get fewer ingredients (12 vs 22), smaller textures and shadow maps, lower-poly geometry and fewer droplets. Low-power devices use a fresnel glass shader instead of the extra refraction pass, and skip antialiasing.
 - **Rendering pauses when off screen.** The WebGL loop, the flames and the splash only run while they're visible and the tab is open.
 - **Touch works with scrolling.** Horizontal drags spin the jar and vertical swipes still scroll the page (`touch-action: pan-y`). The chip uses `touch-action: none` so it can be dragged freely.
-- **`prefers-reduced-motion`** turns off auto-spin, the lid pop, flight paths, orbiting, wobble, the marquee, sways and parallax. The ingredients simply fade in around the jar instead, and transitions become instant.
-- **No WebGL?** An illustrated SVG jar takes the 3D jar's place.
+- **`prefers-reduced-motion`** turns off the slow turn, the lid, the flight paths, the camera orbit, the needle overshoot and buzz, and the tremble. The ingredients simply appear around the jar instead, and transitions become instant.
+- **No WebGL?** The page stays fully readable without the 3D scenes.
 - **Keyboard and screen readers:**
   - The flavour switchers are ARIA radio groups (arrow keys, Home/End) and the cards are a tab list.
   - The heat gauge is a `role="meter"` with a value text.
@@ -131,6 +144,7 @@ The wordmark switches to cream on dark backgrounds through the CSS variable `--l
 samples/2-amigas/
 ├── index.html              page structure (text is filled from config)
 ├── netlify.toml, vercel.json
+├── scripts/make-artifact.mjs
 ├── public/favicon.svg
 └── src/
     ├── main.js             entry: renders sections, boots 3D, loader
@@ -143,13 +157,17 @@ samples/2-amigas/
     └── js/
         ├── state.js        shared "current flavour" store
         ├── switcher.js, nav.js, sections.js, reveal.js, signup.js
-        ├── flavoursSection.js   cards + heat meter + flames
-        ├── chipDip.js           drag, splash, crunch
-        ├── illustrations.js     all SVG art (papel picado, bowl, icons, map…)
+        ├── flavoursSection.js   product cards + heat dial
+        ├── flame.js             real-time flame shader (raw WebGL)
+        ├── chipDip.js           dip section text, counter, button
+        ├── illustrations.js     map + social icons
         └── three/
-            ├── stage.js         renderer, scroll choreography, drag-to-spin
-            ├── jar.js           jar geometry + painted label/lid textures
-            └── ingredients.js   procedural tomatoes, chilies, limes…
+            ├── stage.js         studio set, scroll choreography, drag-to-turn, product shots
+            ├── jar.js           jar geometry, printed label, lid
+            ├── ingredients.js   procedural tomatoes, chiles, onion, lime…
+            ├── chip.js          tortilla chip + salsa-coat shader
+            ├── dip.js           bowl scene, droplets, ripples, crumbs
+            └── textures.js      noise, stone, wood, salsa, studio lighting
 ```
 
 ## Placeholder content to confirm with the client

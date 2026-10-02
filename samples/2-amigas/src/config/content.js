@@ -27,44 +27,44 @@ export const nav = [
 ];
 
 export const hero = {
-  eyebrow: 'Small batch · Hecho a mano · Calgary',
-  // The headline is split so the middle word can be styled/animated.
-  headlineTop: 'Salsa made',
-  headlineAccent: 'con amor',
-  headlineBottom: 'by two amigas.',
-  body: 'Roasted, chopped, and jarred by hand in tiny batches. Pick a flavour, give the jar a spin, then scroll to see what goes inside.',
-  dragHint: 'Drag the jar to spin it',
-  scrollCue: 'Scroll to crack it open',
+  eyebrow: 'Small-batch salsa · Calgary, Alberta',
+  // The headline is split so the middle line can be set in italic.
+  headlineTop: 'Fire-roasted.',
+  headlineAccent: 'Hand-jarred.',
+  headlineBottom: 'Made by two amigas.',
+  body: 'Tomatoes and chiles blistered over open flame, chopped by hand and sealed in batches of forty jars. Choose a salsa, turn the jar, then scroll to see what goes inside.',
+  dragHint: 'Drag to turn the jar',
+  scrollCue: 'Scroll',
 };
 
 /** Captions that appear while the ingredients burst out of the jar on scroll. */
 export const explode = {
   heading: 'What goes in the jar',
   captions: [
-    { title: 'Pop the lid', text: 'Every batch starts the same way: a big pot, two friends, and the radio up loud.' },
-    { title: 'Real ingredients', text: 'Fire-roasted, hand-chopped, and nothing you cannot pronounce.' },
-    { title: 'Tiny batches', text: 'Small enough to taste every pot. Big enough to share with the neighbours.' },
-    { title: 'Back in the jar', text: 'Sealed fresh and on the market table that same week.' },
+    { title: 'Open the jar', text: 'Every batch starts with one pot, two friends and a very hot comal.' },
+    { title: 'Seven ingredients or fewer', text: 'Roasted produce, lime, garlic and salt. No thickeners, no preservatives.' },
+    { title: 'Forty jars at a time', text: 'Small enough that every pot gets tasted before it is jarred.' },
+    { title: 'Sealed the same day', text: 'Hot-filled, lidded and on the market table that week.' },
   ],
 };
 
-export const marquee = ['Hecho a mano', 'Small batch', 'No preservatives', 'Made in Calgary', 'Best friends since grade 4', 'Fire-roasted'];
+export const marquee = ['Hand-roasted on a comal', 'Batches of 40 jars', 'No preservatives', '250 mL glass jars', 'Made in Calgary'];
 
 export const flavoursSection = {
   eyebrow: 'The line-up',
-  heading: 'Three salsas. Three moods.',
-  body: 'From gentle and smoky to sweet-then-scorching. Tap a jar to see what is inside and how much fuego it packs.',
+  heading: 'Three salsas, three heat levels.',
+  body: 'From gently smoky to habanero-hot. Pick a jar to see what is in it and where it sits on the Scoville scale.',
   ingredientsLabel: 'What is inside',
   pairingLabel: 'Best with',
 };
 
 export const story = {
   eyebrow: 'Our story',
-  heading: 'Two friends, one family recipe, and a lot of chips.',
+  heading: 'Two friends and one family recipe.',
   paragraphs: [
     'Maria and Sofia met in grade four, bonded over a shared lunchbox of tortilla chips, and never really stopped snacking together. Every summer, Maria\'s abuela taught them her roasted salsa: no measuring cups, just "until it tastes right."',
     'Years later, their salsa became the thing everyone asked them to bring. Potlucks, birthdays, Stampede parties. So in 2025 they rented a commercial kitchen on weekends, printed a label, and set up a folding table at the market.',
-    'They still make every batch together, still taste every pot, and still argue (lovingly) about how much cilantro is too much. (There is no such thing.)',
+    'They still make every batch together, taste every pot, and still disagree about how much cilantro is too much.',
   ],
   // Little illustrated milestones shown beside the story.
   milestones: [
@@ -77,17 +77,17 @@ export const story = {
 };
 
 export const dip = {
-  eyebrow: 'Interactive snack break',
-  heading: 'Go on, dip a chip.',
-  body: 'Drag the chip into the bowl. Switch flavours to change the salsa (and the reaction).',
+  eyebrow: 'Taste test',
+  heading: 'Dip a chip.',
+  body: 'Drag the tortilla chip into the bowl. Change the salsa to change what you are tasting.',
   keyboardButton: 'Dip the chip',
-  idleMessage: 'The bowl is waiting...',
+  idleMessage: 'Fresh bowl, still warm from the comal.',
   counterLabel: 'Chips dipped',
 };
 
 export const recipes = {
   eyebrow: 'Recipes & pairings',
-  heading: 'Ways to eat it (besides straight from the jar).',
+  heading: 'How we eat it at home.',
   items: [
     {
       icon: 'taco',
@@ -127,7 +127,7 @@ export const recipes = {
  */
 export const findUs = {
   eyebrow: 'Where to buy',
-  heading: 'Come say hola.',
+  heading: 'Find us this week.',
   body: 'Find us at farmers markets and pop-ups around Calgary. Sample schedule shown; follow us for this week\'s spots.',
   locations: [
     { name: 'Hillhurst Sunnyside Market', type: 'Farmers market', when: 'Wednesdays · 3–7 pm', area: 'Kensington, NW', map: { x: 37, y: 33 } },
@@ -139,12 +139,12 @@ export const findUs = {
 };
 
 export const contact = {
-  eyebrow: 'Stay in the loop',
-  heading: 'Get first dibs on new batches.',
-  body: 'One friendly email a month: new flavours, market dates, and the occasional recipe. No spam, prometido.',
+  eyebrow: 'Newsletter',
+  heading: 'Hear about new batches first.',
+  body: 'One email a month with market dates, new flavours and the occasional recipe.',
   placeholder: 'you@example.com',
   button: 'Count me in',
-  success: '¡Gracias, amigo! You are on the list.',
+  success: 'Thanks. You are on the list.',
   wholesaleHeading: 'Wholesale & catering',
   wholesaleBody: 'Stocking a shop, planning an event, or feeding a crowd? We would love to hear from you.',
   socials: [
@@ -165,4 +165,4 @@ export const footer = {
 };
 
 /** Fun lines cycled on the loading screen while the 3D warms up. */
-export const loadingLines = ['Roasting tomatoes…', 'Chopping cilantro…', 'Squeezing limes…', 'Arguing about heat levels…', 'Sealing the jars…'];
+export const loadingLines = ['Roasting tomatoes', 'Charring chiles', 'Chopping cilantro', 'Sealing the jars'];

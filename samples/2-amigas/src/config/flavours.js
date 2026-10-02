@@ -10,17 +10,21 @@
  *  Field guide
  *  - id           Short unique slug (used in URLs/aria; no spaces).
  *  - name         Display name.
+ *  - kind         One-line description printed on the jar label.
  *  - heat         1 to 5. Drives the heat meter, the chili icons
  *                 and how wild the flames get (5 = wobble!).
  *  - heatLabel    Word shown next to the heat number.
+ *  - scoville     Approximate heat range in Scoville Heat Units (SHU),
+ *                 shown on the heat dial. Placeholder estimates.
  *  - accent       Main flavour colour (buttons, highlights, bg glow).
  *  - accentDeep   Darker partner of the accent (gradients, text on light).
  *  - salsa        Colour of the salsa itself in the 3D jar and bowl.
- *  - salsaBits    Colours of the chunky bits floating in the salsa.
+ *  - salsaBits    Colours of the chunky bits: [main chunk, onion/pale bit, herb].
  *  - label        Jar-label paper colour + ink colour.
  *  - ingredients3D  Which 3D ingredients burst out of the jar on scroll.
- *                 Options: tomato, tomatillo, chiliRed, chiliGreen,
- *                 habanero, onion, cilantro, lime, mango, garlic.
+ *                 Options: tomato, tomatoHalf, tomatillo, chiliRed,
+ *                 chiliGreen, habanero, onionHalf, cilantro, lime,
+ *                 mango, garlic, chip.
  *  - dipMessages  Random messages after a chip is dunked in this salsa.
  *
  *  NOTE: these are placeholder flavours. Swap in the real ones.
@@ -29,70 +33,76 @@ export const flavours = [
   {
     id: 'suave-roja',
     name: 'Suave Roja',
+    kind: 'Roasted tomato salsa',
     heat: 1,
     heatLabel: 'Mild',
+    scoville: [500, 1000],
     tagline: 'Roasted, mellow, and made for everybody.',
     description:
       'Our everyday red: vine tomatoes blistered over open flame, a little sweet onion and a squeeze of lime. ' +
       'Smoky, bright and gentle enough for the whole table, abuela included.',
     ingredients: ['Fire-roasted tomatoes', 'White onion', 'Garlic', 'Cilantro', 'Lime juice', 'Sea salt'],
     pairing: 'Warm tortilla chips and a cold horchata.',
-    accent: '#F2452C',
-    accentDeep: '#B3261A',
-    salsa: '#D8341F',
-    salsaBits: ['#F26B4E', '#FFF1D6', '#3E9D3A'],
-    label: { paper: '#FFF3E0', ink: '#22103F' },
-    ingredients3D: ['tomato', 'tomato', 'onion', 'cilantro', 'lime', 'garlic', 'chiliRed'],
+    accent: '#D2442B',
+    accentDeep: '#8E2416',
+    salsa: '#9E2416',
+    salsaBits: ['#C9442A', '#E8DCC4', '#3F6B2A'],
+    label: { paper: '#EEE4D2', ink: '#1C1411' },
+    ingredients3D: ['tomato', 'tomatoHalf', 'onionHalf', 'cilantro', 'lime', 'garlic', 'chiliRed', 'chip'],
     dipMessages: [
-      '¡Qué rico! Smooth, smoky, and totally safe for beginners.',
-      'That is a gentle hug of roasted tomato.',
-      'Mild? Yes. Boring? Never.',
+      'Smoky roasted tomato, a little sweet onion, a squeeze of lime. Gentle enough for everyone.',
+      'That char on the tomatoes is the whole point. Mild heat, big flavour.',
+      'The one people finish first at the market table.',
     ],
   },
   {
     id: 'verde-viva',
     name: 'Verde Viva',
+    kind: 'Tomatillo & jalapeño salsa',
     heat: 3,
     heatLabel: 'Medium',
+    scoville: [2500, 8000],
     tagline: 'Tangy, zippy, and very much alive.',
     description:
       'Tart tomatillos and fresh jalapeños, charred and blended with heaps of cilantro. ' +
       'A bright green kick that wakes up tacos, eggs, and anything off the grill.',
     ingredients: ['Tomatillos', 'Jalapeños', 'Cilantro', 'White onion', 'Garlic', 'Lime juice', 'Sea salt'],
     pairing: 'Carne asada tacos or a big plate of chilaquiles.',
-    accent: '#6CC24A',
-    accentDeep: '#2E7D32',
-    salsa: '#7DB63A',
-    salsaBits: ['#B9DB6A', '#FFF8E1', '#2F7A2A'],
-    label: { paper: '#FFF3E0', ink: '#22103F' },
-    ingredients3D: ['tomatillo', 'tomatillo', 'chiliGreen', 'chiliGreen', 'cilantro', 'onion', 'lime'],
+    accent: '#8DAA3E',
+    accentDeep: '#4A6420',
+    salsa: '#5F7A22',
+    salsaBits: ['#93A845', '#ECE4CC', '#2C4F1C'],
+    label: { paper: '#EEE4D2', ink: '#1C1411' },
+    ingredients3D: ['tomatillo', 'tomatillo', 'chiliGreen', 'chiliGreen', 'cilantro', 'onionHalf', 'lime', 'chip'],
     dipMessages: [
-      '¡Ándale! That tang just slapped (lovingly).',
-      'Green means go. And you went for it.',
-      'Zesty, zippy, and a little bit spicy. Like a good friend.',
+      'Bright tomatillo tang first, then the jalapeño shows up.',
+      'Fresh, sharp, and green. Built for tacos al carbón.',
+      'Medium heat that builds slowly. You will want another chip.',
     ],
   },
   {
     id: 'fuego-amiga',
     name: 'Fuego Amiga',
+    kind: 'Habanero & mango salsa',
     heat: 5,
-    heatLabel: 'Fuego',
+    heatLabel: 'Hot',
+    scoville: [100000, 350000],
     tagline: 'Sweet mango up front, habanero fire behind.',
     description:
       'Ripe mango and orange habaneros, roasted until jammy and blended with lime and a pinch of salt. ' +
       'Fruity for a second, then it lights you up. Handle with love (and maybe milk).',
     ingredients: ['Habanero peppers', 'Ripe mango', 'Roasted red pepper', 'Garlic', 'Lime juice', 'Cane sugar', 'Sea salt'],
     pairing: 'Grilled shrimp, fish tacos, or a brave bag of chips.',
-    accent: '#FF7A00',
-    accentDeep: '#C2410C',
-    salsa: '#F06A0F',
-    salsaBits: ['#FFB547', '#FFD86B', '#C2410C'],
-    label: { paper: '#FFF3E0', ink: '#22103F' },
-    ingredients3D: ['habanero', 'habanero', 'mango', 'mango', 'garlic', 'lime', 'chiliRed'],
+    accent: '#E2701F',
+    accentDeep: '#9A3D0E',
+    salsa: '#C9521A',
+    salsaBits: ['#EE8A2E', '#F4B649', '#7E2610'],
+    label: { paper: '#EEE4D2', ink: '#1C1411' },
+    ingredients3D: ['habanero', 'habanero', 'mango', 'mango', 'garlic', 'lime', 'cilantro', 'chip'],
     dipMessages: [
-      '¡FUEGO! Your chip has entered another dimension.',
-      'Sweet... sweet... ¡AY AY AY!',
-      'Respect. Most chips do not survive that.',
+      'Ripe mango for about two seconds. Then the habanero arrives.',
+      'Fruity, then fierce. Keep a glass of milk nearby.',
+      'Habanero heat that lingers. Respect.',
     ],
   },
 ];

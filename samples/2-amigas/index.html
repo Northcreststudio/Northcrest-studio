@@ -3,63 +3,44 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>2 Amigas · Homemade Salsa</title>
-    <meta name="description" content="2 Amigas: small-batch homemade salsa from Calgary, made by two best friends. Mild, medium, and fuego." />
-    <meta name="theme-color" content="#22103F" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>2 Amigas Salsa</title>
+    <meta name="description" content="2 Amigas: small-batch, fire-roasted salsa from Calgary, made by two best friends." />
+    <meta name="theme-color" content="#110D0B" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta property="og:title" content="2 Amigas Salsa" />
+    <meta property="og:description" content="Fire-roasted, hand-jarred salsa from Calgary." />
 
-    <!-- Social share preview (shown when the link is pasted into a chat) -->
-    <meta property="og:title" content="2 Amigas · Homemade Salsa" />
-    <meta property="og:description" content="Small-batch salsa made con amor by two best friends in Calgary." />
-    <meta property="og:type" content="website" />
-
-    <!-- Fonts: Bagel Fat One (display) + DM Sans (body). Change here and in src/styles/tokens.css -->
+    <!-- Fonts: Gloock (display serif), Hanken Grotesk (body), Big Shoulders Text (labels + figures).
+         Change here and in src/styles/tokens.css -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=DM+Sans:ital,opsz,wght@0,9..40,400..800;1,9..40,400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Text:wght@500;600;700&family=Gloock&family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;1,400&display=swap"
     />
 
     <script type="module" src="/src/main.js"></script>
   </head>
   <body>
-    <!-- ── Loading screen (hidden once the 3D jar is ready) ── -->
+    <!-- ── Loading screen ── -->
     <div class="loader" id="loader" role="status" aria-live="polite">
-      <div class="loader__art" aria-hidden="true">
-        <svg class="loader__jar" viewBox="0 0 120 150">
-          <defs>
-            <clipPath id="loader-jar-clip">
-              <path d="M24 44c0-6 4-10 10-12V24h52v8c6 2 10 6 10 12v86c0 8-6 14-14 14H38c-8 0-14-6-14-14z" />
-            </clipPath>
-          </defs>
-          <g clip-path="url(#loader-jar-clip)">
-            <rect x="0" y="0" width="120" height="150" fill="#FFF3E0" opacity=".14" />
-            <g class="loader__salsa">
-              <path d="M0 60 Q15 52 30 60 T60 60 T90 60 T120 60 T150 60 V150 H0Z" fill="var(--rosa)" />
-              <circle cx="40" cy="95" r="5" fill="#FFB01F" />
-              <circle cx="72" cy="112" r="4" fill="#2FA84F" />
-              <circle cx="58" cy="80" r="3" fill="#FFF3E0" />
-              <circle cx="84" cy="88" r="4" fill="#FFB01F" />
-            </g>
-          </g>
-          <path d="M24 44c0-6 4-10 10-12V24h52v8c6 2 10 6 10 12v86c0 8-6 14-14 14H38c-8 0-14-6-14-14z" fill="none" stroke="#FFF3E0" stroke-width="5" />
-          <rect class="loader__lid" x="28" y="8" width="64" height="18" rx="6" fill="#FFB01F" stroke="#FFF3E0" stroke-width="4" />
-        </svg>
-        <div class="loader__mark" data-logo-mark></div>
+      <div class="loader__mark" data-logo-mark></div>
+      <div class="loader__meta">
+        <span class="loader__line" data-loader-line>Roasting tomatoes</span>
+        <span class="loader__pct" data-loader-pct>0%</span>
       </div>
-      <p class="loader__line" data-loader-line>Roasting tomatoes…</p>
       <div class="loader__bar" aria-hidden="true"><span data-loader-bar></span></div>
     </div>
 
     <a class="skip-link" href="#main">Skip to content</a>
+    <div class="grain" aria-hidden="true"></div>
 
     <!-- ── Nav ── -->
     <header class="nav" id="nav">
       <div class="nav__inner">
         <a class="nav__logo" href="#top" aria-label="2 Amigas, back to top" data-logo></a>
         <button class="nav__burger" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
-          <span></span><span></span><span></span>
+          <span></span><span></span>
         </button>
         <nav class="nav__menu" id="nav-menu" aria-label="Main">
           <ul class="nav__links" data-nav></ul>
@@ -69,20 +50,16 @@
 
     <main id="main">
       <!--
-        ── 3D stage: hero + "exploding ingredients" ──
-        The canvas sits in a sticky layer behind both sections, so the
-        same jar stays on screen while you scroll from the hero into
-        the ingredient burst.
+        ── 3D stage: hero + ingredient burst ──
+        One WebGL canvas sits in a sticky layer behind both sections.
+        Scroll progress through .stage drives the camera and ingredients.
       -->
       <div class="stage" id="top">
         <div class="stage__sticky">
-          <div class="stage__bg" aria-hidden="true">
-            <div class="stage__glow"></div>
-            <div class="stage__sun"></div>
-            <div class="papel papel--hero" data-papel="66"></div>
-          </div>
-          <div class="stage__canvas" id="jar-canvas" role="img" aria-label="A 3D jar of 2 Amigas salsa. Drag to spin it."></div>
+          <div class="stage__canvas" id="jar-canvas" role="img" aria-label="A 3D jar of 2 Amigas salsa on a stone counter. Drag to turn it."></div>
+          <div class="stage__shade" aria-hidden="true"></div>
           <ol class="explode-captions" data-explode-captions aria-label="What goes in the jar"></ol>
+          <div class="explode-progress" aria-hidden="true"><span data-explode-bar></span></div>
         </div>
 
         <section class="hero" aria-labelledby="hero-title">
@@ -91,7 +68,7 @@
               <p class="eyebrow" data-hero-eyebrow></p>
               <h1 class="hero__title" id="hero-title">
                 <span data-hero-top></span>
-                <span class="hero__accent" data-hero-accent></span>
+                <em class="hero__accent" data-hero-accent></em>
                 <span data-hero-bottom></span>
               </h1>
               <p class="hero__body" data-hero-body></p>
@@ -99,16 +76,16 @@
             <!-- Invisible box the 3D jar lines up with in the hero -->
             <div class="hero__jar-slot" data-jar-slot aria-hidden="true"></div>
             <div class="hero__controls">
-              <div class="switcher switcher--hero" data-switcher aria-label="Choose a salsa flavour"></div>
+              <div class="switcher" data-switcher aria-label="Choose a salsa"></div>
               <p class="hero__hint" data-hero-hint>
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16M4 12l4-4M4 12l4 4M20 12l-4-4M20 12l-4 4" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h18M3 12l4-4M3 12l4 4M21 12l-4-4M21 12l-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
                 <span></span>
               </p>
             </div>
           </div>
           <a class="scroll-cue" href="#explode" data-scroll-cue>
+            <span class="scroll-cue__line" aria-hidden="true"></span>
             <span class="scroll-cue__text"></span>
-            <span class="scroll-cue__chip" aria-hidden="true"></span>
           </a>
         </section>
 
@@ -117,8 +94,8 @@
         </section>
       </div>
 
-      <!-- ── Marquee ribbon ── -->
-      <div class="marquee" aria-hidden="true"><div class="marquee__track" data-marquee></div></div>
+      <!-- ── Facts ribbon ── -->
+      <div class="ticker" aria-label="About the salsa"><ul data-marquee></ul></div>
 
       <!-- ── Flavours ── -->
       <section class="section flavours" id="flavours" aria-labelledby="flavours-title">
@@ -126,10 +103,10 @@
           <header class="section-head">
             <p class="eyebrow" data-fl-eyebrow></p>
             <h2 id="flavours-title" data-fl-heading></h2>
-            <p data-fl-body></p>
+            <p class="section-head__body" data-fl-body></p>
           </header>
 
-          <div class="flavour-cards" role="tablist" aria-label="Salsa flavours" data-flavour-tabs></div>
+          <div class="flavour-cards" role="tablist" aria-label="Salsas" data-flavour-tabs></div>
 
           <div class="flavour-detail" role="tabpanel" id="flavour-panel" tabindex="0" data-flavour-panel>
             <div class="flavour-detail__copy">
@@ -137,36 +114,23 @@
               <h3 class="flavour-detail__name" data-fd-name></h3>
               <p class="flavour-detail__tagline" data-fd-tagline></p>
               <p class="flavour-detail__desc" data-fd-desc></p>
-              <h4 class="flavour-detail__label" data-fd-ing-label></h4>
-              <ul class="pill-list" data-fd-ingredients></ul>
-              <div class="pairing">
-                <span class="pairing__icon" aria-hidden="true">
-                  <svg viewBox="0 0 48 48"><path d="M8 40 24 6l16 34z" fill="#F4C05A" stroke="#22103F" stroke-width="3" stroke-linejoin="round" /><circle cx="22" cy="26" r="2" fill="#C98A2B" /><circle cx="28" cy="32" r="1.8" fill="#C98A2B" /><circle cx="19" cy="34" r="1.6" fill="#C98A2B" /></svg>
-                </span>
-                <p><strong data-fd-pair-label></strong> <span data-fd-pairing></span></p>
-              </div>
+              <dl class="specs">
+                <div><dt data-fd-ing-label></dt><dd><ul class="ing-list" data-fd-ingredients></ul></dd></div>
+                <div><dt data-fd-pair-label></dt><dd data-fd-pairing></dd></div>
+              </dl>
             </div>
 
-            <!-- Heat meter -->
+            <!-- Heat dial -->
             <div class="heat" data-heat>
               <div class="heat__stage">
                 <canvas class="heat__flames" data-heat-flames aria-hidden="true"></canvas>
-                <svg class="heat__gauge" viewBox="0 0 300 180" role="meter" aria-valuemin="1" aria-valuemax="5" data-heat-gauge>
-                  <title>Heat meter</title>
-                  <g data-heat-segments></g>
-                  <g class="heat__ticks" data-heat-ticks></g>
-                  <g class="heat__needle" data-heat-needle>
-                    <path d="M150 158 L146 154 L150 46 L154 154 Z" fill="#22103F" />
-                    <circle cx="150" cy="156" r="15" fill="#22103F" />
-                    <circle cx="150" cy="156" r="6" fill="var(--marigold)" />
-                  </g>
-                </svg>
+                <canvas class="heat__dial" data-heat-dial role="meter" aria-valuemin="1" aria-valuemax="5" aria-label="Heat level"></canvas>
               </div>
               <div class="heat__readout">
-                <span class="heat__num" data-heat-num>1</span><span class="heat__of">/5</span>
-                <span class="heat__word" data-heat-word>Mild</span>
+                <div><span class="heat__label">Heat</span><span class="heat__num"><span data-heat-num>1</span><small>/5</small></span></div>
+                <div><span class="heat__label">Scoville</span><span class="heat__shu" data-heat-shu></span></div>
+                <div><span class="heat__label">Rating</span><span class="heat__word" data-heat-word></span></div>
               </div>
-              <div class="heat__chilis" data-heat-chilis aria-hidden="true"></div>
             </div>
           </div>
         </div>
@@ -174,43 +138,40 @@
 
       <!-- ── Our Story ── -->
       <section class="section story" id="story" aria-labelledby="story-title">
-        <div class="papel papel--divider" data-papel="58" aria-hidden="true"></div>
         <div class="container story__grid">
-          <div class="story__art" aria-hidden="true" data-story-art></div>
           <div class="story__copy">
             <p class="eyebrow" data-st-eyebrow></p>
             <h2 id="story-title" data-st-heading></h2>
-            <div data-st-paragraphs></div>
+            <div class="story__text" data-st-paragraphs></div>
             <p class="story__sig" data-st-sig></p>
           </div>
+          <figure class="story__shot">
+            <div class="story__img" data-group-shot></div>
+            <figcaption>All three salsas, 250 mL each.</figcaption>
+          </figure>
         </div>
         <div class="container">
           <ol class="milestones" data-st-milestones></ol>
         </div>
       </section>
 
-      <!-- ── Chip-dip interactive ── -->
+      <!-- ── Chip-dip ── -->
       <section class="section dip" id="dip" aria-labelledby="dip-title">
         <div class="container dip__grid">
           <div class="dip__copy">
             <p class="eyebrow" data-dip-eyebrow></p>
             <h2 id="dip-title" data-dip-heading></h2>
-            <p data-dip-body></p>
-            <div class="switcher switcher--dip" data-switcher aria-label="Choose the salsa in the bowl"></div>
-            <div class="dip__bubble" aria-live="polite" data-dip-message></div>
+            <p class="dip__intro" data-dip-body></p>
+            <div class="switcher switcher--compact" data-switcher aria-label="Choose the salsa in the bowl"></div>
+            <blockquote class="dip__note" aria-live="polite" data-dip-message></blockquote>
             <div class="dip__meta">
-              <button class="btn btn--accent" type="button" data-dip-button></button>
-              <p class="dip__count"><span data-dip-count-label></span>: <strong data-dip-count>0</strong></p>
+              <button class="btn" type="button" data-dip-button></button>
+              <p class="dip__count"><span data-dip-count-label></span> <strong data-dip-count>0</strong></p>
             </div>
           </div>
-          <div class="dip__play" data-dip-play>
-            <canvas class="dip__fx" data-dip-fx aria-hidden="true"></canvas>
-            <!-- The chip sits between the back and front of the bowl, so it looks dunked -->
-            <div class="dip__bowl dip__bowl--back" data-dip-bowl aria-hidden="true"></div>
-            <div class="dip__chip" data-dip-chip role="img" aria-label="Tortilla chip. Drag it into the salsa bowl, or use the Dip the chip button."></div>
-            <div class="dip__bowl dip__bowl--front" data-dip-bowl-front aria-hidden="true"></div>
-            <p class="dip__drag-hint" aria-hidden="true" data-dip-hint>Drag me!</p>
-            <p class="dip__crunch" aria-hidden="true" data-dip-crunch>CRUNCH!</p>
+          <div class="dip__play" data-dip-play role="img" aria-label="A ceramic bowl of salsa and a tortilla chip. Drag the chip into the bowl, or use the Dip the chip button.">
+            <p class="dip__hint" aria-hidden="true" data-dip-hint>Drag the chip</p>
+            <p class="dip__crunch" aria-hidden="true" data-dip-crunch>Crunch.</p>
           </div>
         </div>
       </section>
@@ -218,7 +179,7 @@
       <!-- ── Recipes ── -->
       <section class="section recipes" id="recipes" aria-labelledby="recipes-title">
         <div class="container">
-          <header class="section-head">
+          <header class="section-head section-head--left">
             <p class="eyebrow" data-rc-eyebrow></p>
             <h2 id="recipes-title" data-rc-heading></h2>
           </header>
@@ -236,14 +197,13 @@
             <ul class="locations" data-locations></ul>
           </div>
           <figure class="map" data-map>
-            <figcaption class="map__note">Stylised map placeholder, not to scale</figcaption>
+            <figcaption class="map__note">Calgary · stylised, not to scale</figcaption>
           </figure>
         </div>
       </section>
 
       <!-- ── Contact ── -->
       <section class="section contact" id="contact" aria-labelledby="contact-title">
-        <div class="papel papel--divider papel--on-dark" data-papel="58" aria-hidden="true"></div>
         <div class="container contact__grid">
           <div class="contact__signup">
             <p class="eyebrow" data-ct-eyebrow></p>
@@ -252,17 +212,17 @@
             <form class="signup" data-signup novalidate>
               <label class="visually-hidden" for="signup-email">Email address</label>
               <input id="signup-email" name="email" type="email" autocomplete="email" required data-signup-input />
-              <button class="btn btn--marigold" type="submit" data-signup-button></button>
+              <button class="btn btn--solid" type="submit" data-signup-button></button>
               <p class="signup__msg" role="status" aria-live="polite" data-signup-msg></p>
             </form>
           </div>
           <aside class="contact__card">
             <h3 data-ct-wholesale-heading></h3>
             <p data-ct-wholesale-body></p>
-            <p class="contact__lines">
-              <a data-ct-wholesale-email></a>
-              <a data-ct-phone></a>
-            </p>
+            <dl class="contact__lines">
+              <div><dt>Email</dt><dd data-ct-wholesale-email></dd></div>
+              <div><dt>Phone</dt><dd data-ct-phone></dd></div>
+            </dl>
             <ul class="socials" data-socials></ul>
           </aside>
         </div>

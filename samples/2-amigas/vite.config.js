@@ -1,12 +1,17 @@
 import { defineConfig } from 'vite';
 
-// base: './' makes the build work from any folder or sub-path
-// (Netlify, Vercel, a /samples/2-amigas/ path, even opened locally via preview).
-export default defineConfig({
-  base: './',
+// `npm run build`          → dist/           everything bundled (Netlify / Vercel)
+// `npm run build:artifact` → dist-artifact/  Three.js + GSAP left external and
+//                            loaded from jsDelivr via an import map (see scripts/make-artifact.mjs)
+const isCdnLib = (id) => id === 'three' || id.startsWith('three/') || id === 'gsap' || id.startsWith('gsap/');
+
+export default defineConfig(({ mode }) => ({
+  base: './', // relative paths: the build works from any folder or sub-path
   build: {
     target: 'es2020',
-    assetsInlineLimit: 0, // keep the logo SVGs as real files (easy to find + swap)
+    assetsInlineLimit: 0,
     chunkSizeWarningLimit: 900,
+    outDir: mode === 'artifact' ? 'dist-artifact' : 'dist',
+    rollupOptions: mode === 'artifact' ? { external: isCdnLib } : {},
   },
-});
+}));
