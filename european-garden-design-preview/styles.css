@@ -341,7 +341,7 @@ fieldset.field { border: 0; padding: 0; }
 .form-done h3 { font-size: 2rem; }
 .form-done p { color: var(--ink-soft); }
 .form-done .btn { margin-top: 18px; }
-@media (min-width: 640px) { .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; } .form, .form-done { padding: 36px; } .checks { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 640px) { .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; } .form, .form-done { padding: 36px; } }
 @media (min-width: 1000px) { .consult-inner { grid-template-columns: .8fr 1.2fr; gap: 64px; align-items: start; } .form-done { grid-column: 2; } .checks { grid-template-columns: repeat(2, 1fr); } }
 
 /* Footer */
