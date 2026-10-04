@@ -24,7 +24,7 @@ The only facts the website may use. First collected 2026-09-30, updated the same
 - Retired: Rent-a-Site and Visibility.
 
 ## Pay once instead (shown tucked away)
-- Starter Site from $999 (up to 5 pages), Growth Site from $1,999 (6 to 15 pages, local SEO), Acquisition Site from $3,999 (service and area pages). 50% to start, 50% at launch. Care plan $79/mo for hosting, backups and edits. Brand Identity from $399.
+- Starter Site from $999 (up to 5 pages), Growth Site from $1,999 (6 to 15 pages, local SEO), Acquisition Site from $3,999 (service and area pages). Paid in full upfront, after the free homepage design. Care plan $79/mo for hosting, backups and edits. Brand Identity from $399.
 
 ## Timeline
 - Live in 1 to 7 business days once we have photos and details. Premium with a custom logo: up to 10.
@@ -66,7 +66,7 @@ The only facts the website may use. First collected 2026-09-30, updated the same
 
 ## Added 2026-10-01 (trades redesign, Swiss Noir)
 - Positioning: "the website studio for Calgary trades". Lead trades: roofing; landscaping and snow removal; plumbing, heating and HVAC; electrical; renovations, basements, decks and fences; painting, cleaning and home services. Also framing and general contracting.
-- Pay once and own it is the main sell (goal: cash upfront, then Care at $79/month). 50% to start, 50% at launch; packages under $500 paid in full upfront.
+- Pay once and own it is the main sell (goal: cash upfront, then Care at $79/month). Paid in full upfront, after the free homepage design.
 - Websites to own: Trades Growth Site $1,999 (most popular); Trades Business Launch Kit $1,999; Trades Starter Site $999; Website Rescue $999; Trades Acquisition Site $3,999 (date confirmed in writing).
 - Recommended bundle: Own It + Year of Care $2,499 (Trades Growth Site + 12 months of Care, prepaid, saves $448).
 - Quick wins: Google Profile Tune-Up $149; Google Profile Pro Setup $399 (credited toward a site within 30 days); Review Starter Kit $249; Job Site Photo Day $449, drone shots included; Trades Print Pack $299.
