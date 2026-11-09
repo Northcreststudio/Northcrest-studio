@@ -1195,6 +1195,15 @@ var DISCOUNT_CODES = {
   'WELCOME10': { percent: 10, applies: 'all' }
 };
 
+// PRIVATE DISCOUNT CODES: these work the same way, but the code itself never appears in the page.
+// Each one is stored as a SHA-256 fingerprint of the code in capitals. To add one, run
+//   printf YOURCODE | sha256sum
+// in a terminal and paste the result as the key. Keep your own list of which code is which somewhere
+// private: don't write the codes in here, because anyone can read this page's source.
+var PRIVATE_DISCOUNT_CODES = {
+  'dfe2a0ec0dae50087c1e54b7896eb4d40128dc52c01ba71eaf53de6231caca4b': { percent: 20, applies: 'all' }
+};
+
 (function () {
   'use strict';
   var $ = function (s, r) { return (r || document).querySelector(s); };
@@ -1331,19 +1340,33 @@ var DISCOUNT_CODES = {
   function off(n, kind) { return codeApplies(kind) ? Math.round(n * (100 - discount.percent) / 100) : n; }
   (function () {
     var ins = $$('[data-code-in]'), msgs = $$('[data-code-msg]');
-    function lookup(raw) {
-      var code = String(raw || '').replace(/\s+/g, '').toUpperCase(), d = null;
-      if (!code) return { code: '' };
-      Object.keys(DISCOUNT_CODES).forEach(function (k) { if (k.toUpperCase() === code) d = DISCOUNT_CODES[k]; });
+    function sha256(text) {
+      if (!window.crypto || !crypto.subtle) return Promise.resolve('');
+      return crypto.subtle.digest('SHA-256', new TextEncoder().encode(text)).then(function (buf) {
+        return [].map.call(new Uint8Array(buf), function (b) { return ('0' + b.toString(16)).slice(-2); }).join('');
+      }, function () { return ''; });
+    }
+    function check(code, d) {
       if (!d || !(d.percent > 0 && d.percent < 100)) return { code: code, error: 'That code isn’t valid. Check the spelling and try again.' };
       if (d.expires && new Date() > new Date(d.expires + 'T23:59:59')) return { code: code, error: 'That code has expired.' };
       return { code: code, percent: d.percent, applies: d.applies === 'once' || d.applies === 'monthly' ? d.applies : 'all' };
     }
+    function lookup(raw) {
+      var code = String(raw || '').replace(/\s+/g, '').toUpperCase(), d = null;
+      if (!code) return Promise.resolve({ code: '' });
+      Object.keys(DISCOUNT_CODES).forEach(function (k) { if (k.toUpperCase() === code) d = DISCOUNT_CODES[k]; });
+      if (d) return Promise.resolve(check(code, d));
+      return sha256(code).then(function (h) { return check(code, h && PRIVATE_DISCOUNT_CODES[h]); });
+    }
+    var latest = 0;
     function label(d) {
       return d.percent + '% off ' + (d.applies === 'once' ? 'pay-once packages and setup' : d.applies === 'monthly' ? 'monthly plans' : 'every package');
     }
     function apply(raw, source) {
-      var r = lookup(raw);
+      var n = ++latest;
+      lookup(raw).then(function (r) { if (n === latest) show(r, source); });
+    }
+    function show(r, source) {
       discount = r.percent ? r : null;
       // A good code fills every code field. A bad one stays where it was typed, so it can be fixed.
       ins.forEach(function (i) { i.value = r.percent ? r.code : i === source ? i.value : ''; });
