@@ -16,7 +16,7 @@ The only facts the website may use. First collected 2026-09-30, updated the same
 ## Monthly plans (12-month minimum, then month to month, cancel with 30 days' notice; CAD, plus GST)
 - Starter: $129/mo, $0 setup. Up to 5 pages, mobile-first; hosting, domain and SSL; contact form to your phone; security updates and backups; 30 minutes of edits a month.
 - Growth: $199/mo, $399 setup. Everything in Starter, plus up to 10 pages; Google Business Profile + 2 posts a month; local SEO for your service area; quote or booking form; reviews section and gallery; 1 hour of edits a month.
-- Premium: $349/mo, $799 setup. Everything in Growth, plus up to 15 pages + service-area pages; custom logo; automatic Google review requests; weekly Google profile posts; monthly results report; unlimited small edits, same day.
+- Premium: $349/mo, $799 setup. Everything in Growth, plus up to 15 pages + service-area pages; custom logo; automatic Google review requests; weekly Google profile posts; monthly results report; priority edits, up to 2 hours a month.
 - Full System: $999/mo. Everything in Premium, plus managed Google and Meta ads. Ad spend billed separately.
 - Trades Launch Pack: $199/mo + $995 setup. Logo, website, Google profile, business cards and QR review cards (the kit built for Hermes).
 - Pay yearly: 2 months free on the plan.
@@ -76,3 +76,11 @@ The only facts the website may use. First collected 2026-09-30, updated the same
 - Price builder job examples: new roof about $12,000 and roof repair about $3,000 in Calgary (HomeStars); other trade job $2,500 (example).
 - Payment by card or Interac e-Transfer to hello@northcreststudio.ca. Referrals: clients get $100 or a free month; partners get $100 per signed client.
 - Site copy says "call or text", not "call or text Thomas".
+
+## Updated 2026-11-10 (package consolidation, supersedes earlier package lists)
+- Only these are offered on the site: monthly Starter $129, Growth $199, Premium $349; pay once Trades Starter Site $999 and Trades Growth Site $1,999; add-ons Brand Kit $399 (included in Premium), Google Profile Tune-Up $149, Job Site Photo Day $449; Care $79/month.
+- Care: first 3 months free when a client buys a site.
+- Starter Site doubles as the fix-your-current-site option (replaces Website Rescue), same $999.
+- Premium edits: priority edits, up to 2 hours a month (no longer unlimited same day).
+- Removed from the site (can still be quoted in conversation): Full System, Trades Launch Pack, Lead Engine, Social posting, Review Booster, Review Starter Kit, Google Profile Pro Setup, Trades Print Pack, Seasonal Promo Page, New Business Kit, Trades Acquisition Site, Own It + Year of Care, Extra page.
+- No drone photos are advertised.
