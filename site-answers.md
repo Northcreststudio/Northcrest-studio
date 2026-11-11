@@ -90,3 +90,6 @@ The only facts the website may use. First collected 2026-09-30, updated the same
 
 ## Updated 2026-11-10 (main offer)
 - Main offer: Trades Growth Site, $1,999 once, owned outright, free homepage first, Care $79/month with the first 3 months free. Shown first on the site (nav "Pricing" goes to #own); Starter Site $999 is the smaller-budget option; monthly plans follow under "Prefer monthly?".
+
+## Added 2026-11-10 (Stripe)
+- Google Profile Tune-Up has a "Buy now, $149" button linking to the Stripe payment link https://buy.stripe.com/bJe6oI3njdLQ8f57h95c403. Other Stripe links (Growth Site, Starter Site, Care Plan with 90-day trial) are sent to clients directly, not shown on the site.
