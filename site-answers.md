@@ -93,3 +93,8 @@ The only facts the website may use. First collected 2026-09-30, updated the same
 
 ## Added 2026-11-10 (Stripe)
 - Google Profile Tune-Up has a "Buy now, $149" button linking to the Stripe payment link https://buy.stripe.com/bJe6oI3njdLQ8f57h95c403. Other Stripe links (Growth Site, Starter Site, Care Plan with 90-day trial) are sent to clients directly, not shown on the site.
+
+## Updated 2026-11-10 (GST, payments, Founding offer)
+- Not charging GST (assumed not registered; under the $30,000 small-supplier threshold). All "plus GST" wording removed; prices are in CAD. Re-add if Thomas registers.
+- How do I pay: card via a Stripe checkout link (texted or emailed), or Interac e-Transfer to hello@northcreststudio.ca; pay after approving the free homepage; Care and monthly plans billed automatically.
+- Founding Client offer (supersedes earlier versions): first 10 Calgary businesses to buy a site from $1,999 keep Care at $79/month for as long as they keep it; on a monthly plan, Founding Clients get half-price setup (Growth $199, Premium $399) and a locked monthly price. Earlier Founding Clients who signed with $0 setup are honoured. Starter monthly plan still shows $0 setup, always.
