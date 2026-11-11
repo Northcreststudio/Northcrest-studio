@@ -10,18 +10,17 @@
 - Payment: card or Interac e-Transfer. All prices in CAD, plus GST.
 
 ## Websites to own (paid once)
-- Trades Starter Site: $999. Up to 5 pages: services, service areas, gallery, a quote form with photo upload, and click-to-call. Live in 7 business days.
-- Trades Growth Site: $1,999. 6 to 15 pages: a page per service, local SEO, Google profile setup, reviews and a before-and-after gallery. Live in 7 to 10 business days.
-- Trades Business Launch Kit: $1,999. For new trades businesses: logo, a 5-page site, Google profile, business cards and QR review cards.
-- Website Rescue: $999. Keeps the current site and fixes speed and mobile, builds a new homepage, and adds click-to-call, a quote form and https. Done in 3 to 5 days.
-- Trades Acquisition Site: $3,999. A page for every service and every area served, and a quote form that qualifies leads.
-- Care: $79 a month for hosting, backups, edits and domain renewal.
+- Trades Starter Site: $999. Up to 5 pages: services, service areas, gallery, a quote form with photo upload, and click-to-call. Or we fix the client's current site instead, same price. Live in 7 business days.
+- Trades Growth Site: $1,999. 6 to 15 pages: a page per service, local SEO, Google profile setup, reviews and a before-and-after gallery. Live in 7 business days.
+- Care: $79 a month for hosting, backups, edits and domain renewal. First 3 months free when you buy a site.
 
 ## Monthly plans
-- Starter $129/month, Growth $199/month, Premium $349/month, Full System $999/month (includes managed Google and Meta ads; ad spend billed separately). 12-month minimum, then month to month.
+- Starter $129/month, Growth $199/month, Premium $349/month. 12-month minimum, then month to month. Premium includes a custom logo, automatic Google review requests and priority edits (up to 2 hours a month).
 
-## Google and reviews
-- Google Profile Tune-Up: $149. Google Profile Pro Setup: $399. Review Starter Kit (QR review cards and a review-request text): $249.
+## Add-ons
+- Brand Kit (logo, colours, fonts, business cards): $399, included in Premium.
+- Google Profile Tune-Up: $149, credited toward setup within 30 days.
+- Job Site Photo Day (30 edited photos): $449.
 
 ## Pages
 - Home, services, pricing, process and FAQ: https://northcreststudio.ca/

@@ -11,12 +11,12 @@ The only facts the website may use. First collected 2026-09-30, updated the same
 ## Offers (all real, all to be honoured)
 - Free homepage first: we design your homepage before you pay anything. If you don't love it, you walk away and owe nothing.
 - 7-day launch promise: live within 7 business days (10 for Premium) once we have your photos and details, or your first month is free.
-- Founding Client: the first 10 Calgary businesses pay $0 setup, and their monthly price is locked for as long as they stay. Hermes Framing is Founding Client #1, so 9 spots are left. Only lower the counter when a real client signs. Applies to the Starter, Growth and Premium setup fees.
+- Founding Client: the first 10 Calgary businesses pay $0 setup, and their monthly price is locked for as long as they stay. Hermes Framing is Founding Client #1; 3 spots are taken, so 7 are left. Only lower the counter when a real client signs. Applies to the Starter, Growth and Premium setup fees.
 
 ## Monthly plans (12-month minimum, then month to month, cancel with 30 days' notice; CAD, plus GST)
 - Starter: $129/mo, $0 setup. Up to 5 pages, mobile-first; hosting, domain and SSL; contact form to your phone; security updates and backups; 30 minutes of edits a month.
 - Growth: $199/mo, $399 setup. Everything in Starter, plus up to 10 pages; Google Business Profile + 2 posts a month; local SEO for your service area; quote or booking form; reviews section and gallery; 1 hour of edits a month.
-- Premium: $349/mo, $799 setup. Everything in Growth, plus up to 15 pages + service-area pages; custom logo; automatic Google review requests; weekly Google profile posts; monthly results report; unlimited small edits, same day.
+- Premium: $349/mo, $799 setup. Everything in Growth, plus up to 15 pages + service-area pages; custom logo; automatic Google review requests; weekly Google profile posts; monthly results report; priority edits, up to 2 hours a month.
 - Full System: $999/mo. Everything in Premium, plus managed Google and Meta ads. Ad spend billed separately.
 - Trades Launch Pack: $199/mo + $995 setup. Logo, website, Google profile, business cards and QR review cards (the kit built for Hermes).
 - Pay yearly: 2 months free on the plan.
@@ -27,7 +27,7 @@ The only facts the website may use. First collected 2026-09-30, updated the same
 - Starter Site from $999 (up to 5 pages), Growth Site from $1,999 (6 to 15 pages, local SEO), Acquisition Site from $3,999 (service and area pages). Paid in full upfront, after the free homepage design. Care plan $79/mo for hosting, backups and edits. Brand Identity from $399.
 
 ## Timeline
-- Live in 1 to 7 business days once we have photos and details. Premium with a custom logo: up to 10.
+- Live in 7 business days once we have photos and details. Premium, or anything with a custom logo: 10 business days.
 - Day 1: free 20-minute call, written quote the same day. Days 1 to 3: design (homepage shown on a real phone and laptop). Days 3 to 6: build, copy, Google Business Profile, forms. By day 7: founder review and launch.
 
 ## Ownership and cancelling
@@ -67,7 +67,7 @@ The only facts the website may use. First collected 2026-09-30, updated the same
 ## Added 2026-10-01 (trades redesign, Swiss Noir)
 - Positioning: "the website studio for Calgary trades". Lead trades: roofing; landscaping and snow removal; plumbing, heating and HVAC; electrical; renovations, basements, decks and fences; painting, cleaning and home services. Also framing and general contracting.
 - Pay once and own it is the main sell (goal: cash upfront, then Care at $79/month). Paid in full upfront, after the free homepage design.
-- Websites to own: Trades Growth Site $1,999 (most popular); Trades Business Launch Kit $1,999; Trades Starter Site $999; Website Rescue $999; Trades Acquisition Site $3,999 (date confirmed in writing).
+- Websites to own: Trades Growth Site $1,999 (most popular); New Business Kit $1,999; Trades Starter Site $999; Website Rescue $999; Trades Acquisition Site $3,999 (date confirmed in writing).
 - Recommended bundle: Own It + Year of Care $2,499 (Trades Growth Site + 12 months of Care, prepaid, saves $448).
 - Quick wins: Google Profile Tune-Up $149; Google Profile Pro Setup $399 (credited toward a site within 30 days); Review Starter Kit $249; Job Site Photo Day $449, drone shots included; Trades Print Pack $299.
 - Add-ons to owned sites: Seasonal Promo Page $499; Brand Identity $399; Care $79/month. Truck & Sign Design was removed (do not offer).
@@ -76,3 +76,11 @@ The only facts the website may use. First collected 2026-09-30, updated the same
 - Price builder job examples: new roof about $12,000 and roof repair about $3,000 in Calgary (HomeStars); other trade job $2,500 (example).
 - Payment by card or Interac e-Transfer to hello@northcreststudio.ca. Referrals: clients get $100 or a free month; partners get $100 per signed client.
 - Site copy says "call or text", not "call or text Thomas".
+
+## Updated 2026-11-10 (package consolidation, supersedes earlier package lists)
+- Only these are offered on the site: monthly Starter $129, Growth $199, Premium $349; pay once Trades Starter Site $999 and Trades Growth Site $1,999; add-ons Brand Kit $399 (included in Premium), Google Profile Tune-Up $149, Job Site Photo Day $449; Care $79/month.
+- Care: first 3 months free when a client buys a site.
+- Starter Site doubles as the fix-your-current-site option (replaces Website Rescue), same $999.
+- Premium edits: priority edits, up to 2 hours a month (no longer unlimited same day).
+- Removed from the site (can still be quoted in conversation): Full System, Trades Launch Pack, Lead Engine, Social posting, Review Booster, Review Starter Kit, Google Profile Pro Setup, Trades Print Pack, Seasonal Promo Page, New Business Kit, Trades Acquisition Site, Own It + Year of Care, Extra page.
+- No drone photos are advertised.
