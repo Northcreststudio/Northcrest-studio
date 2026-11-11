@@ -183,6 +183,9 @@ section{padding:var(--sec-y) 0;background:var(--bg);color:var(--ink)}
 
 /* client story */
 .story-grid{display:grid;gap:40px}
+.drone-fig{margin:32px 0 0;display:grid;gap:12px}
+.drone-vid{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;background:#111;border:2px solid var(--ink)}
+.drone-fig figcaption{font-size:14px;color:var(--muted)}
 .story blockquote{margin:0;display:grid;gap:18px}
 .story blockquote footer{font-size:15px;color:var(--muted)}
 .story blockquote footer b{color:var(--ink);font-weight:600}
@@ -754,7 +757,7 @@ body{background:var(--bg);color:var(--ink)}
           <li><button class="svc-btn" type="button" aria-expanded="false" aria-controls="svc-panel" data-svc="1">Google Maps and local SEO</button></li>
           <li><button class="svc-btn" type="button" aria-expanded="false" aria-controls="svc-panel" data-svc="2">Reviews</button></li>
           <li><button class="svc-btn" type="button" aria-expanded="false" aria-controls="svc-panel" data-svc="3">Logos and branding</button></li>
-          <li><button class="svc-btn" type="button" aria-expanded="false" aria-controls="svc-panel" data-svc="4">Job site photos</button></li>
+          <li><button class="svc-btn" type="button" aria-expanded="false" aria-controls="svc-panel" data-svc="4">Job site and drone photos</button></li>
           <li><button class="svc-btn" type="button" aria-expanded="false" aria-controls="svc-panel" data-svc="5">Hosting, care and edits</button></li>
         </ul>
       </div>
@@ -770,9 +773,24 @@ body{background:var(--bg);color:var(--ink)}
       <div><p>Your Google Business Profile set up properly and kept active, plus local SEO and service-area pages, so people nearby find you on Google Maps.</p><dl><dt>Included in</dt><dd>Growth and Premium</dd><dt>On its own</dt><dd>Google Profile Tune-Up, $149</dd></dl></div>
       <div><p>A reviews section on your site, and in Premium, automatic texts that ask happy customers for a Google review after every job.</p><dl><dt>Reviews section</dt><dd>Included in Growth and Premium</dd><dt>Automatic review requests</dt><dd>Included in Premium</dd></dl></div>
       <div><p>A logo, colours, fonts and business cards that match your site and your truck.</p><dl><dt>Brand Kit</dt><dd>$399 once, included in Premium</dd></dl></div>
-      <div><p>A half-day shoot on a job site or at your shop: the crew, the trucks, work in progress and finished jobs. 30 edited photos that you own.</p><dl><dt>Job Site Photo Day</dt><dd>$449</dd><dt>Ready in</dt><dd>1 day, plus editing</dd></dl></div>
+      <div><p>A half-day shoot on a job site or at your shop: the crew, the trucks, work in progress and finished jobs. 30 edited photos that you own, plus drone shots on site, great for roofs, yards and big builds.</p><dl><dt>Job Site Photo Day</dt><dd>$449, drone shots included</dd><dt>Ready in</dt><dd>1 day, plus editing</dd></dl></div>
       <div><p>Hosting, your domain, SSL, security updates and backups, with edits every month. You never have to log in to anything.</p><dl><dt>Monthly plans</dt><dd>Included in every plan</dd><dt>Sites you own</dt><dd>Care, $79 a month</dd></dl></div>
     </template>
+  </section>
+
+  <!-- DRONE FOOTAGE -->
+  <section class="drone" id="drone" aria-labelledby="drone-title">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <p class="kicker">Shot by Northcrest</p>
+        <h2 id="drone-title">Your crew, from above.</h2>
+        <p class="lead">Drone footage from a real framing job site, filmed by us. Every Job Site Photo Day includes drone shots like this for your website, Google profile and social.</p>
+      </div>
+      <figure class="drone-fig rv">
+        <video class="drone-vid" src="assets/video/framing-drone.mp4" poster="assets/img/framing-drone-poster.jpg" width="1280" height="720" autoplay muted loop playsinline preload="metadata" aria-label="Overhead drone footage of a framing crew working on a house under construction"></video>
+        <figcaption>Real job site footage, filmed by Northcrest. <a class="text-link" href="#own">Job Site Photo Day, $449</a></figcaption>
+      </figure>
+    </div>
   </section>
 
   <!-- CLIENT STORY -->
@@ -887,7 +905,7 @@ body{background:var(--bg);color:var(--ink)}
         <p class="note">Add them to any plan or site.</p>
         <div class="mi"><div><b>Brand Kit</b><span>Logo, colours, fonts and business cards. Included in Premium.</span><small>3 to 5 days</small></div><span class="mp">$399</span></div>
         <div class="mi"><div><b>Google Profile Tune-Up</b><span>We fix and complete your Google listing. Credited toward setup if you start a plan or site within 30 days.</span><small>1 day</small></div><span class="mp">$149</span></div>
-        <div class="mi"><div><b>Job Site Photo Day</b><span>A half-day shoot on a job site or at your shop: crew, trucks, work in progress and finished jobs. 30 edited photos you own.</span><small>1 day, plus editing</small></div><span class="mp">$449</span></div>
+        <div class="mi"><div><b>Job Site Photo Day</b><span>A half-day shoot on a job site or at your shop: crew, trucks, work in progress and finished jobs. 30 edited photos you own, with drone shots included.</span><small>1 day, plus editing</small></div><span class="mp">$449</span></div>
         <div class="mi"><div><b>Care</b><span>Hosting, backups, edits and domain renewal for a site you own. First 3 months free.</span><small>Monthly</small></div><span class="mp">$79/month</span></div>
       </div>
       <p class="note own-note"><b>Founding Clients:</b> buy any site from $1,999 and your Care stays at $79 a month for as long as you keep it. Prefer smaller payments? <a class="text-link" href="#pricing">Monthly plans start at $129</a>.</p>
@@ -1137,6 +1155,7 @@ var GOOGLE_REVIEW_URL = 'https://g.page/r/CbQmwdRacDApEBM/review';
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return [].slice.call((r || document).querySelectorAll(s)); };
   var still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (still) $$('.drone-vid').forEach(function (v) { v.removeAttribute('autoplay'); v.pause(); v.controls = true; });
   var fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
   var raf = function (fn) { var q = false; return function (e) { if (q) return; q = true; requestAnimationFrame(function () { q = false; fn(e); }); }; };
   var money = function (n) { return '$' + Math.round(n).toLocaleString('en-CA'); };
@@ -1275,7 +1294,7 @@ var GOOGLE_REVIEW_URL = 'https://g.page/r/CbQmwdRacDApEBM/review';
     };
     var ADDONS = [
       { id: 'brand', name: 'Brand Kit', desc: 'Logo, colours, fonts and business cards', m: 0, once: 399, inPremium: true },
-      { id: 'photos', name: 'Job Site Photo Day', desc: '30 edited photos of your crew and work', m: 0, once: 449 }
+      { id: 'photos', name: 'Job Site Photo Day', desc: '30 edited photos plus drone shots of your work', m: 0, once: 449 }
     ];
     // Example job values. Roof prices are typical Calgary figures from HomeStars; the last one is an example.
     var BIZ = {
