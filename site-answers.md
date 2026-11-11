@@ -83,4 +83,4 @@ The only facts the website may use. First collected 2026-09-30, updated the same
 - Starter Site doubles as the fix-your-current-site option (replaces Website Rescue), same $999.
 - Premium edits: priority edits, up to 2 hours a month (no longer unlimited same day).
 - Removed from the site (can still be quoted in conversation): Full System, Trades Launch Pack, Lead Engine, Social posting, Review Booster, Review Starter Kit, Google Profile Pro Setup, Trades Print Pack, Seasonal Promo Page, New Business Kit, Trades Acquisition Site, Own It + Year of Care, Extra page.
-- No drone photos are advertised.
+- Drone shots are included in Job Site Photo Day (restored 2026-11-10 at Thomas's request). Homepage shows Thomas's own drone footage of a framing job site (assets/video/framing-drone.mp4).
