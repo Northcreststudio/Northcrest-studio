@@ -84,3 +84,6 @@ The only facts the website may use. First collected 2026-09-30, updated the same
 - Premium edits: priority edits, up to 2 hours a month (no longer unlimited same day).
 - Removed from the site (can still be quoted in conversation): Full System, Trades Launch Pack, Lead Engine, Social posting, Review Booster, Review Starter Kit, Google Profile Pro Setup, Trades Print Pack, Seasonal Promo Page, New Business Kit, Trades Acquisition Site, Own It + Year of Care, Extra page.
 - Drone shots are included in Job Site Photo Day (restored 2026-11-10 at Thomas's request). Homepage shows Thomas's own drone footage of a framing job site (assets/video/framing-drone.mp4).
+
+## Added 2026-11-10 (quick-answer helper)
+- "Questions?" button opens a scripted helper with 7 hand-written answers (price, timeline, ownership, free homepage, existing site, legit, talk to a person). No AI. Answers live in the QA list near the end of index.html; update them whenever prices or offers change.

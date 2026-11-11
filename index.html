@@ -595,6 +595,29 @@ body{background:var(--bg);color:var(--ink)}
 .dock{background:#0b0b0b}
 .dock a.go{color:#0b0b0b}
 
+/* Quick-answer helper */
+.qh-btn{position:fixed;right:14px;bottom:calc(88px + env(safe-area-inset-bottom,0px));z-index:60;display:flex;align-items:center;gap:8px;min-height:48px;padding:0 18px;border:2px solid var(--ink);background:var(--accent);color:var(--on-accent);font:700 15px/1 var(--body);cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.35)}
+.qh-btn:hover{background:var(--accent-hover)}
+.qh-btn:focus-visible,.qh-panel button:focus-visible,.qh-panel a:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.qh-dot{width:9px;height:9px;border-radius:50%;background:currentColor}
+.qh-panel{position:fixed;right:14px;left:14px;bottom:calc(88px + env(safe-area-inset-bottom,0px));z-index:61;max-height:min(72vh,560px);display:flex;flex-direction:column;background:var(--surface);color:var(--ink);border:2px solid var(--ink);box-shadow:0 12px 40px rgba(0,0,0,.45)}
+.qh-panel[hidden]{display:none}
+.qh-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 16px;border-bottom:1px solid var(--line)}
+.qh-head b{font:700 17px/1.2 var(--display)}
+.qh-head small{display:block;color:var(--muted);font-size:13px;font-weight:400;margin-top:2px}
+.qh-x{min-width:44px;min-height:44px;border:0;background:none;color:var(--ink);font-size:26px;line-height:1;cursor:pointer}
+.qh-log{flex:1;overflow:auto;padding:14px 16px;display:grid;gap:10px;align-content:start}
+.qh-msg{max-width:92%;padding:10px 12px;font-size:15px;line-height:1.45;background:var(--bg-alt);color:var(--ink)}
+.qh-msg.me{justify-self:end;background:var(--accent);color:var(--on-accent);font-weight:600}
+.qh-msg a{color:inherit}
+.qh-acts{display:flex;flex-wrap:wrap;gap:8px}
+.qh-acts a,.qh-opts button{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border:2px solid var(--ink);background:transparent;color:var(--ink);font:600 14px/1.2 var(--body);text-decoration:none;cursor:pointer;text-align:left}
+.qh-acts a.go{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.qh-opts{display:flex;flex-wrap:wrap;gap:8px;padding:12px 16px 14px;border-top:1px solid var(--line)}
+.qh-opts button:hover,.qh-acts a:hover{border-color:var(--accent-text);color:var(--accent-text)}
+.qh-acts a.go:hover{color:var(--on-accent);background:var(--accent-hover)}
+@media (min-width:980px){.qh-btn{bottom:24px;right:24px}.qh-panel{left:auto;right:24px;bottom:84px;width:400px}}
+@media (prefers-reduced-motion:no-preference){.qh-panel{animation:qh-in .18s ease-out}@keyframes qh-in{from{opacity:0;transform:translateY(8px)}}}
 </style>
 </head>
 <body>
@@ -1401,6 +1424,71 @@ var GOOGLE_REVIEW_URL = 'https://g.page/r/CbQmwdRacDApEBM/review';
         .finally(function () { btn.disabled = false; });
     });
   })();
+})();
+</script>
+<!-- QUICK-ANSWER HELPER: answers are written here by hand, so they never invent a price. Keep them in line with site-answers.md. -->
+<button class="qh-btn" id="qh-btn" type="button" aria-expanded="false" aria-controls="qh-panel"><span class="qh-dot" aria-hidden="true"></span>Questions?</button>
+<div class="qh-panel" id="qh-panel" role="dialog" aria-modal="false" aria-labelledby="qh-title" hidden>
+  <div class="qh-head"><div><b id="qh-title">Quick answers</b><small>Tap a question, or call or text (587) 583-8450</small></div><button class="qh-x" id="qh-x" type="button" aria-label="Close quick answers">&times;</button></div>
+  <div class="qh-log" id="qh-log" aria-live="polite"></div>
+  <div class="qh-opts" id="qh-opts" role="group" aria-label="Questions"></div>
+</div>
+<script>
+(function () {
+  'use strict';
+  var btn = document.getElementById('qh-btn'), panel = document.getElementById('qh-panel'),
+      log = document.getElementById('qh-log'), opts = document.getElementById('qh-opts'), x = document.getElementById('qh-x');
+  var spots = (typeof FOUNDING_SPOTS_LEFT === 'number') ? FOUNDING_SPOTS_LEFT : 0;
+  var gbp = (typeof GOOGLE_PROFILE_URL === 'string') ? GOOGLE_PROFILE_URL : '';
+  var CALL = { t: 'Call (587) 583-8450', h: 'tel:+15875838450' }, TEXT = { t: 'Text us', h: 'sms:+15875838450' };
+  var FREE = { t: 'Get my free homepage', h: '#start', want: 'A free homepage design', go: true };
+  var QA = [
+    { q: 'How much does it cost?', a: 'Monthly plans start at $129 (Starter). Growth, at $199 a month, is the one we recommend for most trades. Premium is $349. Or pay once and own it: $999 for up to 5 pages, $1,999 for up to 15. All in CAD, plus GST.' +
+        (spots > 0 ? ' Founding Clients pay $0 setup, and ' + spots + ' of 10 spots are left.' : ''),
+      acts: [{ t: 'See plans', h: '#pricing' }, { t: 'Price it out', h: '#price' }, FREE] },
+    { q: 'How fast can my site be live?', a: '7 business days once we have your photos and details. Premium, or anything with a custom logo, takes 10. If we miss that, your first month is free.',
+      acts: [FREE, CALL] },
+    { q: 'Do I own my website?', a: 'Pay once and it’s yours: the site, the domain, the logo and the photos. On a monthly plan your domain is always in your name, and you can buy the site after 12 months for the cost of three months of your plan.',
+      acts: [{ t: 'Pay-once options', h: '#own' }, FREE] },
+    { q: 'What’s the free homepage?', a: 'We design your homepage first, at no cost, and show it to you on a real phone and laptop. Love it and we build the rest. If not, you walk away and owe nothing.',
+      acts: [FREE] },
+    { q: 'I already have a website', a: 'We’ll tell you honestly whether fixing it or rebuilding is better. Fixing speed, mobile, the homepage, click-to-call and the quote form is $999. Or ask for a free 5-minute video audit of your current site.',
+      acts: [{ t: 'Get a free audit', h: '#start', want: 'A free 5-minute audit', go: true }, CALL] },
+    { q: 'Are you legit?', a: 'See our first client’s site, hermesframing.ca, and read our Google reviews. Our founder, Thomas Martinez, reviews every site personally before it goes live.',
+      acts: [{ t: 'Visit hermesframing.ca', h: 'https://hermesframing.ca', ext: true }].concat(gbp ? [{ t: 'Google reviews', h: gbp, ext: true }] : []).concat([{ t: 'See our work', h: '#work' }]) },
+    { q: 'Talk to a person', a: 'Call or text (587) 583-8450, Monday to Friday, 8am to 6pm. We reply within one business day.',
+      acts: [CALL, TEXT, { t: 'Send a message', h: '#start' }] }
+  ];
+  function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text) e.textContent = text; return e; }
+  function say(text, me) { var m = el('div', 'qh-msg' + (me ? ' me' : ''), text); log.appendChild(m); log.scrollTop = log.scrollHeight; return m; }
+  function actions(list) {
+    var row = el('div', 'qh-acts');
+    list.forEach(function (a) {
+      var l = el('a', a.go ? 'go' : '', a.t); l.href = a.h;
+      if (a.ext) { l.target = '_blank'; l.rel = 'noopener'; }
+      l.addEventListener('click', function () {
+        if (a.want) { var f = document.getElementById('f-want'); if (f) f.value = a.want; }
+        if (a.h.charAt(0) === '#') close(false);
+      });
+      row.appendChild(l);
+    });
+    log.appendChild(row); log.scrollTop = log.scrollHeight;
+  }
+  QA.forEach(function (item) {
+    var b = el('button', '', item.q); b.type = 'button';
+    b.addEventListener('click', function () { say(item.q, true); say(item.a); actions(item.acts); });
+    opts.appendChild(b);
+  });
+  var started = false;
+  function open() {
+    panel.hidden = false; btn.setAttribute('aria-expanded', 'true'); btn.hidden = true;
+    if (!started) { say('Hi! Pick a question below and you’ll get a straight answer. No forms, no waiting.'); started = true; }
+    var first = opts.querySelector('button'); if (first) first.focus();
+  }
+  function close(refocus) { panel.hidden = true; btn.hidden = false; btn.setAttribute('aria-expanded', 'false'); if (refocus !== false) btn.focus(); }
+  btn.addEventListener('click', open);
+  x.addEventListener('click', function () { close(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !panel.hidden) close(); });
 })();
 </script>
 </body>
