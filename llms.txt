@@ -7,7 +7,7 @@
 - Based in Calgary, Alberta. Serves Calgary, Airdrie, Cochrane, Chestermere and Okotoks.
 - Contact: call or text (587) 583-8450, email hello@northcreststudio.ca. Hours: Monday to Friday, 8am to 6pm.
 - First client: Hermes Framing (https://hermesframing.ca).
-- Payment: card or Interac e-Transfer. All prices in CAD, plus GST.
+- Payment: card (Stripe checkout link) or Interac e-Transfer. All prices in CAD.
 
 ## Websites to own (paid once)
 - Trades Starter Site: $999. Up to 5 pages: services, service areas, gallery, a quote form with photo upload, and click-to-call. Or we fix the client's current site instead, same price. Live in 7 business days.
