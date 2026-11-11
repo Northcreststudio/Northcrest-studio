@@ -87,3 +87,6 @@ The only facts the website may use. First collected 2026-09-30, updated the same
 
 ## Added 2026-11-10 (quick-answer helper)
 - "Questions?" button opens a scripted helper with 7 hand-written answers (price, timeline, ownership, free homepage, existing site, legit, talk to a person). No AI. Answers live in the QA list near the end of index.html; update them whenever prices or offers change.
+
+## Updated 2026-11-10 (main offer)
+- Main offer: Trades Growth Site, $1,999 once, owned outright, free homepage first, Care $79/month with the first 3 months free. Shown first on the site (nav "Pricing" goes to #own); Starter Site $999 is the smaller-budget option; monthly plans follow under "Prefer monthly?".
