@@ -106,6 +106,7 @@ nav.main a:hover { color: #fff; }
 
 /* Hero */
 .hero { background: var(--carbon); color: var(--on-carbon); position: relative; overflow: hidden; }
+section.hero.band { padding-block: 0; }
 .hero-grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: clamp(28px, 5vw, 64px); align-items: center; padding-block: clamp(44px, 7vw, 88px); }
 .hero-copy { display: grid; gap: 22px; min-width: 0; }
 .hero .eyebrow { color: var(--copper); }
@@ -231,12 +232,18 @@ footer.site { background: #0b0d0f; color: var(--on-carbon-muted); padding-block:
   .hdr .btn { display: none; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+
+.preview .looks { display: inline-block; margin-left: 10px; }
+.preview .looks a { color: #fff; margin: 0 6px; white-space: nowrap; text-decoration: none; border-bottom: 1px solid transparent; }
+.preview .looks a:hover { border-bottom-color: currentColor; }
+.preview .looks a[aria-current] { color: #e8b48f; border-bottom-color: currentColor; }
+@media (max-width: 640px) { .preview .looks { display: block; margin: 4px 0 0; } }
 </style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
-<div class="preview">Website preview prepared for <b>Mike &amp; Cathy Robertson</b> · <b>Imperial Custom Millwork Ltd.</b></div>
+<div class="preview">Website preview prepared for <b>Mike &amp; Cathy Robertson</b> · <b>Imperial Custom Millwork Ltd.</b> <span class="looks">Compare looks: <a href="./" aria-current="page">Original</a> <a href="warm/">Warm Walnut</a> <a href="black-gold/">Black &amp; Gold</a> <a href="gallery/">Clean Gallery</a></span></div>
 
 <div class="topbar band">
   <div class="wrap">
