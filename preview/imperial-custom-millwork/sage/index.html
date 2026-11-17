@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Imperial Custom Millwork Ltd. (Sage &amp; Oak)</title>
+<meta name="description" content="Imperial Custom Millwork Ltd. builds custom kitchens, built-ins and finishing carpentry in Kelowna and the Okanagan, BC.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#2f3b2e">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=Jost:wght@400;500;600&amp;display=swap">
+<style>
+:root {
+  --cream: #f5f1ea; --paper: #fffdf9; --olive: #2f3b2e; --olive-2: #3a4838; --sage: #7d8c71; --sage-light: #e3e8db;
+  --oak: #b5844f; --oak-text: #87592a; --fg: #23261f; --muted: #5d6156; --line: #e1dacd;
+  --on-olive: #f4f1ea; --on-olive-muted: #c4cbbb;
+  --note-bg: #fff3d1; --note-fg: #5f4500;
+  --serif: "DM Serif Display", Georgia, serif; --sans: "Jost", Arial, sans-serif;
+  --gl: max(16px, env(safe-area-inset-left, 0px)); --gr: max(16px, env(safe-area-inset-right, 0px));
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 74px; }
+body { margin: 0; overflow-x: hidden; background: var(--cream); color: var(--fg); font: 17px/1.7 var(--sans); -webkit-font-smoothing: antialiased; }
+img { max-width: 100%; display: block; }
+h1, h2, h3 { font-family: var(--serif); font-weight: 400; margin: 0; line-height: 1.08; text-wrap: balance; }
+h2 { font-size: clamp(2.2rem, 4.8vw, 3.4rem); }
+h3 { font-size: 1.55rem; }
+h1 em, h2 em { color: var(--oak-text); }
+p { margin: 0; }
+a { color: inherit; }
+button, input, select, textarea { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--oak); outline-offset: 3px; }
+.band { padding-left: var(--gl); padding-right: var(--gr); }
+.wrap { max-width: 1180px; margin-inline: auto; }
+.pad { padding-block: clamp(64px, 10vw, 120px); }
+.label { font: 500 .8rem/1 var(--sans); letter-spacing: .22em; text-transform: uppercase; color: var(--sage); display: flex; align-items: center; gap: 12px; }
+.label::before { content: ""; width: 28px; height: 1px; background: currentColor; }
+.head { display: grid; gap: 16px; max-width: 680px; margin-bottom: clamp(32px, 5vw, 56px); }
+.lede { color: var(--muted); font-size: 1.1rem; }
+.confirm { display: inline-block; background: var(--note-bg); color: var(--note-fg); font-size: .78rem; font-weight: 500; padding: 1px 8px; border-radius: 99px; line-height: 1.6; }
+.note { background: var(--note-bg); color: var(--note-fg); font-size: .92rem; padding: 10px 16px; border-radius: 10px; max-width: 70ch; }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 54px; padding: 0 30px; border-radius: 99px; font: 500 1rem/1 var(--sans); text-decoration: none; border: 0; cursor: pointer; transition: background .2s, color .2s, transform .2s; }
+.btn svg { width: 18px; height: 18px; }
+.btn-olive { background: var(--olive); color: var(--on-olive); }
+.btn-olive:hover { background: var(--olive-2); transform: translateY(-1px); }
+.btn-oak { background: var(--oak); color: #1d1408; }
+.btn-oak:hover { background: #c4935e; }
+.btn-soft { background: transparent; color: var(--fg); box-shadow: inset 0 0 0 1.5px #c9bfae; }
+.btn-soft:hover { box-shadow: inset 0 0 0 1.5px var(--fg); }
+
+.preview { background: #1b2219; color: #c4cbbb; font-size: .78rem; text-align: center; padding: 9px 16px; line-height: 1.5; }
+.preview b { color: #fff; font-weight: 500; }
+.looks { display: inline-block; margin-left: 8px; }
+.looks a { color: #fff; margin: 0 6px; text-decoration: none; white-space: nowrap; border-bottom: 1px solid transparent; }
+.looks a:hover { border-bottom-color: currentColor; }
+.looks a[aria-current] { color: #e2bd8c; border-bottom-color: currentColor; }
+@media (max-width: 640px) { .looks { display: block; margin: 4px 0 0; } }
+
+header.site { position: sticky; top: 0; z-index: 50; background: rgba(245,241,234,.94); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+.hdr { display: flex; align-items: center; gap: 28px; min-height: 74px; }
+.brand { margin-right: auto; text-decoration: none; display: grid; line-height: 1; }
+.brand b { font: 400 1.65rem/1 var(--serif); letter-spacing: .02em; }
+.brand span { font-size: .64rem; letter-spacing: .32em; text-transform: uppercase; color: var(--sage); margin-top: 4px; }
+nav.main { display: flex; gap: 28px; }
+nav.main a { text-decoration: none; color: var(--muted); font-weight: 500; }
+nav.main a:hover { color: var(--fg); }
+.hdr-call { font-weight: 600; text-decoration: none; color: var(--oak-text); white-space: nowrap; }
+.hdr .btn { min-height: 46px; padding: 0 22px; }
+@media (max-width: 1000px) { nav.main { display: none; } }
+@media (max-width: 640px) { .hdr .btn { display: none; } }
+
+/* Hero: split, photo bleeds to the right edge */
+.hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); min-height: min(84vh, 760px); }
+.hero-copy { display: grid; align-content: center; gap: 22px; padding: clamp(48px, 7vw, 96px) clamp(24px, 5vw, 72px) clamp(48px, 7vw, 96px) max(var(--gl), calc((100vw - 1180px) / 2)); }
+.hero h1 { font-size: clamp(3rem, 6.2vw, 5.4rem); line-height: 1.02; }
+.hero .lede { max-width: 44ch; }
+.cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero-meta { display: flex; flex-wrap: wrap; gap: 8px 28px; margin-top: 10px; padding-top: 22px; border-top: 1px solid var(--line); font-size: .95rem; color: var(--muted); }
+.hero-meta b { color: var(--fg); font-weight: 600; }
+.hero-photo { position: relative; margin: 0; }
+.hero-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 55% center; }
+.hero-photo figcaption { position: absolute; left: 20px; bottom: 20px; background: var(--paper); color: var(--fg); padding: 12px 16px; border-radius: 12px; font-size: .9rem; box-shadow: 0 10px 30px -10px rgba(0,0,0,.35); }
+.hero-photo figcaption b { display: block; font-family: var(--serif); font-weight: 400; font-size: 1.1rem; }
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-copy { padding-inline: var(--gl) var(--gr); }
+  .hero-photo { aspect-ratio: 4 / 3; order: -1; }
+}
+@media (max-width: 480px) { .cta-row .btn { flex: 1 1 100%; } }
+
+/* Services: editorial rows */
+.svc-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.svc { display: grid; grid-template-columns: 70px 1fr 1.3fr; gap: 24px; padding: 30px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.svc .n { font: 400 1.3rem/1 var(--serif); color: var(--oak-text); font-style: italic; }
+.svc p { color: var(--muted); }
+@media (max-width: 760px) { .svc { grid-template-columns: 44px 1fr; } .svc p { grid-column: 2; } }
+.svc-list + .note { margin-top: 20px; }
+
+/* Process: olive band with board-and-batten lines */
+.process { background-color: var(--olive); color: var(--on-olive); background-image: repeating-linear-gradient(90deg, transparent 0 118px, rgba(255,255,255,.05) 118px 120px); }
+.process .label { color: #c9b58f; }
+.process .lede { color: var(--on-olive-muted); }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.steps li { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); border-radius: 18px; padding: 30px 26px; display: grid; gap: 12px; align-content: start; }
+.steps .n { font: 400 3.4rem/1 var(--serif); color: #d9b98a; }
+.steps p { color: var(--on-olive-muted); }
+@media (max-width: 820px) { .steps { grid-template-columns: 1fr; } }
+
+/* Work */
+.work-grid { display: grid; grid-template-columns: 1.5fr 1fr; grid-template-rows: auto auto; gap: 16px; }
+.work-grid figure { margin: 0; position: relative; border-radius: 20px; overflow: hidden; }
+.work-grid img { width: 100%; height: 100%; object-fit: cover; }
+.work-grid .big { grid-row: span 2; min-height: 420px; }
+.work-grid figcaption { position: absolute; left: 14px; bottom: 14px; background: rgba(255,253,249,.92); padding: 6px 12px; border-radius: 99px; font-size: .85rem; }
+.slots { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-top: 16px; }
+.slot { border: 2px dashed #cfc5b3; border-radius: 20px; display: grid; place-items: center; text-align: center; padding: 22px 14px; color: var(--muted); font-size: .88rem; min-height: 140px; background: var(--paper); }
+.slot b { display: block; color: var(--fg); font-family: var(--serif); font-weight: 400; font-size: 1.15rem; }
+@media (max-width: 760px) { .work-grid { grid-template-columns: 1fr; } .work-grid .big { grid-row: auto; min-height: 280px; } .work-grid figure:not(.big) { aspect-ratio: 4 / 3; } .slots { grid-template-columns: 1fr; } }
+
+/* Reviews */
+.reviews { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.review { margin: 0; background: var(--paper); border-radius: 20px; padding: 30px; display: grid; gap: 14px; border: 1px dashed #d6ccbb; }
+.review .q { font: 400 3rem/0.6 var(--serif); color: var(--oak); height: 22px; }
+.review p { color: var(--muted); font-style: italic; }
+.review figcaption { font-weight: 600; font-size: .9rem; }
+.reviews + .note { margin-top: 18px; }
+@media (max-width: 860px) { .reviews { grid-template-columns: 1fr; } }
+
+/* About */
+.about { background: var(--sage-light); }
+.about-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(32px, 6vw, 80px); align-items: center; }
+.portrait { aspect-ratio: 4 / 5; border-radius: 200px 200px 24px 24px; border: 2px dashed #a9b39c; display: grid; place-items: center; text-align: center; padding: 24px; color: var(--muted); background: rgba(255,255,255,.4); }
+.portrait b { display: block; font-family: var(--serif); font-weight: 400; font-size: 1.4rem; color: var(--fg); }
+.about-copy { display: grid; gap: 18px; }
+.about-copy p { color: #3f4439; font-size: 1.08rem; }
+.facts { display: flex; flex-wrap: wrap; gap: 14px 44px; margin: 8px 0 0; }
+.facts div { display: grid; }
+.facts dt { font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; color: var(--sage); }
+.facts dd { margin: 0; font: 400 1.7rem/1.2 var(--serif); }
+@media (max-width: 820px) { .about-grid { grid-template-columns: 1fr; } .portrait { max-width: 360px; aspect-ratio: 1; } }
+
+/* Area + FAQ */
+.split { display: grid; grid-template-columns: 1fr 1.3fr; gap: clamp(32px, 6vw, 80px); }
+.area-list { list-style: none; padding: 0; margin: 20px 0 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.area-list li { padding: 8px 18px; border-radius: 99px; background: var(--paper); border: 1px solid var(--line); }
+.area-list li.home { background: var(--olive); color: var(--on-olive); border-color: var(--olive); }
+details { background: var(--paper); border-radius: 16px; margin-bottom: 10px; padding: 0 22px; border: 1px solid var(--line); }
+summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; gap: 16px; padding: 18px 0; font-weight: 600; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; font-size: 1.5rem; line-height: 1; color: var(--oak-text); transition: transform .2s; }
+details[open] summary::after { transform: rotate(45deg); }
+.a { padding-bottom: 18px; color: var(--muted); display: grid; gap: 8px; }
+@media (max-width: 860px) { .split { grid-template-columns: 1fr; } }
+
+/* Contact */
+.contact-card { background: var(--paper); border-radius: 28px; overflow: hidden; display: grid; grid-template-columns: .9fr 1.1fr; box-shadow: 0 30px 60px -40px rgba(47,59,46,.5); }
+.contact-side { background: var(--olive); color: var(--on-olive); padding: clamp(28px, 4vw, 48px); display: grid; gap: 18px; align-content: start; }
+.contact-side .label { color: #c9b58f; }
+.contact-side p { color: var(--on-olive-muted); }
+.contact-info { display: grid; gap: 18px; margin: 10px 0 0; }
+.contact-info dt { font-size: .76rem; letter-spacing: .16em; text-transform: uppercase; color: var(--on-olive-muted); }
+.contact-info dd { margin: 2px 0 0; font-size: 1.12rem; overflow-wrap: anywhere; }
+.contact-info a { color: #e2bd8c; text-decoration: none; }
+form.quote { padding: clamp(24px, 4vw, 48px); display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-content: start; }
+form.quote label { display: grid; gap: 6px; font-size: .9rem; font-weight: 500; min-width: 0; }
+form.quote .full { grid-column: 1 / -1; }
+form.quote input, form.quote select, form.quote textarea { width: 100%; min-height: 50px; padding: 10px 14px; border-radius: 12px; border: 1.5px solid var(--line); background: var(--cream); }
+form.quote textarea { min-height: 120px; resize: vertical; }
+form.quote input:focus, form.quote select:focus, form.quote textarea:focus { outline: none; border-color: var(--sage); }
+.sent { grid-column: 1 / -1; background: var(--note-bg); color: var(--note-fg); padding: 14px 16px; border-radius: 12px; font-weight: 500; }
+@media (max-width: 860px) { .contact-card { grid-template-columns: 1fr; } }
+@media (max-width: 520px) { form.quote { grid-template-columns: 1fr; } }
+
+footer.site { padding-block: 44px calc(44px + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--line); color: var(--muted); font-size: .92rem; }
+.foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; align-items: end; }
+.foot b { font: 400 1.5rem/1 var(--serif); color: var(--fg); display: block; margin-bottom: 8px; }
+.foot a { color: var(--oak-text); text-decoration: none; }
+
+.callbar { display: none; }
+@media (max-width: 640px) {
+  .callbar { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; position: fixed; inset: auto 0 0 0; z-index: 60; padding: 10px var(--gr) calc(10px + env(safe-area-inset-bottom, 0px)) var(--gl); background: rgba(245,241,234,.97); border-top: 1px solid var(--line); }
+  .callbar .btn { min-height: 50px; padding: 0 10px; }
+  body { padding-bottom: 76px; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+</style>
+</head>
+<body>
+<div class="preview">Website preview prepared for <b>Mike &amp; Cathy Robertson</b> · <b>Imperial Custom Millwork Ltd.</b> <span class="looks">Compare looks: <a href="../">Original</a> <a href="../studio/">Studio</a> <a href="../sage/" aria-current="page">Sage &amp; Oak</a> <a href="../slate/">Slate &amp; Clay</a></span></div>
+
+<header class="site band">
+  <div class="wrap hdr">
+    <a class="brand" href="#top" aria-label="Imperial Custom Millwork, home"><b>Imperial</b><span>Custom Millwork Ltd.</span></a>
+    <nav class="main" aria-label="Main"><a href="#services">Services</a><a href="#work">Our Work</a><a href="#process">Process</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+    <a class="hdr-call" href="tel:+14038605069">403-860-5069</a>
+    <a class="btn btn-olive" href="#contact">Free Quote</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="top">
+    <div class="hero-copy">
+      <p class="label">Kelowna · Okanagan, BC</p>
+      <h1>Woodwork made <em>for your home</em></h1>
+      <p class="lede">Every piece is one of a kind. Custom kitchens, built-ins and finishing carpentry, designed and built for your space by journeyman finishing carpenter Mike Robertson.</p>
+      <div class="cta-row">
+        <a class="btn btn-olive" href="tel:+14038605069"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>Call Now</a>
+        <a class="btn btn-soft" href="#contact">Get a Free Quote</a>
+      </div>
+      <div class="hero-meta">
+        <span><b>Since 2003</b> in business</span>
+        <span><b>100% custom</b> work</span>
+        <span><b>Free quotes</b> <span class="confirm">Confirm</span></span>
+      </div>
+    </div>
+    <figure class="hero-photo">
+      <img src="../kitchen.jpg" alt="White shaker kitchen with tall pantry cabinets and a walnut-toned island, built by Mike Robertson" fetchpriority="high">
+      <figcaption><b>Recent kitchen</b>Shaker cabinets &amp; walnut island</figcaption>
+    </figure>
+  </section>
+
+  <section class="band pad" id="services">
+    <div class="wrap">
+      <div class="head">
+        <p class="label">What we do</p>
+        <h2>No catalogue sizes. <em>No standard boxes.</em></h2>
+        <p class="lede">Mike designs, builds and installs each piece to suit the room, the house and the way you live in it. If you don't see your project here, just ask.</p>
+      </div>
+      <ol class="svc-list">
+        <li class="svc"><span class="n">01</span><h3>Custom kitchens &amp; cabinetry</h3><p>Cabinetry made for your layout, set level and square and fitted tight to walls and ceilings, with hardware and fillers finished clean.</p></li>
+        <li class="svc"><span class="n">02</span><h3>Built-ins &amp; storage</h3><p>Pantries, shelving, benches, mudroom lockers and entertainment walls, built to fit the space instead of bought off the shelf.</p></li>
+        <li class="svc"><span class="n">03</span><h3>Trim, doors &amp; mouldings</h3><p>Baseboards, casing and crown moulding with tight mitres and clean corners, plus interior doors hung with even reveals.</p></li>
+        <li class="svc"><span class="n">04</span><h3>Stairs &amp; feature walls</h3><p>Stair treads, risers, skirt boards and railings, and wainscoting, board and batten or panel moulding for a plain wall.</p></li>
+      </ol>
+      <p class="note">Preview note: Mike and Cathy to confirm this service list.</p>
+    </div>
+  </section>
+
+  <section class="band pad" id="work" style="padding-top:0">
+    <div class="wrap">
+      <div class="head">
+        <p class="label">Our work</p>
+        <h2>Recent projects</h2>
+      </div>
+      <div class="work-grid">
+        <figure class="big"><img src="../pantry.jpg" alt="Tall pantry cabinets with a wine cubby around the fridge" loading="lazy"><figcaption>Pantry wall &amp; wine cubby</figcaption></figure>
+        <figure><img src="../island.jpg" alt="Walnut-toned island with a marble-look top" loading="lazy"><figcaption>Walnut island</figcaption></figure>
+        <figure><img src="../range.jpg" alt="Range wall with uppers to the ceiling" loading="lazy"><figcaption>Range wall</figcaption></figure>
+      </div>
+      <div class="slots">
+        <div class="slot"><div><b>Built-in photo</b>Mudroom, shelving or media wall</div></div>
+        <div class="slot"><div><b>Trim or stairs photo</b>Crown, casing or a staircase</div></div>
+        <div class="slot"><div><b>Detail photo</b>A close-up of a joint or finish</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="process band pad" id="process">
+    <div class="wrap">
+      <div class="head">
+        <p class="label">How a job works</p>
+        <h2>Three simple steps</h2>
+      </div>
+      <ol class="steps">
+        <li><span class="n">1</span><h3>Walkthrough &amp; measure</h3><p>Mike looks at the space, hears what you have in mind and takes measurements.</p></li>
+        <li><span class="n">2</span><h3>Design &amp; written quote</h3><p>A clear quote for materials, labour and timing before anything is booked.</p></li>
+        <li><span class="n">3</span><h3>Build &amp; install</h3><p>Your piece is built, fitted and finished, and the space is left clean.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="band pad" id="reviews">
+    <div class="wrap">
+      <div class="head"><p class="label">Kind words</p><h2>What customers say</h2></div>
+      <div class="reviews">
+        <figure class="review"><span class="q" aria-hidden="true">“</span><p>Customer review goes here.</p><figcaption>First name · Town</figcaption></figure>
+        <figure class="review"><span class="q" aria-hidden="true">“</span><p>Customer review goes here.</p><figcaption>First name · Town</figcaption></figure>
+        <figure class="review"><span class="q" aria-hidden="true">“</span><p>Customer review goes here.</p><figcaption>First name · Town</figcaption></figure>
+      </div>
+      <p class="note">Preview note: add 2–3 real customer reviews (first name or initials only).</p>
+    </div>
+  </section>
+
+  <section class="about band pad" id="about">
+    <div class="wrap about-grid">
+      <div class="portrait"><div><b>Photo of Mike &amp; Cathy</b>or Mike in the shop</div></div>
+      <div class="about-copy">
+        <p class="label">About us</p>
+        <h2>Meet Mike &amp; Cathy</h2>
+        <p>Imperial Custom Millwork Ltd. is owned and run by Mike and Cathy Robertson. Mike is a journeyman finishing carpenter, and the company has been in business since 2003. After moving from Alberta to British Columbia, the business now works out of Kelowna in the Okanagan.</p>
+        <p class="note">Preview note: a few lines in Mike and Cathy's own words on how they got started.</p>
+        <dl class="facts">
+          <div><dt>In business</dt><dd>Since 2003</dd></div>
+          <div><dt>Trade</dt><dd>Journeyman</dd></div>
+          <div><dt>Based in</dt><dd>Kelowna, BC</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="band pad" id="area">
+    <div class="wrap split">
+      <div>
+        <p class="label">Service area</p>
+        <h2 style="margin-top:14px">Serving the <em>Okanagan</em></h2>
+        <ul class="area-list"><li class="home">Kelowna</li><li><span class="confirm">Confirm: other towns served</span></li></ul>
+      </div>
+      <div id="faq">
+        <details><summary>What is custom millwork?</summary><div class="a"><p>The woodwork that finishes a home: cabinetry, built-ins, trim, stairs and panelling, made for your space instead of bought off the shelf.</p></div></details>
+        <details><summary>What affects the cost of a custom piece?</summary><div class="a"><p>Size, material, finish and the amount of detail, plus install conditions like walls that aren't square. A walkthrough gives you an exact number.</p></div></details>
+        <details><summary>How long does a project take?</summary><div class="a"><p>A built-in is much quicker than a full kitchen. You'll get a timeline with your quote.</p><p><span class="confirm">Confirm: current lead time</span></p></div></details>
+        <details><summary>Is the work guaranteed?</summary><div class="a"><p><span class="confirm">Confirm: workmanship guarantee details</span></p></div></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="band pad" id="contact" style="padding-top:0">
+    <div class="wrap contact-card">
+      <div class="contact-side">
+        <p class="label">Free quote</p>
+        <h2>Let's talk about your project</h2>
+        <p>Send a few details and photos of the space, and Mike will get back to you to set up a walkthrough.</p>
+        <dl class="contact-info">
+          <div><dt>Phone</dt><dd><a href="tel:+14038605069">403-860-5069</a></dd></div>
+          <div><dt>Email</dt><dd><a href="mailto:imperialfinishingltd@hotmail.com">imperialfinishingltd@hotmail.com</a></dd></div>
+          <div><dt>Area</dt><dd>Kelowna &amp; the Okanagan, BC</dd></div>
+        </dl>
+      </div>
+      <form class="quote" id="quote" novalidate>
+        <label>Name<input name="name" autocomplete="name"></label>
+        <label>Phone<input name="phone" type="tel" autocomplete="tel"></label>
+        <label class="full">Email<input name="email" type="email" autocomplete="email"></label>
+        <label>Project type<select name="type"><option>Kitchen or cabinetry</option><option>Built-in or storage</option><option>Trim, doors or mouldings</option><option>Stairs or feature wall</option><option>Something else</option></select></label>
+        <label>Town<input name="town" autocomplete="address-level2"></label>
+        <label class="full">Tell us about your project<textarea name="details" placeholder="What you have in mind, rough size, timing"></textarea></label>
+        <button class="btn btn-olive full" type="submit">Send quote request</button>
+        <p class="sent" id="sent" hidden>In the live site this request goes straight to Imperial Custom Millwork's inbox.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="site band">
+  <div class="wrap foot">
+    <div><b>Imperial Custom Millwork Ltd.</b>Kelowna, BC · <a href="tel:+14038605069">403-860-5069</a> · <a href="mailto:imperialfinishingltd@hotmail.com">imperialfinishingltd@hotmail.com</a></div>
+    <div>Custom kitchens · Built-ins · Trim &amp; doors · Stairs · Feature walls</div>
+  </div>
+</footer>
+
+<div class="callbar"><a class="btn btn-olive" href="tel:+14038605069">Call Now</a><a class="btn btn-soft" href="#contact">Free Quote</a></div>
+<script>
+document.getElementById('quote').addEventListener('submit', function (e) { e.preventDefault(); var s = document.getElementById('sent'); s.hidden = false; s.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); });
+</script>
+</body>
+</html>
