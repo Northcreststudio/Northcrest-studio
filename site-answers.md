@@ -98,3 +98,9 @@ The only facts the website may use. First collected 2026-09-30, updated the same
 - Not charging GST (assumed not registered; under the $30,000 small-supplier threshold). All "plus GST" wording removed; prices are in CAD. Re-add if Thomas registers.
 - How do I pay: card via a Stripe checkout link (texted or emailed), or Interac e-Transfer to hello@northcreststudio.ca; pay after approving the free homepage; Care and monthly plans billed automatically.
 - Founding Client offer (supersedes earlier versions): first 10 Calgary businesses to buy a site from $1,999 keep Care at $79/month for as long as they keep it; on a monthly plan, Founding Clients get half-price setup (Growth $199, Premium $399) and a locked monthly price. Earlier Founding Clients who signed with $0 setup are honoured. Starter monthly plan still shows $0 setup, always.
+
+## Nov 23, 2026: one monthly plan
+- Monthly Starter ($129) and monthly Premium ($349) removed from the site. Only the Monthly Growth Plan remains: $199/mo, $399 setup ($199 Founding Clients), 12-month minimum, pay yearly for 2 months free. Supersedes the monthly plan lines above.
+- Why: monthly Starter undercut buying a site in year one, and three plans cluttered the page. Premium-level work (custom logo, review requests, extra pages) is quoted in conversation.
+- Brand Kit $399 is an add-on for any site or plan (no longer "included in Premium"). Custom-logo sites launch in 10 business days.
+- Monthly section ends with: "Staying 2 years or more? Buying the Trades Growth Site costs less over time."
