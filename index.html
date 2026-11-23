@@ -621,6 +621,10 @@ body{background:var(--bg);color:var(--ink)}
 .qh-opts{display:flex;flex-wrap:wrap;gap:8px;padding:12px 16px 14px;border-top:1px solid var(--line)}
 .qh-opts button:hover,.qh-acts a:hover{border-color:var(--accent-text);color:var(--accent-text)}
 .qh-acts a.go:hover{color:var(--on-accent);background:var(--accent-hover)}
+/* Mobile: questions live in the bottom bar, so nothing floats over the page. Desktop: the bubble steps aside over the price summary and the form. */
+.dock .dock-ask{display:flex;align-items:center;justify-content:center;min-height:48px;font:inherit;font-weight:700;font-size:15px;color:inherit;background:transparent;border:0;cursor:pointer}
+@media (max-width:979px){.qh-btn{display:none}.dock{grid-template-columns:1fr 1fr 1fr 1.6fr}}
+.qh-btn{transition:opacity .2s}.qh-btn.away{opacity:0;pointer-events:none}
 @media (min-width:980px){.qh-btn{bottom:24px;right:24px}.qh-panel{left:auto;right:24px;bottom:84px;width:400px}}
 @media (prefers-reduced-motion:no-preference){.qh-panel{animation:qh-in .18s ease-out}@keyframes qh-in{from{opacity:0;transform:translateY(8px)}}}
 
@@ -1193,7 +1197,7 @@ body{background:var(--bg);color:var(--ink)}
   </div>
 </footer>
 
-<nav class="dock" id="dock" aria-label="Quick contact"><a href="tel:+15875838450">Call</a><a href="sms:+15875838450">Text</a><a class="go" href="#start">Start a project</a></nav>
+<nav class="dock" id="dock" aria-label="Quick contact"><a href="tel:+15875838450">Call</a><a href="sms:+15875838450">Text</a><button type="button" class="dock-ask" aria-controls="qh-panel">Ask</button><a class="go" href="#start">Start a project</a></nav>
 
 <script>
 // Founding Client spots. Lower this only when a real client signs. Hermes Framing is #1.
@@ -1520,9 +1524,19 @@ var GOOGLE_REVIEW_URL = 'https://g.page/r/CbQmwdRacDApEBM/review';
     if (!started) { say('Hi! Pick a question below and you’ll get a straight answer. No forms, no waiting.'); started = true; }
     var first = opts.querySelector('button'); if (first) first.focus();
   }
-  function close(refocus) { panel.hidden = true; btn.hidden = false; btn.setAttribute('aria-expanded', 'false'); if (refocus !== false) btn.focus(); }
+  function close(refocus) { panel.hidden = true; btn.hidden = false; btn.setAttribute('aria-expanded', 'false'); if (refocus !== false) (btn.offsetParent ? btn : (askDock || btn)).focus(); }
   more.addEventListener('click', function () { opts.hidden = false; more.hidden = true; log.innerHTML = ''; say('Pick a question below.'); var f = opts.querySelector('button'); if (f) f.focus(); });
   btn.addEventListener('click', open);
+  var askDock = document.querySelector('.dock-ask');
+  if (askDock) askDock.addEventListener('click', function () { if (panel.hidden) open(); else close(); });
+  if ('IntersectionObserver' in window) {
+    var inView = new Set();
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) inView.add(e.target); else inView.delete(e.target); });
+      btn.classList.toggle('away', inView.size > 0);
+    }, { rootMargin: '0px 0px -60px 0px' });
+    ['.summary', '#start'].forEach(function (q) { var el = document.querySelector(q); if (el) io.observe(el); });
+  }
   x.addEventListener('click', function () { close(); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !panel.hidden) close(); });
 })();
